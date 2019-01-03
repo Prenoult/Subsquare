@@ -5,6 +5,7 @@ import API from '../../utils/API';
 export class Signup extends React.Component {
     constructor(props) {
         super(props);
+        this.login=window.location.origin;
         this.state = {
             email: "",
             password: "",
@@ -62,6 +63,7 @@ export class Signup extends React.Component {
                 >
                     Inscription
                 </Button>
+                <a href={this.login}>Vous possedez déjà un compte ?</a>
             </div>
         )
     }
