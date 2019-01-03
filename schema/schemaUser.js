@@ -15,7 +15,7 @@ var userSchema = mongoose.Schema({
         type: String,
         required: true
     }
-}, {timestamps: {createdAt: 'created_at'}})
+}, {timestamps: {createdAt: 'created_at'}});
 
 
 userSchema.methods = {
@@ -25,6 +25,6 @@ userSchema.methods = {
     getToken: function () {
         return jwt.encode(this, config.secret);
     }
-}
+};
 
 module.exports = mongoose.model('User', userSchema);

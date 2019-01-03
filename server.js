@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const bodyParser = require('body-parser');
 
 //Connexion à la base de donnée
-mongoose.connect('mongodb://localhost/db').then(() => {
+mongoose.connect('mongodb://localhost/subsquareDB').then(() => {
     console.log('Connected to mongoDB')
 }).catch(e => {
     console.log('Error while DB connecting');
