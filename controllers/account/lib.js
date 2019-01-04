@@ -38,7 +38,8 @@ function signup(req, res) {
                 } else {
                     res.status(200).json({
                         "text": "Succès",
-                        "token": user.getToken()
+                        "token": user.getToken(),
+                        "id":req.body.email
                     })
                 }
             })
@@ -85,6 +86,7 @@ function login(req, res) {
                 if (user.authenticate(req.body.password)) {
                     res.status(200).json({
                         "token": user.getToken(),
+                        "id":req.body.email,
                         "text": "Authentification réussi"
                     })
                 } else {
@@ -130,7 +132,8 @@ function change(req, res) {
 
                             } else {
                                 res.status(200).json({
-                                    "text": "Adresse mail modifiée"
+                                    "text": "Adresse mail modifiée",
+                                    "id":req.body.nemail
                                 })
                             }
                         })
