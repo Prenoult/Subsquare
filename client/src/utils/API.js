@@ -18,6 +18,10 @@ export default {
         return axios.post(burl + '/user/signup', send, {headers: headers})
     },
 
+    change: function (send) {
+        return axios.post(burl + '/user/change', send, {headers: headers})
+    },
+
     isAuth: function () {
         return (localStorage.getItem('token') !== null);
     },

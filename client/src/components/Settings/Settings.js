@@ -10,21 +10,29 @@ export class Settings extends React.Component {
         super(props);
         this.handleChange.bind(this);
         this.send.bind(this);
+        this.state = {
+            email: "",
+            nemail:"",
+            password: ""
+        };
     }
 
     send = event => {
         if (this.state.email.length === 0) {
             return;
         }
-        if (this.state.password.length === 0 || this.state.password !== this.state.cpassword) {
+        if (this.state.nemail.length === 0) {
             return;
         }
         var _send = {
             email: this.state.email,
+            nemail: this.state.nemail,
             password: this.state.password
         };
+        console.log(_send);
         API.change(_send).then(function (data) {
-            window.location = "/dashboard"
+            console.log(data);
+            //window.location = "/dashboard"
         }, function (error) {
             console.log(error);
             return;
@@ -40,18 +48,18 @@ export class Settings extends React.Component {
 
     render() {
         return (
-            <div className="Login">
+            <div className="Change">
                 <FormGroup controlId="email" bsSize="large">
-                    <ControlLabel>Nouvelle adresse email</ControlLabel>
+                    <ControlLabel>Adresse email</ControlLabel>
                     <FormControl autoFocus type="email" value={this.state.email} onChange={this.handleChange}/>
+                </FormGroup>
+                <FormGroup controlId="nemail" bsSize="large">
+                    <ControlLabel>Nouvelle adresse email</ControlLabel>
+                    <FormControl autoFocus type="email" value={this.state.nemail} onChange={this.handleChange}/>
                 </FormGroup>
                 <FormGroup controlId="password" bsSize="large">
                     <ControlLabel>Password</ControlLabel>
                     <FormControl value={this.state.password} onChange={this.handleChange} type="password"/>
-                </FormGroup>
-                <FormGroup controlId="cpassword" bsSize="large">
-                    <ControlLabel>Confirm Password</ControlLabel>
-                    <FormControl value={this.state.cpassword} onChange={this.handleChange} type="password"/>
                 </FormGroup>
                 <Button
                     onClick={this.send}
@@ -59,7 +67,7 @@ export class Settings extends React.Component {
                     bsSize="large"
                     type="submit"
                 >
-                    Inscription
+                    Modifier
                 </Button>
             </div>
         )
