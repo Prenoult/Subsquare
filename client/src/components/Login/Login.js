@@ -5,7 +5,8 @@ import API from '../../utils/API';
 export class Login extends React.Component {
     constructor(props) {
         super(props);
-        this.signup = window.location.origin+"/signup";
+        //console.log(window.location);
+        //this.signup = window.location.origin+"/signup";
         this.state = {
             email: "",
             password: ""
@@ -54,7 +55,7 @@ export class Login extends React.Component {
                 >
                     Connexion
                 </Button>
-                <a href={this.signup}>Vous ne possedez pas de compte ?</a>
+                <a href={window.location.origin+"/signup"}>Vous ne possedez pas de compte ?</a>
             </div>
         )
     }

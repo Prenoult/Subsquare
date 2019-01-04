@@ -1,16 +1,13 @@
+/**
+ * Created by Charles on 03/01/2019.
+ */
 import React from 'react';
 import {Button, FormGroup, FormControl, ControlLabel} from "react-bootstrap";
 import API from '../../utils/API';
 
-export class Signup extends React.Component {
+export class Settings extends React.Component {
     constructor(props) {
         super(props);
-        //this.login=window.location.origin;
-        this.state = {
-            email: "",
-            password: "",
-            cpassword: ""
-        };
         this.handleChange.bind(this);
         this.send.bind(this);
     }
@@ -26,13 +23,14 @@ export class Signup extends React.Component {
             email: this.state.email,
             password: this.state.password
         };
-        API.signup(_send).then(function (data) {
-            localStorage.setItem('token', data.data.token);
+        API.change(_send).then(function (data) {
             window.location = "/dashboard"
         }, function (error) {
             console.log(error);
             return;
         })
+
+
     };
     handleChange = event => {
         this.setState({
@@ -44,7 +42,7 @@ export class Signup extends React.Component {
         return (
             <div className="Login">
                 <FormGroup controlId="email" bsSize="large">
-                    <ControlLabel>Email</ControlLabel>
+                    <ControlLabel>Nouvelle adresse email</ControlLabel>
                     <FormControl autoFocus type="email" value={this.state.email} onChange={this.handleChange}/>
                 </FormGroup>
                 <FormGroup controlId="password" bsSize="large">
@@ -63,7 +61,6 @@ export class Signup extends React.Component {
                 >
                     Inscription
                 </Button>
-                <a href={window.location.origin}>Vous possedez déjà un compte ?</a>
             </div>
         )
     }
