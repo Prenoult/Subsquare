@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import {Button, FormGroup, FormControl, ControlLabel} from "react-bootstrap";
 import API from '../../utils/API';
 
@@ -63,7 +64,7 @@ export class Signup extends React.Component {
                 >
                     Inscription
                 </Button>
-                <a href={window.location.origin}>Vous possedez déjà un compte ?</a>
+                <Link to={"/"}>Vous possedez déjà un compte ?</Link>
             </div>
         )
     }
