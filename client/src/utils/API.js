@@ -18,8 +18,12 @@ export default {
         return axios.post(burl + '/user/signup', send, {headers: headers})
     },
 
-    change: function (send) {
-        return axios.post(burl + '/user/change', send, {headers: headers})
+    changeEmail: function (send) {
+        return axios.post(burl + '/user/change/Email', send, {headers: headers})
+    },
+
+    changePassword: function (send) {
+        return axios.post(burl + '/user/change/Password', send, {headers: headers})
     },
 
     isAuth: function () {

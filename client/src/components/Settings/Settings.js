@@ -24,6 +24,7 @@ export class Settings extends React.Component {
                 <Link to={"/settings/mail"}>Modifier votre adresse mail</Link>
                 <br/>
                         <span>Blablabla</span>
+                <Link to={"/settings/password"}>Modifier votre mot de passe</Link>
             </div>
     )
     }

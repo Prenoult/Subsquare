@@ -5,30 +5,30 @@ import React from 'react';
 import {Button, FormGroup, FormControl, ControlLabel} from "react-bootstrap";
 import API from '../../utils/API';
 
-export class SettingsMail extends React.Component {
+export class SettingsPassword extends React.Component {
     constructor(props) {
         super(props);
         this.handleChange.bind(this);
         this.send.bind(this);
         this.state = {
-            email: "",
-            nemail:"",
-            password: ""
+            password: "",
+            npassword: "",
+            cpassword: ""
         };
     }
 
     send = event => {
-        if (this.state.nemail.length === 0) {
+        if (this.state.npassword.length === 0 || this.state.npassword !== this.state.cpassword || this.state.password.length === 0) {
             return;
         }
         var _send = {
             email: localStorage.getItem("id"),
-            nemail: this.state.nemail,
+            npassword: this.state.npassword,
             password: this.state.password
         };
         console.log(_send);
-        API.changeEmail(_send).then(function (data) {
-            console.log(data.data.id);
+        API.changePassword(_send).then(function (data) {
+            console.log(data.data);
             localStorage.setItem("id",data.data.id)
             //window.location = "/dashboard"
         }, function (error) {
@@ -47,13 +47,17 @@ export class SettingsMail extends React.Component {
     render() {
         return (
             <div className="Change">
-                <FormGroup controlId="nemail" bsSize="large">
-                    <ControlLabel>Nouvelle adresse email</ControlLabel>
-                    <FormControl autoFocus type="email" value={this.state.nemail} onChange={this.handleChange}/>
-                </FormGroup>
                 <FormGroup controlId="password" bsSize="large">
-                    <ControlLabel>Password</ControlLabel>
+                    <ControlLabel>Votre password</ControlLabel>
                     <FormControl value={this.state.password} onChange={this.handleChange} type="password"/>
+                </FormGroup>
+                <FormGroup controlId="npassword" bsSize="large">
+                    <ControlLabel>Votre nouveau password</ControlLabel>
+                    <FormControl value={this.state.npassword} onChange={this.handleChange} type="password"/>
+                </FormGroup>
+                <FormGroup controlId="cpassword" bsSize="large">
+                    <ControlLabel>Confirmer le nouveau Password</ControlLabel>
+                    <FormControl value={this.state.cpassword} onChange={this.handleChange} type="password"/>
                 </FormGroup>
                 <Button
                     onClick={this.send}

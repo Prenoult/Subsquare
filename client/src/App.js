@@ -5,6 +5,7 @@ import {Login} from './components/Login/Login.js';
 import {Signup} from './components/Signup/Signup.js';
 import {Settings} from './components/Settings/Settings.js';
 import {SettingsMail} from './components/Settings/SettingsMail.js';
+import {SettingsPassword} from './components/Settings/SettingsPassword.js';
 import {PrivateRoute} from './components/PrivateRoute.js';
 import './App.css';
 
@@ -19,6 +20,7 @@ class App extends Component {
                         <PrivateRoute path='/dashboard' component={Dashboard}/>
                         <PrivateRoute exact path="/settings" component={Settings}/>
                         <PrivateRoute exact path="/settings/mail" component={SettingsMail}/>
+                        <PrivateRoute exact path="/settings/password" component={SettingsPassword}/>
                     </Switch>
                 </div>
             </div>
