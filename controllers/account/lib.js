@@ -107,43 +107,53 @@ function changeEmail(req, res) {
         })
     } else {
         User.findOne({
-            email: req.body.email
-        }, function (err, user) {
-            if (err) {
-                res.status(500).json({
-                    "text": "Erreur interne"
-                })
-            } else if (!user) {
-                res.status(401).json({
-                    "text": "L'utilisateur n'existe pas"
-                })
-            } else {
-                if (user.authenticate(req.body.password)) {
-                    User.update({email: req.body.email}, {$set: {email: req.body.nemail}},
-                        function (err, user) {
-                            if (err) {
-                                res.status(500).json({
-                                    "text": "Erreur interne"
-                                })
-                            } else if (!user) {
-                                res.status(401).json({
-                                    "text": "L'utilisateur n'existe pas"
-                                })
-
-                            } else {
-                                res.status(200).json({
-                                    "text": "Adresse mail modifiée",
-                                    "id":req.body.nemail
-                                })
-                            }
+            email: req.body.nemail
+        }, function (err, user2) {
+            if(!user2){
+                User.findOne({
+                    email: req.body.email
+                }, function (err, user) {
+                    if (err) {
+                        res.status(500).json({
+                            "text": "Erreur interne"
                         })
+                    } else if (!user) {
+                        res.status(401).json({
+                            "text": "L'utilisateur n'existe pas"
+                        })
+                    } else {
+                        if (user.authenticate(req.body.password)) {
+                            User.update({email: req.body.email}, {$set: {email: req.body.nemail}},
+                                function (err, user) {
+                                    if (err) {
+                                        res.status(500).json({
+                                            "text": "Erreur interne"
+                                        })
+                                    } else if (!user) {
+                                        res.status(401).json({
+                                            "text": "L'utilisateur n'existe pas"
+                                        })
+
+                                    } else {
+                                        res.status(200).json({
+                                            "text": "Adresse mail modifiée",
+                                            "id":req.body.nemail
+                                        })
+                                    }
+                                })
 
 
-                } else {
-                    res.status(401).json({
-                        "text": "Mot de passe incorrect"
-                    })
-                }
+                        } else {
+                            res.status(401).json({
+                                "text": "Mot de passe incorrect"
+                            })
+                        }
+                    }
+                })
+            }else{
+                res.status(500).json({
+                    "text": "adresse mail deja utilisée"
+                })
             }
         })
     }
@@ -201,9 +211,103 @@ function changePassword(req, res) {
         })
     }
 }
+
+/*
+ * npm install generate-password --save
+ * npm install nodemailer
+ * https://mailtrap.io/inboxes
+ *
+ * Remplacez ces valeurs par celles vous correspondants
+ * user: "b33959999592f9",
+ * pass: "95f4bc01d93054"
+ *
+ */
+function resetPassword(req, res) {
+    //Start Here
+
+    User.findOne({
+        email: req.body.email
+    }, function (err, user) {
+        if (err) {
+            res.status(500).json({
+                "text": "Erreur interne"
+            })
+        } else if (!user) {
+            res.status(401).json({
+                "text": "L'utilisateur n'existe pas"
+            })
+        } else {
+           // Si l'utilisateur existe
+            var nodemailer = require("nodemailer");
+            var transporter = nodemailer.createTransport({
+                host: "smtp.mailtrap.io",
+                port: 2525,
+                auth: {
+                    user: "b33959999592f9",
+                    pass: "95f4bc01d93054"
+                }
+            });
+
+            var generator = require('generate-password');
+
+            var newpwd = generator.generate({
+                length: 10,
+                numbers: true
+            });
+            var msg ="Vous mot de passe a été changé. \nVoici votre nouveau mot de passe : \n"+newpwd;
+
+
+            const mailOptions= {
+                from: "Server@gmail.com",
+                //to: req.body.email,
+                to: req.body.email,
+                subject: "Email Test",
+                text: msg
+            };
+
+
+            transporter.sendMail(mailOptions, (err, info) => {
+                if(err){
+                    //console.log(err);
+                    //return next(err);
+                    res.status(500).json({
+                        "text": "erreur interne"
+                    })
+                }else{
+                    var pwdhash = passwordHash.generate(newpwd);
+                    User.update({email: req.body.email}, {$set: {password: pwdhash}},
+                        function (err, user) {
+                            if (err) {
+                                res.status(500).json({
+                                    "text": "Erreur interne"
+                                })
+                            } else if (!user) {
+                                res.status(401).json({
+                                    "text": "L'utilisateur n'existe pas"
+                                })
+
+                            } else {
+                                res.status(200).json({
+                                    "text": "mot de passe reset",
+                                })
+                            }
+                        })
+                }
+
+                transporter.close();
+            });
+        }
+    })
+
+}/**/
+
+function resetPassword1() {
+    
+}
 //On exporte nos deux fonctions
 
 exports.login = login;
 exports.signup = signup;
 exports.changeEmail = changeEmail;
 exports.changePassword = changePassword;
+exports.resetPassword = resetPassword;

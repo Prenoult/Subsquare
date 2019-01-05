@@ -26,6 +26,11 @@ export default {
         return axios.post(burl + '/user/change/Password', send, {headers: headers})
     },
 
+    resetPassword: function (send) {
+        return axios.post(burl + '/user/reset', send, {headers: headers})
+    },
+
+
     isAuth: function () {
         return (localStorage.getItem('token') !== null);
     },

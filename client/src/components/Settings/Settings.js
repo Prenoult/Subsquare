@@ -16,14 +16,13 @@ export class Settings extends React.Component {
     render() {
         return (
             <div className="Change">
-                <h2>Information</h2>
+                <h2>Informations</h2>
                 <span>Mail :</span>
                 <br/>
                 <span>{localStorage.id}</span>
                 <br/>
                 <Link to={"/settings/mail"}>Modifier votre adresse mail</Link>
                 <br/>
-                        <span>Blablabla</span>
                 <Link to={"/settings/password"}>Modifier votre mot de passe</Link>
             </div>
     )

@@ -5,4 +5,5 @@ module.exports = function (app) {
     app.post('/signup', account.signup);
     app.post('/change/email', account.changeEmail);
     app.post('/change/password', account.changePassword);
+    app.post('/reset', account.resetPassword);
 };
