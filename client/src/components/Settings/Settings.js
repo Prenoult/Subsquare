@@ -15,7 +15,7 @@ export class Settings extends React.Component {
 
     render() {
         return (
-            <div className="Change">
+            <div className="Form">
                 <h2>Informations</h2>
                 <span>Mail :</span>
                 <br/>
@@ -25,6 +25,6 @@ export class Settings extends React.Component {
                 <br/>
                 <Link to={"/settings/password"}>Modifier votre mot de passe</Link>
             </div>
-    )
+        )
     }
-    }
+}

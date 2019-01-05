@@ -12,7 +12,7 @@ export class SettingsMail extends React.Component {
         this.send.bind(this);
         this.state = {
             email: "",
-            nemail:"",
+            nemail: "",
             password: ""
         };
     }
@@ -29,7 +29,7 @@ export class SettingsMail extends React.Component {
         console.log(_send);
         API.changeEmail(_send).then(function (data) {
             console.log(data.data.id);
-            localStorage.setItem("id",data.data.id)
+            localStorage.setItem("id", data.data.id);
             window.location = "/dashboard"
         }, function (error) {
             console.log(error);
@@ -46,7 +46,7 @@ export class SettingsMail extends React.Component {
 
     render() {
         return (
-            <div className="Change">
+            <div className="Form">
                 <FormGroup controlId="nemail" bsSize="large">
                     <ControlLabel>Nouvelle adresse email</ControlLabel>
                     <FormControl autoFocus type="email" value={this.state.nemail} onChange={this.handleChange}/>

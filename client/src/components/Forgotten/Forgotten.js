@@ -47,7 +47,7 @@ export class Forgotten extends React.Component {
 
     render() {
         return (
-            <div className="Forgotten">
+            <div className="Form">
                 <FormGroup controlId="email" bsSize="large">
                     <ControlLabel>Email</ControlLabel>
                     <FormControl autoFocus type="email" value={this.state.email} onChange={this.handleChange}/>

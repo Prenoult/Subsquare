@@ -25,7 +25,7 @@ export class Login extends React.Component {
         }
         API.login(this.state.email, this.state.password).then(function (data) {
             localStorage.setItem('token', data.data.token);
-            localStorage.setItem('id',data.data.id);
+            localStorage.setItem('id', data.data.id);
             window.location = "/dashboard"
         }, function (error) {
             console.log(error);
@@ -40,7 +40,7 @@ export class Login extends React.Component {
 
     render() {
         return (
-            <div className="Login">
+            <div className="Form">
                 <FormGroup controlId="email" bsSize="large">
                     <ControlLabel>Email</ControlLabel>
                     <FormControl autoFocus type="email" value={this.state.email} onChange={this.handleChange}/>

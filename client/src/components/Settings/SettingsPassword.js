@@ -29,7 +29,7 @@ export class SettingsPassword extends React.Component {
         console.log(_send);
         API.changePassword(_send).then(function (data) {
             console.log(data.data);
-            localStorage.setItem("id",data.data.id)
+            localStorage.setItem("id", data.data.id);
             window.location = "/dashboard"
         }, function (error) {
             console.log(error);
@@ -46,7 +46,7 @@ export class SettingsPassword extends React.Component {
 
     render() {
         return (
-            <div className="Change">
+            <div className="Form">
                 <FormGroup controlId="password" bsSize="large">
                     <ControlLabel>Votre password</ControlLabel>
                     <FormControl value={this.state.password} onChange={this.handleChange} type="password"/>
