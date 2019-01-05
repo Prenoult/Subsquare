@@ -1,5 +1,6 @@
 const User = require('../../schema/schemaUser.js');
 const passwordHash = require("password-hash");
+const config = require('../../config/config');
 
 function signup(req, res) {
     if (!req.body.email || !req.body.password) {
@@ -39,7 +40,7 @@ function signup(req, res) {
                     res.status(200).json({
                         "text": "Succès",
                         "token": user.getToken(),
-                        "id":req.body.email
+                        "id": req.body.email
                     })
                 }
             })
@@ -86,7 +87,7 @@ function login(req, res) {
                 if (user.authenticate(req.body.password)) {
                     res.status(200).json({
                         "token": user.getToken(),
-                        "id":req.body.email,
+                        "id": req.body.email,
                         "text": "Authentification réussi"
                     })
                 } else {
@@ -109,7 +110,7 @@ function changeEmail(req, res) {
         User.findOne({
             email: req.body.nemail
         }, function (err, user2) {
-            if(!user2){
+            if (!user2) {
                 User.findOne({
                     email: req.body.email
                 }, function (err, user) {
@@ -137,7 +138,7 @@ function changeEmail(req, res) {
                                     } else {
                                         res.status(200).json({
                                             "text": "Adresse mail modifiée",
-                                            "id":req.body.nemail
+                                            "id": req.body.nemail
                                         })
                                     }
                                 })
@@ -150,7 +151,7 @@ function changeEmail(req, res) {
                         }
                     }
                 })
-            }else{
+            } else {
                 res.status(500).json({
                     "text": "adresse mail deja utilisée"
                 })
@@ -196,7 +197,7 @@ function changePassword(req, res) {
                             } else {
                                 res.status(200).json({
                                     "text": "Le mot de passe a bien été modifié",
-                                    "id":req.body.nemail
+                                    "id": req.body.nemail
                                 })
                             }
                         })
@@ -237,14 +238,14 @@ function resetPassword(req, res) {
                 "text": "L'utilisateur n'existe pas"
             })
         } else {
-           // Si l'utilisateur existe
+            // Si l'utilisateur existe
             var nodemailer = require("nodemailer");
             var transporter = nodemailer.createTransport({
                 host: "smtp.mailtrap.io",
                 port: 2525,
                 auth: {
-                    user: "b33959999592f9",
-                    pass: "95f4bc01d93054"
+                    user: config.mtusername,
+                    pass: config.mtpassword
                 }
             });
 
@@ -254,10 +255,10 @@ function resetPassword(req, res) {
                 length: 10,
                 numbers: true
             });
-            var msg ="Vous mot de passe a été changé. \nVoici votre nouveau mot de passe : \n"+newpwd;
+            var msg = "Vous mot de passe a été changé. \nVoici votre nouveau mot de passe : \n" + newpwd;
 
 
-            const mailOptions= {
+            const mailOptions = {
                 from: "Server@gmail.com",
                 //to: req.body.email,
                 to: req.body.email,
@@ -267,13 +268,13 @@ function resetPassword(req, res) {
 
 
             transporter.sendMail(mailOptions, (err, info) => {
-                if(err){
+                if (err) {
                     //console.log(err);
                     //return next(err);
                     res.status(500).json({
                         "text": "erreur interne"
                     })
-                }else{
+                } else {
                     var pwdhash = passwordHash.generate(newpwd);
                     User.update({email: req.body.email}, {$set: {password: pwdhash}},
                         function (err, user) {
@@ -299,11 +300,8 @@ function resetPassword(req, res) {
         }
     })
 
-}/**/
-
-function resetPassword1() {
-    
 }
+
 //On exporte nos deux fonctions
 
 exports.login = login;

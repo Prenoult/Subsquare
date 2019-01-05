@@ -41,3 +41,7 @@ Thumbs.db
 # IDE files #
 #############
 .idea
+
+# Configuration #
+#################
+config.js
