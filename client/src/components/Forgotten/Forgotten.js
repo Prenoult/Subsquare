@@ -5,9 +5,10 @@
  * Created by Charles on 03/01/2019.
  */
 import React from 'react';
-import {Button, FormGroup, FormControl, ControlLabel} from "react-bootstrap";
+import {Button, FormGroup, FormControl, ControlLabel, Grid, Row, Col} from "react-bootstrap";
 import API from '../../utils/API';
 import {Link} from 'react-router-dom';
+import {EnteteLogo} from '../EnteteLogo/EnteteLogo.js'
 
 export class Forgotten extends React.Component {
     constructor(props) {
@@ -47,20 +48,39 @@ export class Forgotten extends React.Component {
 
     render() {
         return (
-            <div className="Form">
-                <FormGroup controlId="email" bsSize="large">
-                    <ControlLabel>Email</ControlLabel>
-                    <FormControl autoFocus type="email" value={this.state.email} onChange={this.handleChange}/>
-                </FormGroup>
-                <Button
-                    onClick={this.send}
-                    block
-                    bsSize="large"
-                    type="submit"
-                >
-                    Demander un nouveau mot de passe
-                </Button>
-            </div>
+            <Grid className="Form">
+                <EnteteLogo/>
+                <Row>
+                    <Row>
+                        <Col md={7} className= "colonne-centree">
+                            <FormGroup controlId="email" bsSize="large">
+                                <ControlLabel className="label">Réinitialiser votre mot de passe</ControlLabel>
+                                <FormControl 
+                                    autoFocus 
+                                    type="email" 
+                                    value={this.state.email} 
+                                    onChange={this.handleChange}
+                                    placeholder= "Entrez votre adresse mail ici"
+                                    className="FormContLog"/>
+                            </FormGroup>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col md={3} className= "colonne-centree">
+                            <Button
+                                onClick={this.send}
+                                block
+                                bsSize="large"
+                                bsStyle="primary"
+                                type="submit"
+                                className="buttonEnv"
+                            >
+                                VALIDER
+                            </Button>
+                        </Col>
+                    </Row>
+                </Row>
+            </Grid>
         )
     }
 }

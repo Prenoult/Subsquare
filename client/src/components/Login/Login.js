@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {Button, FormGroup, FormControl, ControlLabel} from "react-bootstrap";
+import {Button, FormGroup, FormControl, ControlLabel, Grid, Row, Col} from "react-bootstrap";
+import {EnteteLogo} from '../EnteteLogo/EnteteLogo.js'
 import API from '../../utils/API';
 
 export class Login extends React.Component {
@@ -40,27 +41,48 @@ export class Login extends React.Component {
 
     render() {
         return (
-            <div className="Form">
-                <FormGroup controlId="email" bsSize="large">
-                    <ControlLabel>Email</ControlLabel>
-                    <FormControl autoFocus type="email" value={this.state.email} onChange={this.handleChange}/>
-                </FormGroup>
-                <FormGroup controlId="password" bsSize="large">
-                    <ControlLabel>Password</ControlLabel>
-                    <FormControl value={this.state.password} onChange={this.handleChange} type="password"/>
-                </FormGroup>
-                <Button
-                    onClick={this.send}
-                    block
-                    bsSize="large"
-                    type="submit"
-                >
-                    Connexion
-                </Button>
-                <Link to={"/signup"}>Vous ne possedez pas de compte ?</Link>
-                <br/>
-                <Link to={"/forgotten"}>Mot de passe oublié ?</Link>
-            </div>
+            <Grid className="Form">
+                <EnteteLogo/>
+                <Row>
+                    <Row>
+                        <Col md={7} className= "colonne-centree">
+                            <FormGroup controlId="email" bsSize="large">
+                                <FormControl 
+                                    autoFocus type="email" 
+                                    value={this.state.email} 
+                                    onChange={this.handleChange}
+                                    placeholder= "ADRESSE MAIL"
+                                    className="FormContLog"/>
+                            </FormGroup>
+                            <FormGroup controlId="password" bsSize="large">
+                                <FormControl 
+                                    value={this.state.password} 
+                                    onChange={this.handleChange} 
+                                    type="password"
+                                    placeholder= "MOT DE PASSE"
+                                    className="FormContLog"/>
+                            </FormGroup>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col md={3} className= "colonne-centree">
+                            <Button
+                                onClick={this.send}
+                                block
+                                bsSize="large"
+                                bsStyle="primary"
+                                type="submit"
+                                className="buttonEnv"
+                            >
+                                CONNEXION
+                            </Button>
+                        </Col>
+                    </Row>
+                    <Link to={"/signup"} >Vous ne possedez pas de compte ?</Link>
+                    <br/>
+                    <Link to={"/forgotten"}>Mot de passe oublié ?</Link>
+                </Row>
+            </Grid>
         )
     }
 }

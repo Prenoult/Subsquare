@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {Button, FormGroup, FormControl, ControlLabel} from "react-bootstrap";
+import {Button, FormGroup, FormControl, ControlLabel, Grid, Row, Col} from "react-bootstrap";
+import {EnteteLogo} from '../EnteteLogo/EnteteLogo.js'
 import API from '../../utils/API';
 
 export class Signup extends React.Component {
@@ -44,29 +45,55 @@ export class Signup extends React.Component {
 
     render() {
         return (
-            <div className="Form">
-                <FormGroup controlId="email" bsSize="large">
-                    <ControlLabel>Email</ControlLabel>
-                    <FormControl autoFocus type="email" value={this.state.email} onChange={this.handleChange}/>
-                </FormGroup>
-                <FormGroup controlId="password" bsSize="large">
-                    <ControlLabel>Password</ControlLabel>
-                    <FormControl value={this.state.password} onChange={this.handleChange} type="password"/>
-                </FormGroup>
-                <FormGroup controlId="cpassword" bsSize="large">
-                    <ControlLabel>Confirm Password</ControlLabel>
-                    <FormControl value={this.state.cpassword} onChange={this.handleChange} type="password"/>
-                </FormGroup>
-                <Button
-                    onClick={this.send}
-                    block
-                    bsSize="large"
-                    type="submit"
-                >
-                    Inscription
-                </Button>
+            <Grid className="Form">
+                <EnteteLogo/>
+                <Row>
+                    <Row>
+                        <Col md={7} className= "colonne-centree">
+                            <FormGroup controlId="email" bsSize="large">
+                                <FormControl 
+                                    autoFocus 
+                                    type="email" 
+                                    value={this.state.email} 
+                                    onChange={this.handleChange}
+                                    placeholder= "ADRESSE MAIL"
+                                    className="FormContLog"/>
+                            </FormGroup>
+                            <FormGroup controlId="password" bsSize="large">
+                                <FormControl
+                                    value={this.state.password} 
+                                    onChange={this.handleChange} 
+                                    type="password"
+                                    placeholder= "MOT DE PASSE"
+                                    className="FormContLog"/>
+                            </FormGroup>
+                            <FormGroup controlId="cpassword" bsSize="large">
+                                <FormControl 
+                                    value={this.state.cpassword} 
+                                    onChange={this.handleChange} 
+                                    type="password"
+                                    placeholder= "CONFIRMER MOT DE PASSE"
+                                    className="FormContLog"/>
+                            </FormGroup>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col md={3} className= "colonne-centree">
+                            <Button
+                                onClick={this.send}
+                                block
+                                bsSize="large"
+                                bsStyle="primary"
+                                type="submit"
+                                className="buttonEnv"
+                            >
+                                INSCRIPTION
+                            </Button>
+                        </Col>
+                    </Row>
+                </Row>
                 <Link to={"/"}>Vous possedez déjà un compte ?</Link>
-            </div>
+            </Grid>
         )
     }
 }
