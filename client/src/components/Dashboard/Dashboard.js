@@ -20,6 +20,8 @@ export class Dashboard extends React.Component {
             <div className="Dashboard">
                 <h1>Dashboard</h1>
                 <Link to={"/Settings"}>Paramètres</Link>
+                <br/>
+                <Link to={"/Subscriptions"}>Abonnements</Link>
                 <Button
                     onClick={this.disconnect}
                     block
