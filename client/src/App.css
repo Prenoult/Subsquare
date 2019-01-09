@@ -69,6 +69,8 @@ h2 {
 .buttonEnv {
     margin-top: 15px;
     margin-bottom: 15px;
+    background-color: #6a6cac;
+    border-color: #6a6cac;
 }
 
 .buttonMenu {
@@ -89,4 +91,11 @@ h2 {
 .entete {
     margin-top: 4%;
     border-bottom: 3px solid black;
+}
+
+.label {
+    font-size: 20px;
+    color: black;
+    margin-top: 5%;
+    margin-bottom: 5%;
 }

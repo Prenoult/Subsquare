@@ -6,6 +6,9 @@ export class Menu extends React.Component {
 	accueil = event => {
         window.location = "/dashboard";
     };
+    abonnements = event => {
+        window.location = "/subscriptions";
+    };
 
 	render() {
 		return (
@@ -42,6 +45,7 @@ export class Menu extends React.Component {
 	                    bsStyle="primary"
 	                    type="submit"
 	                    className="buttonMenu"
+	                    onClick={this.abonnements}
 	                >
 	                	<Image src={require('../../img/abonnements.png')} 
 	                		style={{ width: 30,

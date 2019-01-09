@@ -45,7 +45,7 @@ export class Login extends React.Component {
                 <EnteteLogo/>
                 <Row>
                     <Row>
-                        <Col md={7} className= "colonne-centree">
+                        <Col md={6} className= "colonne-centree">
                             <FormGroup controlId="email" bsSize="large">
                                 <FormControl 
                                     autoFocus type="email" 
