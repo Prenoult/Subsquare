@@ -37,6 +37,10 @@ body {
     background-color: #f1f2f6;
 }
 
+.container {
+    width: 100%;
+}
+
 .FormContLog {
     border: 0px;
     border-radius: 15px 15px 0px 0px;
@@ -65,4 +69,24 @@ h2 {
 .buttonEnv {
     margin-top: 15px;
     margin-bottom: 15px;
+}
+
+.buttonMenu {
+    border-radius: 40px;
+    margin-bottom: 30px;
+    width: 200px;
+    margin-left: 15%;
+    background-color: #6a6cac;
+    border-color: #6a6cac;
+}
+.montagne {
+    background-image: url("img/Montagne.jpg");
+    background-size: 'cover';
+    background-attachment: fixed;
+    height: 100vh;
+    min-width: 300px;
+}
+.entete {
+    margin-top: 4%;
+    border-bottom: 3px solid black;
 }
