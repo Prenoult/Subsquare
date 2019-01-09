@@ -7,6 +7,7 @@ import {Settings} from './components/Settings/Settings.js';
 import {SettingsMail} from './components/Settings/SettingsMail.js';
 import {SettingsPassword} from './components/Settings/SettingsPassword.js';
 import {Forgotten} from './components/Forgotten/Forgotten.js';
+import {Subscriptions} from './components/Subscriptions/Subscriptions.js';
 import {PrivateRoute} from './components/PrivateRoute.js';
 import './App.css';
 
@@ -23,6 +24,7 @@ class App extends Component {
                         <PrivateRoute exact path="/settings" component={Settings}/>
                         <PrivateRoute exact path="/settings/mail" component={SettingsMail}/>
                         <PrivateRoute exact path="/settings/password" component={SettingsPassword}/>
+                        <PrivateRoute exact path="/subscriptions" component={Subscriptions}/>
                     </Switch>
                 </div>
             </div>
