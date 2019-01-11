@@ -1,5 +1,5 @@
 module.exports = {
     "secret": "secretPassJWT",
-    "mtusername": "mailtrapUsername",
-    "mtpassword": "mailtrapPassword"
+    "mtusername": "b33959999592f9",
+    "mtpassword": "95f4bc01d93054"
 };

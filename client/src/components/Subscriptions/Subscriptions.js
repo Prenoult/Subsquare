@@ -24,7 +24,9 @@ export class Subscriptions extends React.Component {
     }
 
 
+
     //https://reactjs.org/docs/conditional-rendering.html
+
     render() {
         return (
             <Grid className="Form">
