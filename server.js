@@ -34,6 +34,9 @@ app.use(function (req, res, next) {
 
 //Définition du routeur
 var router = express.Router();
+
+app.use('/subscriptions', router);
+require(__dirname + '/controllers/subscriptionController')(router);
 app.use('/user', router);
 require(__dirname + '/controllers/userController')(router);
 

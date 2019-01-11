@@ -31,7 +31,6 @@ export class SettingsPassword extends React.Component {
         console.log(_send);
         API.changePassword(_send).then(function (data) {
             console.log(data.data);
-            localStorage.setItem("id", data.data.id);
             window.location = "/dashboard"
         }, function (error) {
             console.log(error);

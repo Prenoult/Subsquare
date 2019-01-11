@@ -30,6 +30,9 @@ export default {
         return axios.post(burl + '/user/reset', send, {headers: headers})
     },
 
+    getSub: function (send) {
+        return axios.post(burl + '/subscriptions/get', send, {headers: headers})
+    },
 
     isAuth: function () {
         return (localStorage.getItem('token') !== null);
