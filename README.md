@@ -75,7 +75,7 @@ Pour modifier `mtusername` et `mtpassword`, vous devez aller sur [mailtrap](http
 serveur SMTP pour tester, afficher et partager les e-mails envoyés depuis les environnements de développement et de 
 transfert sans envoyer de spam à de vrais clients) et vous connecter ou créer un compte si vous n'en possédez pas un.
 
-une fois connecté, vous pouvez vous rendre sur votre **profile** et choisir **Demo inbox** dans vos boîtes de réception,
+Une fois connecté, vous pouvez vous rendre sur votre **profile** et choisir **Demo inbox** dans vos boîtes de réception,
 c'est ici que vous pouvez trouver votre **username** et **password** à mettre dans votre fichier *config.js*.
 
 *Vous êtes bientôt prêt !*
