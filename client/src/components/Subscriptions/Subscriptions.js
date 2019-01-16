@@ -13,13 +13,14 @@ export class Subscriptions extends React.Component {
         super(props);
         var _send = {
             email: localStorage.getItem("id")
-        };
+        }
         API.getSub(_send).then(function (data) {
             console.log(data.data);
         }, function (error) {
             console.log(error);
             return;
         })
+
 
     }
 
@@ -28,6 +29,7 @@ export class Subscriptions extends React.Component {
     //https://reactjs.org/docs/conditional-rendering.html
 
     render() {
+
         return (
             <Grid className="Form">
                 <Row>
@@ -36,8 +38,7 @@ export class Subscriptions extends React.Component {
                         <Header page="ABONNEMENTS"/>
                         <Row>
                             <h2>Abonnements</h2>
-                            <Link to={"/Subscriptions"}>Ajouter un abonnement</Link>
-                            <Account isCompany />
+                            <Account company />
                         </Row>
                     </Col>
                 </Row>
@@ -48,18 +49,37 @@ export class Subscriptions extends React.Component {
 
 
 function CompanyAccount(props) {
-    return <h1>Entreprise</h1>;
-}
+    return (
+    <Link to={"/Company/add"}>Ajouter un abonnement</Link>
+    )}
 
-function UserCompany(props) {
-    return <h1>User</h1>;
+function UserAccount(props) {
+    return  <Link to={"/user/add"}>Ajouter un abonnement</Link>
 }
 
 function Account(props) {
-    //Test compte utilisateur
-    var isCompany = false;
-    if (isCompany) {
-        return <CompanyAccount />;
+    var _send = {
+        email: localStorage.getItem("id")
+    };
+    //var company;
+    API.isCompany(_send).then(function (data) {
+       // console.log(data.data.response);
+        window.localStorage.setItem("account",data.data.response);
+    }, function (error) {
+        console.log(error);
+        return;
+    });
+    console.log(window.localStorage.getItem("account")+" fff");
+    if (window.localStorage.getItem("account")){
+        if (window.localStorage.getItem("account") == "true") {
+            return <CompanyAccount />;
+        }else {
+            return <UserAccount />;
+        }
+    }else{
+        console.log("Pas censé arriver")
+        //return <UserAccount />;
     }
-    return <UserCompany />;
+
+
 }

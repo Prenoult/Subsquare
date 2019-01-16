@@ -30,6 +30,10 @@ export default {
         return axios.post(burl + '/user/reset', send, {headers: headers})
     },
 
+    isCompany: function (send) {
+        return axios.post(burl + '/user/isCompany', send, {headers: headers})
+    },
+
     getSub: function (send) {
         return axios.post(burl + '/subscriptions/get', send, {headers: headers})
     },

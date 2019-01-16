@@ -289,7 +289,7 @@ function resetPassword(req, res) {
 
                             } else {
                                 res.status(200).json({
-                                    "text": "mot de passe reset",
+                                    "text": "mot de passe reset"
                                 })
                             }
                         })
@@ -302,6 +302,11 @@ function resetPassword(req, res) {
 
 }
 
+function isCompany(req,res) {
+    res.status(200).json({
+        "response": false
+    })
+}
 //On exporte nos deux fonctions
 
 exports.login = login;
@@ -309,3 +314,4 @@ exports.signup = signup;
 exports.changeEmail = changeEmail;
 exports.changePassword = changePassword;
 exports.resetPassword = resetPassword;
+exports.isCompany = isCompany;
