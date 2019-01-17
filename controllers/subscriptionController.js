@@ -1,4 +1,4 @@
-const subscription = require('./subscription/sub.js');
+const subscription = require('./subscription/lib.js');
 
 module.exports = function (app) {
     app.post('/get', subscription.get);

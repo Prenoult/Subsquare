@@ -1,6 +1,3 @@
-/**
- * Created by Charles on 08/01/2019.
- */
 const Subscription = require('../../schema/schemaSubscription.js');
 
 function get(req, res) {
@@ -60,7 +57,7 @@ function create(req, res) {
         }, function (error) {
             res.status(200).json({
                 "text": error
-            })
+            });
             switch (error) {
                 case 500:
                     res.status(500).json({

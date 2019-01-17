@@ -213,16 +213,6 @@ function changePassword(req, res) {
     }
 }
 
-/*
- * npm install generate-password --save
- * npm install nodemailer
- * https://mailtrap.io/inboxes
- *
- * Remplacez ces valeurs par celles vous correspondants
- * user: "b33959999592f9",
- * pass: "95f4bc01d93054"
- *
- */
 function resetPassword(req, res) {
     //Start Here
 
