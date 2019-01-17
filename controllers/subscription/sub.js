@@ -46,7 +46,7 @@ function create(req, res) {
 
         findSubscription.then(function () {
             var _s = new Subscription(subs);
-            _s.save(function (err, user) {
+            _s.save(function (err, subs) {
                 if (err) {
                     res.status(500).json({
                         "text": "Erreur interne"
@@ -58,6 +58,9 @@ function create(req, res) {
                 }
             })
         }, function (error) {
+            res.status(200).json({
+                "text": error
+            })
             switch (error) {
                 case 500:
                     res.status(500).json({
