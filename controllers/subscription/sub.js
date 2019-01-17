@@ -10,7 +10,7 @@ function get(req, res) {
 }
 
 function create(req, res) {
-    if (!req.body.name || !req.body.price || req.body.descri || req.body.mensu || req.body.engage) {
+    if (!req.body.name || !req.body.price || !req.body.descri || !req.body.mensu || !req.body.engage) {
         //Le cas ou il manque des champs
         res.status(400).json({
             "text": "Requête invalide"
@@ -24,6 +24,8 @@ function create(req, res) {
             mensu: req.body.mensu,
             engage: req.body.engage
         };
+
+
         var findSubscription = new Promise(function (resolve, reject) {
             Subscription.find({
                 name: subs.name,
