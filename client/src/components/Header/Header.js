@@ -12,7 +12,6 @@ export class Header extends React.Component {
 
 	disconnect = event => {
         API.logout();
-        window.location = "/";
     };
 
 	render() {
@@ -30,12 +29,14 @@ export class Header extends React.Component {
 								marginLeft: 10,
 								marginBottom: 5}}/>
 					</Link>
+					<Link to={"/Settings"}>
 					<Image src={require('../../img/shutdown.png')}  
                 		style={{ width: 25,
 							height: 25,
 							marginLeft: 10,
 							marginBottom: 3}}
 						onClick={this.disconnect}/>
+					</Link>
 				</Col>
 			</Row>
 		)

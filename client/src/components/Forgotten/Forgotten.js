@@ -21,6 +21,7 @@ export class Forgotten extends React.Component {
     }
 
     send = event => {
+        event.preventDefault();
         if (this.state.email.length === 0) {
             return;
         }
@@ -51,6 +52,7 @@ export class Forgotten extends React.Component {
             <Grid className="Form">
                 <EnteteLogo/>
                 <Row>
+                    <form onSubmit={this.send}>
                     <Row>
                         <Col md={7} className= "colonne-centree">
                             <FormGroup controlId="email" bsSize="large">
@@ -68,7 +70,6 @@ export class Forgotten extends React.Component {
                     <Row>
                         <Col md={3} className= "colonne-centree">
                             <Button
-                                onClick={this.send}
                                 block
                                 bsSize="large"
                                 bsStyle="primary"
@@ -79,6 +80,7 @@ export class Forgotten extends React.Component {
                             </Button>
                         </Col>
                     </Row>
+                    </form>
                 </Row>
             </Grid>
         )

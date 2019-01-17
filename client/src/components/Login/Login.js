@@ -18,6 +18,7 @@ export class Login extends React.Component {
     }
 
     send = event => {
+        event.preventDefault();
         if (this.state.email.length === 0) {
             return;
         }
@@ -43,41 +44,42 @@ export class Login extends React.Component {
         return (
             <Grid className="Form">
                 <EnteteLogo/>
-                <Row>
                     <Row>
-                        <Col md={6} className= "colonne-centree">
-                            <FormGroup controlId="email" bsSize="large">
-                                <FormControl 
-                                    autoFocus type="email" 
-                                    value={this.state.email} 
-                                    onChange={this.handleChange}
-                                    placeholder= "ADRESSE MAIL"
-                                    className="FormContLog"/>
-                            </FormGroup>
-                            <FormGroup controlId="password" bsSize="large">
-                                <FormControl 
-                                    value={this.state.password} 
-                                    onChange={this.handleChange} 
-                                    type="password"
-                                    placeholder= "MOT DE PASSE"
-                                    className="FormContLog"/>
-                            </FormGroup>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col md={3} className= "colonne-centree">
-                            <Button
-                                onClick={this.send}
-                                block
-                                bsSize="large"
-                                bsStyle="primary"
-                                type="submit"
-                                className="buttonEnv"
-                            >
-                                CONNEXION
-                            </Button>
-                        </Col>
-                    </Row>
+                    <form onSubmit={this.send}>
+                        <Row>
+                            <Col md={6} className= "colonne-centree">
+                                <FormGroup controlId="email" bsSize="large">
+                                    <FormControl 
+                                        autoFocus type="email" 
+                                        value={this.state.email} 
+                                        onChange={this.handleChange}
+                                        placeholder= "ADRESSE MAIL"
+                                        className="FormContLog"/>
+                                </FormGroup>
+                                <FormGroup controlId="password" bsSize="large">
+                                    <FormControl 
+                                        value={this.state.password} 
+                                        onChange={this.handleChange} 
+                                        type="password"
+                                        placeholder= "MOT DE PASSE"
+                                        className="FormContLog"/>
+                                </FormGroup>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col md={3} className= "colonne-centree">
+                                <Button
+                                    block
+                                    bsSize="large"
+                                    bsStyle="primary"
+                                    type="submit"
+                                    className="buttonEnv"
+                                >
+                                    CONNEXION
+                                </Button>
+                            </Col>
+                        </Row>
+                    </form>
                     <Link to={"/signup"} >Vous ne possedez pas de compte ?</Link>
                     <br/>
                     <Link to={"/forgotten"}>Mot de passe oublié ?</Link>
