@@ -50,6 +50,7 @@ export class companyAdd extends React.Component {
         };
         console.log(_send);
         API.createSub(_send).then(function (data) {
+            console.log(data.data.text);
             console.log("abonnement ajouté");
         }, function (error) {
             console.log(error);
