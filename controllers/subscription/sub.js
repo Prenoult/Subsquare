@@ -27,7 +27,7 @@ function create(req, res) {
 
 
         var findSubscription = new Promise(function (resolve, reject) {
-            Subscription.find({
+            Subscription.findOne({
                 name: subs.name,
                 company:subs.company
             }, function (err, result) {
