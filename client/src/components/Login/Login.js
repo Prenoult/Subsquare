@@ -53,7 +53,7 @@ export class Login extends React.Component {
                                         autoFocus type="email" 
                                         value={this.state.email} 
                                         onChange={this.handleChange}
-                                        placeholder= "ADRESSE MAIL"
+                                        placeholder= "ADRESSE EMAIL"
                                         className="FormContLog"/>
                                 </FormGroup>
                                 <FormGroup controlId="password" bsSize="large">

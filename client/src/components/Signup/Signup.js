@@ -111,12 +111,11 @@ export class Signup extends React.Component {
                         <Col md={6} className="colonne-centree">
                             <FormGroup controlId="email" bsSize="large" validationState={this.state.vsEmail}>
                                 <FormControl
-                                    autoFocus
                                     type="email"
                                     value={this.state.email}
                                     onChange={this.handleChange}
                                     onBlur={this.handleBlurEmail.bind(this)}
-                                    placeholder="ADRESSE MAIL"
+                                    placeholder="ADRESSE EMAIL"
                                     className="FormContLog"/>
                                 {this.state.vsEmail === 'error' &&
                                 <HelpBlock>Veuillez saisir une adresse email valide</HelpBlock>}
