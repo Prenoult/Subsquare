@@ -42,7 +42,7 @@ body {
 }
 
 .FormContLog {
-    border: 0px;
+    border-color: white;
     border-radius: 15px 15px 0px 0px;
 }
 
@@ -71,6 +71,10 @@ h2 {
     margin-bottom: 15px;
     background-color: #6a6cac;
     border-color: #6a6cac;
+}
+.buttonEnv:hover{
+    background-color: #8c7ae6;
+    border-color: #8c7ae6;
 }
 
 .buttonMenu {
