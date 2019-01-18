@@ -37,6 +37,9 @@ export default {
     getSub: function (send) {
         return axios.post(burl + '/subscriptions/get', send, {headers: headers})
     },
+    createSub: function (send) {
+        return axios.post(burl + '/subscriptions/create', send, {headers: headers})
+    },
 
     isAuth: function () {
         return (localStorage.getItem('token') !== null);

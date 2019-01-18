@@ -42,8 +42,20 @@ export class companyAdd extends React.Component {
 
         var _send = {
             name: this.state.name,
-            price: this.state.price
+            descri: this.state.descri,
+            price: this.state.price,
+            mensu: this.state.mensu,
+            engage: this.state.engage
+
         };
+        console.log(_send);
+        API.createSub(_send).then(function (data) {
+            console.log(data.data.text);
+            console.log("abonnement ajouté");
+        }, function (error) {
+            console.log(error);
+            return;
+        })
 
     };
     handleChange = event => {
@@ -74,7 +86,7 @@ export class companyAdd extends React.Component {
                                     placeholder= "Nom de l'abonnement"
                                     className="FormContLog"/>
                             </FormGroup>
-                            <FormGroup controlId="description" bsSize="large">
+                            <FormGroup controlId="descri" bsSize="large">
                                 <FormControl
                                     value={this.state.descri}
                                     onChange={this.handleChange}
@@ -90,7 +102,7 @@ export class companyAdd extends React.Component {
                                     placeholder= "Prix de l'abonnement"
                                     className="FormContLog"/>
                             </FormGroup>
-                            <FormGroup controlId="price" bsSize="large">
+                            <FormGroup controlId="mensu" bsSize="large">
                                 <FormControl
                                     value={this.state.mensu}
                                     onChange={this.handleChange}
@@ -98,7 +110,7 @@ export class companyAdd extends React.Component {
                                     placeholder= "Période de renouvellement"
                                     className="FormContLog"/>
                             </FormGroup>
-                            <FormGroup controlId="price" bsSize="large">
+                            <FormGroup controlId="engage" bsSize="large">
                                 <FormControl
                                     value={this.state.engage}
                                     onChange={this.handleChange}
