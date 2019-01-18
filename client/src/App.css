@@ -19,7 +19,15 @@
 }
 
 .App-link {
-    color: #61dafb;
+    color: #6a6cac;
+}
+
+a{
+    color: #6a6cac;
+}
+
+a:hover{
+    color: #6a6cac;
 }
 
 @keyframes App-logo-spin {
@@ -72,6 +80,7 @@ h2 {
     background-color: #6a6cac;
     border-color: #6a6cac;
 }
+
 .buttonEnv:hover{
     background-color: #8c7ae6;
     border-color: #8c7ae6;
