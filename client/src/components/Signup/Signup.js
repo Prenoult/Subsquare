@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {Button, FormGroup, FormControl, ControlLabel, Grid, Row, Col} from "react-bootstrap";
+import {Button, FormGroup, FormControl, ControlLabel, HelpBlock, Grid, Row, Col} from "react-bootstrap";
 import {EnteteLogo} from '../EnteteLogo/EnteteLogo.js'
 import API from '../../utils/API';
 
@@ -11,7 +11,10 @@ export class Signup extends React.Component {
         this.state = {
             email: "",
             password: "",
-            cpassword: ""
+            cpassword: "",
+            vsEmail: null,
+            vsPassword: null,
+            vsCPassword: null,
         };
         this.handleChange.bind(this);
         this.send.bind(this);
@@ -38,11 +41,65 @@ export class Signup extends React.Component {
             return;
         })
     };
+
     handleChange = event => {
         this.setState({
             [event.target.id]: event.target.value
         });
     };
+
+    handleBlurEmail() {
+        if (Signup._validateEmail(this.state.email) === false) {
+            this.setState({
+                vsEmail: "error"
+            })
+        } else {
+            this.setState({
+                vsEmail: "success"
+            })
+        }
+    };
+
+    handleBlurPassword() {
+        if (Signup._validatePassword(this.state.password) === false) {
+            this.setState({
+                vsPassword: "error"
+            })
+        } else {
+            this.setState({
+                vsPassword: "success"
+            })
+        }
+    }
+
+    handleBlurCPassword() {
+        if (Signup._matchPasswords(this.state.password, this.state.cpassword) === false) {
+            this.setState({
+                vsCPassword: "error"
+            })
+        } else {
+            this.setState({
+                vsCPassword: "success"
+            })
+        }
+    }
+
+    static _validateEmail(email) {
+        let regExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return regExp.test(String(email).toLowerCase());
+    }
+
+    static _validatePassword(password) {
+        let regExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{8,10}$/;
+        return regExp.test(String(password));
+    }
+
+    static _matchPasswords(password1, password2) {
+        if (password1 === '') {
+            return false
+        }
+        return password1 === password2
+    }
 
     render() {
         return (
@@ -51,36 +108,49 @@ export class Signup extends React.Component {
                 <Row>
                 <form onSubmit={this.send}>
                     <Row>
-                        <Col md={6} className= "colonne-centree">
-                            <FormGroup controlId="email" bsSize="large">
-                                <FormControl 
-                                    autoFocus 
-                                    type="email" 
-                                    value={this.state.email} 
-                                    onChange={this.handleChange}
-                                    placeholder= "ADRESSE MAIL"
-                                    className="FormContLog"/>
-                            </FormGroup>
-                            <FormGroup controlId="password" bsSize="large">
+                        <Col md={6} className="colonne-centree">
+                            <FormGroup controlId="email" bsSize="large" validationState={this.state.vsEmail}>
                                 <FormControl
-                                    value={this.state.password} 
-                                    onChange={this.handleChange} 
-                                    type="password"
-                                    placeholder= "MOT DE PASSE"
+                                    autoFocus
+                                    type="email"
+                                    value={this.state.email}
+                                    onChange={this.handleChange}
+                                    onBlur={this.handleBlurEmail.bind(this)}
+                                    placeholder="ADRESSE MAIL"
                                     className="FormContLog"/>
+                                {this.state.vsEmail === 'error' &&
+                                <HelpBlock>Veuillez saisir une adresse email valide</HelpBlock>}
+                                <FormControl.Feedback/>
                             </FormGroup>
-                            <FormGroup controlId="cpassword" bsSize="large">
-                                <FormControl 
-                                    value={this.state.cpassword} 
-                                    onChange={this.handleChange} 
+                            <FormGroup controlId="password" bsSize="large" validationState={this.state.vsPassword}>
+                                <FormControl
+                                    value={this.state.password}
+                                    onChange={this.handleChange}
+                                    onBlur={this.handleBlurPassword.bind(this)}
                                     type="password"
-                                    placeholder= "CONFIRMER MOT DE PASSE"
+                                    placeholder="MOT DE PASSE"
                                     className="FormContLog"/>
+                                {this.state.vsPassword === 'error' &&
+                                <HelpBlock>Votre mot de passe doit contenir au moins 8 caractères dont 1 majuscule, 1
+                                    minuscule, 1 chiffre et 1 caractère spécial</HelpBlock>}
+                                <FormControl.Feedback/>
+                            </FormGroup>
+                            <FormGroup controlId="cpassword" bsSize="large" validationState={this.state.vsCPassword}>
+                                <FormControl
+                                    value={this.state.cpassword}
+                                    onChange={this.handleChange}
+                                    onBlur={this.handleBlurCPassword.bind(this)}
+                                    type="password"
+                                    placeholder="CONFIRMER MOT DE PASSE"
+                                    className="FormContLog"/>
+                                {this.state.vsCPassword === 'error' &&
+                                <HelpBlock>Les mots de passe doivent être identiques</HelpBlock>}
+                                <FormControl.Feedback/>
                             </FormGroup>
                         </Col>
                     </Row>
                     <Row>
-                        <Col md={3} className= "colonne-centree">
+                        <Col md={3} className="colonne-centree">
                             <Button
                                 block
                                 bsSize="large"
