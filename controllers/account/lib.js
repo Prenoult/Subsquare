@@ -1,6 +1,7 @@
 const User = require('../../schema/schemaUser.js');
 const passwordHash = require("password-hash");
 const config = require('../../config/config');
+const jwt = require('jwt-simple');
 
 function signup(req, res) {
     if (!req.body.email || !req.body.password) {
@@ -11,7 +12,8 @@ function signup(req, res) {
     } else {
         var user = {
             email: req.body.email,
-            password: passwordHash.generate(req.body.password)
+            password: passwordHash.generate(req.body.password),
+            account: "user"
         };
         var findUser = new Promise(function (resolve, reject) {
             User.findOne({
@@ -303,9 +305,62 @@ function resetPassword(req, res) {
 }
 
 function isCompany(req,res) {
-    res.status(200).json({
-        "response": false
+    User.findOne({
+        email: req.body.email
+    }, function (err, user) {
+        if (user) {
+            if (user.account == "company"){
+                res.status(200).json({
+                    "response": true
+                })
+            }else{
+                res.status(200).json({
+                    "response": false
+                })
+            }
+
+        }else{
+            res.status(500).json({
+                "response": "Erreur qui n'est pas censée se produire"
+            })
+        }
     })
+}
+
+function token(req,res) {
+    var token = req.body.token;
+    if (!token){
+        res.status(200).json({
+            "response": yyyy
+        })
+    }
+    try {
+
+        let decoded = jwt.decode(req.body.token, config.secret);
+
+        User.findOne({
+            email: decoded.email,
+            _id:decoded._id
+        }, function (err, user) {
+               if(user){
+                   res.status(200).json({
+                       "response": "true"
+                   })
+               }else{
+                   res.status(500).json({
+                       "response": "false"
+                   })
+               }
+        })
+
+
+    } catch (e) {
+        //console.error(e)
+        console.error(token);
+        res.status(500).json({
+            "response": "false"
+        })
+    }
 }
 //On exporte nos deux fonctions
 
@@ -315,3 +370,4 @@ exports.changeEmail = changeEmail;
 exports.changePassword = changePassword;
 exports.resetPassword = resetPassword;
 exports.isCompany = isCompany;
+exports.token = token;

@@ -10,6 +10,15 @@ export class Dashboard extends React.Component {
     constructor(props) {
         super(props);
         this.disconnect.bind(this);
+        var _send = {
+            token: localStorage.getItem("token")
+        }
+        API.tokenValid(_send).then(function (data) {
+
+        }, function (error) {
+            console.log(error);
+            console.log("erreurff");
+        })
     }
 
     disconnect = event => {

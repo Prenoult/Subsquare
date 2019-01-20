@@ -44,6 +44,11 @@ export default {
     isAuth: function () {
         return (localStorage.getItem('token') !== null);
     },
+
+    tokenValid: function (send) {
+        return axios.post(burl + '/user/token', send, {headers: headers})
+    },
+
     logout: function () {
         localStorage.clear();
     }

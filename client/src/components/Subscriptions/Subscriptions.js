@@ -50,11 +50,11 @@ export class Subscriptions extends React.Component {
 
 function CompanyAccount(props) {
     return (
-    <Link to={"/Company/add"}>Ajouter un abonnement</Link>
+    <Link to={"/Company/add"}>Ajouter un abonnement (Company)</Link>
     )}
 
 function UserAccount(props) {
-    return  <Link to={"/user/add"}>Ajouter un abonnement</Link>
+    return  <Link to={"/user/add"}>Ajouter un abonnement (User)</Link>
 }
 
 function Account(props) {
@@ -63,7 +63,6 @@ function Account(props) {
     };
     //var company;
     API.isCompany(_send).then(function (data) {
-       // console.log(data.data.response);
         window.localStorage.setItem("account",data.data.response);
     }, function (error) {
         console.log(error);
@@ -72,8 +71,10 @@ function Account(props) {
     console.log(window.localStorage.getItem("account")+" fff");
     if (window.localStorage.getItem("account")){
         if (window.localStorage.getItem("account") == "true") {
+            window.localStorage.removeItem("account");
             return <CompanyAccount />;
         }else {
+            window.localStorage.removeItem("account");
             return <UserAccount />;
         }
     }else{
