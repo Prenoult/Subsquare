@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import {Button, FormGroup, FormControl, ControlLabel, Grid, Row, Col} from "react-bootstrap";
 import {EnteteLogo} from '../EnteteLogo/EnteteLogo.js'
 import API from '../../utils/API';
+import {Footer} from '../Footer/Footer.js';
 
 export class Login extends React.Component {
     constructor(props) {
@@ -84,6 +85,7 @@ export class Login extends React.Component {
                     <br/>
                     <Link to={"/forgotten"}>Mot de passe oublié ?</Link>
                 </Row>
+                <Footer page="LOGIN"/>
             </Grid>
         )
     }

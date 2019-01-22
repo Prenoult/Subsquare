@@ -18,6 +18,17 @@
     color: white;
 }
 
+.Accueil-footer {
+    background-color: #6a6cac;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+    margin-top: 40px;
+}
+
 .App-link {
     color: #6a6cac;
 }
@@ -104,6 +115,10 @@ h2 {
 .entete {
     margin-top: 4%;
     border-bottom: 3px solid black;
+}
+
+.pied {
+    border-bottom: 1px solid white;
 }
 
 .label {
