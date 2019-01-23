@@ -38,7 +38,7 @@ function signup(req, res) {
                     })
                 } else {
                     res.status(200).json({
-                        "text": "Succès",
+                        "text": "Succes",
                         "token": user.getToken(),
                         "id": req.body.email
                     })

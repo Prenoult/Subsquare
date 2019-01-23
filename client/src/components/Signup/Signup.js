@@ -34,13 +34,24 @@ export class Signup extends React.Component {
             password: this.state.password
         };
         API.signup(_send).then(function (data) {
-            localStorage.setItem('token', data.data.token);
-            localStorage.setItem('id', data.data.id);
-            window.location = "/dashboard"
+            if (data.status == 200){
+                localStorage.setItem('token', data.data.token);
+                localStorage.setItem('id', data.data.id);
+                window.location = "/dashboard"
+            }else{
+                if (data.status == 204){
+                    //erreur adresse mail deja utilisée
+                    console.log("adresse deja utilisée");
+                }else{
+                    // Autre erreur
+                }
+            }
+
         }, function (error) {
             console.log(error);
             return;
         })
+        console.log("45");
     };
 
     handleChange = event => {
