@@ -294,8 +294,24 @@ function resetPassword(req, res) {
 }
 
 function isCompany(req,res) {
-    res.status(200).json({
-        "response": false
+    User.findOne({
+        email: req.body.email
+    }, function (err, user) {
+        if (user) {
+            if (user.account == "company") {
+                res.status(200).json({
+                    "response": true
+                })
+            }else{
+                res.status(200).json({
+                    "response": false
+                })
+            }
+        }else{
+            res.status(500).json({
+                "response": "Erreur qui n'est pas censée se produire"
+            })
+        }
     })
 }
 //On exporte nos deux fonctions
