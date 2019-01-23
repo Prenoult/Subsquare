@@ -45,15 +45,18 @@ export class companyAdd extends React.Component {
             descri: this.state.descri,
             price: this.state.price,
             mensu: this.state.mensu,
-            engage: this.state.engage
-
+            engage: this.state.engage,
+            user: localStorage.getItem("id")
         };
         console.log(_send);
         API.createSub(_send).then(function (data) {
            if(data.status == 200){
                console.log("abonnement ajouté");
-               window.location = "/subscriptions"
+               console.log(data);
+               console.log(data.data.user);
+               //window.location = "/subscriptions"
            }else{
+               console.log(data);
                console.log("une erreur est survenue");
            }
 

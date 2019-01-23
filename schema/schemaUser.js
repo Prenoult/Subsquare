@@ -20,6 +20,11 @@ var userSchema = mongoose.Schema({
     account: {
         type: String,
         required: true
+    },
+
+    sub: {
+        type: Array,
+        required: true
     }
 }, {timestamps: {createdAt: 'created_at'}});
 
