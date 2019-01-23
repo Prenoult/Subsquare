@@ -11,7 +11,8 @@ function signup(req, res) {
     } else {
         var user = {
             email: req.body.email,
-            password: passwordHash.generate(req.body.password)
+            password: passwordHash.generate(req.body.password),
+            account: "user"
         };
         var findUser = new Promise(function (resolve, reject) {
             User.findOne({
