@@ -32,7 +32,9 @@ function create(req, res) {
                     reject(500);
                 } else {
                     if (result) {
-                        reject(204)
+                        res.status(204).json({
+                            "text": "L'abonnement existe deja"
+                        });
                     } else {
                         resolve(true)
                     }

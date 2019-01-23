@@ -77,7 +77,7 @@ function Account(props) {
             return <UserAccount />;
         }
     }else{
-        console.log("Pas censé arriver")
+        console.log("Pas censée arriver");
         //return <UserAccount />;
     }
 

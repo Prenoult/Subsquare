@@ -50,8 +50,13 @@ export class companyAdd extends React.Component {
         };
         console.log(_send);
         API.createSub(_send).then(function (data) {
-            console.log(data.data.text);
-            console.log("abonnement ajouté");
+           if(data.status == 200){
+               console.log("abonnement ajouté");
+               window.location = "/subscriptions"
+           }else{
+               console.log("une erreur est survenue");
+           }
+
         }, function (error) {
             console.log(error);
             return;
@@ -98,7 +103,7 @@ export class companyAdd extends React.Component {
                                 <FormControl
                                     value={this.state.price}
                                     onChange={this.handleChange}
-                                    type="text"
+                                    type="number"
                                     placeholder= "Prix de l'abonnement"
                                     className="FormContLog"/>
                             </FormGroup>
@@ -106,7 +111,7 @@ export class companyAdd extends React.Component {
                                 <FormControl
                                     value={this.state.mensu}
                                     onChange={this.handleChange}
-                                    type="text"
+                                    type="number"
                                     placeholder= "Période de renouvellement"
                                     className="FormContLog"/>
                             </FormGroup>
@@ -114,7 +119,7 @@ export class companyAdd extends React.Component {
                                 <FormControl
                                     value={this.state.engage}
                                     onChange={this.handleChange}
-                                    type="text"
+                                    type="number"
                                     placeholder= "Période d'engagement"
                                     className="FormContLog"/>
                             </FormGroup>
