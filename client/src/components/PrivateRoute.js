@@ -12,7 +12,7 @@ export const PrivateRoute = ({component: Component, ...rest}) => (
                 token: localStorage.getItem("token")
             }
 
-            let bool = API.tokenValid(_send).then(function (data) {
+            let bool = Promise.resolve(API.tokenValid(_send).then(function (data) {
                 if (data.data.response =="true"){
                     bool = true;
                 }else {
@@ -23,10 +23,24 @@ export const PrivateRoute = ({component: Component, ...rest}) => (
                 bool = false;
                 console.log("caca crotte");
                 return bool;
-            });
+            }));
 
             console.log(bool);
             console.log("bool" + bool);
+            bool.then(function(value) {
+                console.log(value);
+                if (value){
+                    console.log("Valide");
+                    return (<Component {...props} />)
+                }else{
+                    console.log("Invalide");
+                    API.logout();
+                    return (<Redirect to='/'/>);
+                }
+            });
+
+
+
             if (bool){
                 return (<Component {...props} />)
             }else{
@@ -38,8 +52,6 @@ export const PrivateRoute = ({component: Component, ...rest}) => (
                 return API.tokenValid(data).then(token => { return token } )
             }
 
-            //let userToken = await tokenvalided(_send)
-            //console.log(userToken) // your data
 
         }
     }}/>

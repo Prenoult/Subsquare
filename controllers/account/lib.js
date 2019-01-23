@@ -356,7 +356,7 @@ function token(req,res) {
 
     } catch (e) {
         //console.error(e)
-        console.error(token);
+        //console.error(token);
         res.status(500).json({
             "response": "false"
         })
