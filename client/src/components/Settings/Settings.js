@@ -32,6 +32,11 @@ export class Settings extends React.Component {
                             <br/>
                             <Link to={"/settings/password"}>Modifier votre mot de passe</Link>
                         </Row>
+                        <Row>
+                            <Link to={"/settings/apply"}>
+                                Passer en compte entreprise
+                            </Link>
+                        </Row>
                     </Col>
                 </Row>
             </Grid>

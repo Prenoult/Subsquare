@@ -294,6 +294,90 @@ function resetPassword(req, res) {
 
 }
 
+function applyCompany(req, res) {
+    //Start Here
+    User.findOne({
+        email: req.body.email
+    }, function (err, user) {
+        if (err) {
+            res.status(500).json({
+                "text": "Erreur interne"
+            })
+        } else if (!user) {
+            res.status(401).json({
+                "text": "L'utilisateur n'existe pas"
+            })
+        } else {
+            // Si l'utilisateur existe
+            var nodemailer = require("nodemailer");
+            var transporter = nodemailer.createTransport({
+                host: "smtp.mailtrap.io",
+                port: 2525,
+                auth: {
+                    user: config.mtusername,
+                    pass: config.mtpassword
+                }
+            });
+
+            var msg = "L'utilisateur " + req.body.email + " souhaite avoir un compte entreprise";
+            var info ={
+                nom: req.body.nom,
+                numSiret: req.body.numSiret,
+                numTel: req.body.numTel,
+                adresse: req.body.adresse,
+                codePostal: req.body.codePostal,
+                ville: req.body.ville
+            }
+            User.update({email: req.body.email},{$addToSet: {infoCompany:[req.body.nom,
+                    req.body.numSiret,
+                    req.body.numTel,
+                    req.body.adresse,
+                    req.body.codePostal,
+                    req.body.ville]}},
+                function (err, user) {
+                    if (err) {
+                        res.status(500).json({
+                            "text": "Erreur interne"
+                        })
+                    } else if (!user) {
+                        res.status(401).json({
+                            "text": "L'utilisateur n'existe pas"
+                        })
+
+                    } else {
+                        res.status(200).json({
+                            "text": "Demande ajouté"
+                        })
+                    }
+                })
+
+
+            const mailOptions = {
+                from: "Server@gmail.com",
+                //to: req.body.email,
+                to: req.body.email,
+                subject: "Demande Entreprise",
+                text: msg
+            };
+
+
+            transporter.sendMail(mailOptions, (err, info) => {
+                if (err) {
+                    //console.log(err);
+                    //return next(err);
+                    res.status(500).json({
+                        "text": "erreur interne"
+                    })
+                } else {
+                }
+
+                transporter.close();
+            });
+        }
+    })
+
+}
+
 function isCompany(req,res) {
     User.findOne({
         email: req.body.email
@@ -322,4 +406,5 @@ exports.signup = signup;
 exports.changeEmail = changeEmail;
 exports.changePassword = changePassword;
 exports.resetPassword = resetPassword;
+exports.applyCompany = applyCompany;
 exports.isCompany = isCompany;

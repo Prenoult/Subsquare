@@ -37,6 +37,7 @@ export class Forgotten extends React.Component {
             console.log(error);
             return;
         })
+        window.location = "/dashboard"
 
 
     };

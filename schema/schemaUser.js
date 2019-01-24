@@ -25,6 +25,11 @@ var userSchema = mongoose.Schema({
     sub: {
         type: Array,
         required: true
+    },
+
+    infoCompany: {
+        type: Array,
+        required: false
     }
 }, {timestamps: {createdAt: 'created_at'}});
 
