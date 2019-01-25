@@ -15,6 +15,7 @@ export class companyAdd extends React.Component {
         this.state = {
             name: "",
             price: "",
+            category: "",
             mensu: "",
             engage: "",
             descri: ""
@@ -30,10 +31,13 @@ export class companyAdd extends React.Component {
         if (this.state.price.length === 0) {
             return;
         }
+        if (this.state.category.length === 0 || this.state.category=="cat") {
+            return;
+        }
         if (this.state.descri.length === 0) {
             return;
         }
-        if (this.state.mensu.length === 0) {
+        if (this.state.mensu.length === 0 || this.state.mensu=="ren") {
             return;
         }
         if (this.state.engage.length === 0) {
@@ -43,6 +47,7 @@ export class companyAdd extends React.Component {
         var _send = {
             name: this.state.name,
             descri: this.state.descri,
+            category: this.state.category,
             price: this.state.price,
             mensu: this.state.mensu,
             engage: this.state.engage,
@@ -53,7 +58,7 @@ export class companyAdd extends React.Component {
            if(data.status == 200){
                console.log("abonnement ajouté");
                console.log(data);
-               console.log(data.data.user);
+               console.log(data.data.id);
                //window.location = "/subscriptions"
            }else{
                console.log(data);
@@ -103,6 +108,25 @@ export class companyAdd extends React.Component {
                                         placeholder= "Description de l'abonnement"
                                         className="FormContLog"/>
                                 </FormGroup>
+                                <FormGroup controlId="category" bsSize="large">
+                                    <FormControl
+                                        componentClass="select"
+                                        value={this.state.category}
+                                        onChange={this.handleChange}
+                                        type="text"
+                                        className="FormContLog">
+                                            <option value="cat">Catégorie...</option>
+                                            <option value="musique">Musique</option>
+                                            <option value="actu">Actualité</option>
+                                            <option value="assurance">Assurance</option>
+                                            <option value="photo">Photo</option>
+                                            <option value="prod">Productivité</option>
+                                            <option value="vidéo">Vidéo</option>
+                                            <option value="shopping">Shopping</option>
+                                            <option value="stock">Stockage</option>
+                                            <option value="util">Utilitaire</option>
+                                    </FormControl>
+                                </FormGroup>
                                 <FormGroup controlId="price" bsSize="large">
                                     <FormControl
                                         value={this.state.price}
@@ -112,23 +136,18 @@ export class companyAdd extends React.Component {
                                         className="FormContLog"/>
                                 </FormGroup>
                                 <FormGroup controlId="mensu" bsSize="large">
-                                    <FormControl
-                                        value={this.state.mensu}
-                                        onChange={this.handleChange}
-                                        type="number"
-                                        placeholder= "Période de renouvellement"
-                                        className="FormContLog"/>
-                                    {/*<FormControl 
+                                    <FormControl 
                                         componentClass="select" 
                                         value={this.state.mensu}
                                         onChange={this.handleChange}
-                                        placeholder= "Période de renouvellement"
+                                        type="text"
                                         className="FormContLog">
+                                            <option value="ren">Renouvellement...</option>
                                             <option value="mensuel">Mensuel</option>
                                             <option value="trimestriel">Trimestriel</option>
                                             <option value="semestriel">Semestriel</option>
                                             <option value="annuel">Annuel</option>
-                                    </FormControl>*/}
+                                    </FormControl>
                                 </FormGroup>
                                 <FormGroup controlId="engage" bsSize="large">
                                     <FormControl
