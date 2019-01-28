@@ -101,6 +101,29 @@ function login(req, res) {
     }
 }
 
+function getProfile(req, res) {
+    User.findOne({
+        email: req.body.email
+    }, function (err, user) {
+        if (err) {
+            res.status(500).json({
+                "text": "Erreur interne"
+            })
+        } else if (!user) {
+            res.status(401).json({
+                "text": "L'utilisateur n'existe pas"
+            })
+        } else {
+            res.status(200).json({
+                "text": "Succès",
+                "email": user.email,
+                "lastname": user.lastname,
+                "firstname": user.firstname
+            })
+        }
+    })
+}
+
 function changeEmail(req, res) {
     if (!req.body.email || !req.body.password) {
         //Le cas où l'email ou bien le password ne serait pas soumit ou nul
@@ -158,6 +181,123 @@ function changeEmail(req, res) {
                 })
             }
         })
+    }
+}
+
+function changeProfile(req, res) {
+    //On vérifie que l'email est bien soumise en tant qu'ID
+    if (!req.body.id) {
+        res.status(400).json({
+            "text": "Requête invalide"
+        })
+    } else {
+        // On vérifie si l'utilisateur essaye de changer d'adresse email
+        if (req.body.id === req.body.email) {
+            // --- Le cas où l'utilisateur n'essaye pas de changer d'adresse email ---
+            User.findOne({
+                email: req.body.id
+            }, function (err, user) {
+                if (err) {
+                    res.status(500).json({
+                        "text": "Erreur interne"
+                    })
+                } else if (!user) {
+                    res.status(401).json({
+                        'text': "L'utilisateur n'existe pas"
+                    })
+                } else {
+                    // On vérifie si l'association email/mdp correspond
+                    if (user.authenticate(req.body.password)) {
+                        // On effectue les modification de l'utilisateur
+                        User.update({email: req.body.id}, {
+                                $set: {
+                                    lastname: req.body.lastname,
+                                    firstname: req.body.firstname
+                                }
+                            },
+                            function (err, user) {
+                                if (err) {
+                                    res.status(500).json({
+                                        "text": "Erreur interne"
+                                    })
+                                } else if (!user) {
+                                    res.status(401).json({
+                                        "text": "L'utilisateur n'existe pas"
+                                    })
+
+                                } else {
+                                    res.status(200).json({
+                                        "text": "Adresse email modifiée",
+                                        "id": req.body.id
+                                    })
+                                }
+                            })
+                    } else {
+                        res.status(401).json({
+                            "text": "Mot de passe incorrect"
+                        })
+                    }
+                }
+            })
+        } else {
+            // --- Le cas où l'utilisateur essaye de changer d'adresse email ---
+            User.findOne({
+                email: req.body.email
+            }, function (err, user2) {
+                if (!user2) {
+                    User.findOne({
+                        email: req.body.id
+                    }, function (err, user) {
+                        if (err) {
+                            res.status(500).json({
+                                "text": "Erreur interne"
+                            })
+                        } else if (!user) {
+                            res.status(401).json({
+                                "text": "L'utilisateur n'existe pas"
+                            })
+                        } else {
+                            if (user.authenticate(req.body.password)) {
+                                User.update({email: req.body.id}, {
+                                        $set: {
+                                            email: req.body.email,
+                                            lastname: req.body.lastname,
+                                            firstname: req.body.firstname
+                                        }
+                                    },
+                                    function (err, user) {
+                                        if (err) {
+                                            res.status(500).json({
+                                                "text": "Erreur interne"
+                                            })
+                                        } else if (!user) {
+                                            res.status(401).json({
+                                                "text": "L'utilisateur n'existe pas"
+                                            })
+
+                                        } else {
+                                            res.status(200).json({
+                                                "text": "Adresse mail modifiée",
+                                                "id": req.body.email
+                                            })
+                                        }
+                                    })
+
+
+                            } else {
+                                res.status(401).json({
+                                    "text": "Mot de passe incorrect"
+                                })
+                            }
+                        }
+                    })
+                } else {
+                    res.status(500).json({
+                        "text": "adresse mail deja utilisée"
+                    })
+                }
+            })
+        }
     }
 }
 
@@ -293,15 +433,18 @@ function resetPassword(req, res) {
 
 }
 
-function isCompany(req,res) {
+function isCompany(req, res) {
     res.status(200).json({
         "response": false
     })
 }
-//On exporte nos deux fonctions
+
+//On exporte nos fonctions
 
 exports.login = login;
 exports.signup = signup;
+exports.getProfile = getProfile;
+exports.changeProfile = changeProfile;
 exports.changeEmail = changeEmail;
 exports.changePassword = changePassword;
 exports.resetPassword = resetPassword;

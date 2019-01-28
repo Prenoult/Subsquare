@@ -6,6 +6,8 @@ const headers = {
 const burl = "http://localhost:8000";
 
 export default {
+
+    //Profile
     login: function (email, password) {
         return axios.post(burl + '/user/login', {
             'email': email,
@@ -16,6 +18,10 @@ export default {
     },
     signup: function (send) {
         return axios.post(burl + '/user/signup', send, {headers: headers})
+    },
+
+    changeProfile: function (send) {
+        return axios.post(burl + '/user/settings/modify', send, {headers: headers})
     },
 
     changeEmail: function (send) {
@@ -40,9 +46,11 @@ export default {
     createSub: function (send) {
         return axios.post(burl + '/subscriptions/create', send, {headers: headers})
     },
-
     isAuth: function () {
         return (localStorage.getItem('token') !== null);
+    },
+    getProfile: function (send) {
+        return axios.post(burl + '/user/getProfile', send, {headers: headers})
     },
     logout: function () {
         localStorage.clear();
