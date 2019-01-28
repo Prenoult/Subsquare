@@ -14,6 +14,14 @@ var userSchema = mongoose.Schema({
     password: {
         type: String,
         required: true
+    },
+    lastname: {
+        type: String,
+        required: false
+    },
+    firstname: {
+        type: String,
+        required: false
     }
 }, {timestamps: {createdAt: 'created_at'}});
 
