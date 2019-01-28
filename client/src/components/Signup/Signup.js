@@ -16,6 +16,7 @@ export class Signup extends React.Component {
             vsEmail: null,
             vsPassword: null,
             vsCPassword: null,
+            er:null,
         };
         this.handleChange.bind(this);
         this.send.bind(this);
@@ -29,6 +30,7 @@ export class Signup extends React.Component {
         if (this.state.password.length === 0 || this.state.password !== this.state.cpassword) {
             return;
         }
+        let that = this;
         var _send = {
             email: this.state.email,
             password: this.state.password
@@ -37,10 +39,14 @@ export class Signup extends React.Component {
             if (data.status == 200){
                 localStorage.setItem('token', data.data.token);
                 localStorage.setItem('id', data.data.id);
+                localStorage.setItem("account",data.data.company);
                 window.location = "/dashboard"
             }else{
                 if (data.status == 204){
                     //erreur adresse mail deja utilisée
+                    that.setState({
+                        er: "error"
+                    });
                     console.log("adresse deja utilisée");
                 }else{
                     // Autre erreur
@@ -117,11 +123,11 @@ export class Signup extends React.Component {
         return (
             <Grid className="Form">
                 <EnteteLogo/>
-                <Row>
+                <Row className="Form">
                 <form onSubmit={this.send}>
                     <Row>
-                        <Col md={6} className="colonne-centree">
-                            <FormGroup controlId="email" bsSize="large" validationState={this.state.vsEmail}>
+                        <Col md={5} className="colonne-centree">
+                            <FormGroup controlId="email" bsSize="large" validationState={this.state.vsEmail && this.state.er}>
                                 <FormControl
                                     type="email"
                                     value={this.state.email}
@@ -131,6 +137,8 @@ export class Signup extends React.Component {
                                     className="FormContLog"/>
                                 {this.state.vsEmail === 'error' &&
                                 <HelpBlock>Veuillez saisir une adresse email valide</HelpBlock>}
+                                {this.state.er === 'error' &&
+                                <HelpBlock>L'adresse mail que vous avez entrée correspond déjà à un compte. Veuillez vérifier et réessayer</HelpBlock>}
                                 <FormControl.Feedback/>
                             </FormGroup>
                             <FormGroup controlId="password" bsSize="large" validationState={this.state.vsPassword}>
@@ -161,7 +169,7 @@ export class Signup extends React.Component {
                         </Col>
                     </Row>
                     <Row>
-                        <Col md={3} className="colonne-centree">
+                        <Col md={2} className="colonne-centree">
                             <Button
                                 block
                                 bsSize="large"
@@ -175,7 +183,9 @@ export class Signup extends React.Component {
                     </Row>
                 </form>
                 </Row>
-                <Link to={"/"}>Vous possedez déjà un compte ?</Link>
+                <Row className="centrer">
+                    <Link to={"/"}>Vous possedez déjà un compte ?</Link>
+                </Row>
                 <Footer page="LOGIN"/>
             </Grid>
         )

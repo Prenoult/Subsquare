@@ -99,6 +99,7 @@ export class Settings extends React.Component {
                     <Col md={8} mdOffset={1}>
                         <Header page="PROFIL"/>
                         <Row>
+                            <Col md={6} className= "colonne-centree">
                             <br/>
                             {this.state.isModifying === false
                                 ? <Well bsSize="small"><b>Email :</b> {this.state.email}</Well>
@@ -161,6 +162,10 @@ export class Settings extends React.Component {
                              </Radio>
                              </FormGroup> */}
                             {/** <Link to={"/settings/mail"}>Modifier votre adresse email </Link>*/}
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col md={4} className= "colonne-centree">
                             {this.state.isModifying === false ?
                                 <Button onClick={this.modify.bind(this)} block>Modifier vos informations</Button>
                                 : <div><Button onClick={this.modify.bind(this)}
@@ -180,8 +185,9 @@ export class Settings extends React.Component {
                                                onSubmit={this.onSubmit.bind(this)} value={this.state.password}
                                                onChange={this.handleChange}/>
                             </ButtonToolbar>
+                            </Col>
                         </Row>
-                        <Row>
+                        <Row className="centrer">
                             <Link to={"/settings/apply"}>
                                 Passer en compte entreprise
                             </Link>

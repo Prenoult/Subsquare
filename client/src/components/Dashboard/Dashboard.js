@@ -25,16 +25,6 @@ export class Dashboard extends React.Component {
                     <Col md={8} mdOffset={1}>
                         <Header page="ACCUEIL"/>
                         <Row>
-                            <h1>Dashboard</h1>
-                            <Link to={"/Settings"}>Paramètres</Link>
-                            <Button
-                                onClick={this.disconnect}
-                                block
-                                bsSize="large"
-                                type="submit"
-                            >
-                                Se déconnecter
-                            </Button>
                         </Row>
                     </Col>
                 </Row>

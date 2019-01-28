@@ -20,12 +20,15 @@
 .Accueil-footer {
     background-color: #6a6cac;
     display: flex;
+    position: fixed;
+    left: 0;
+    bottom: 0;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-size: calc(10px + 2vmin);
+    font-size: calc(20px + 2vmin);
     color: white;
-    margin-top: 40px;
+    margin-top: 60px;
 }
 
 .App-link {
@@ -50,6 +53,8 @@ a:hover {
 }
 
 .Form {
+    margin-left: 0px;
+    margin-right: 0px;
 }
 
 body {
@@ -66,7 +71,8 @@ body {
 }
 
 .LogoLog {
-    margin-top: 10%;
+    margin-top: 7%;
+    text-align: center;
 }
 
 h2 {
@@ -88,6 +94,9 @@ h3 {
 .colonne-centree {
     float: none;
     margin: 0 auto;
+}
+.centrer {
+    text-align: center;
 }
 
 /* Si on veut utiliser un Button (style) fonctionnant comme un Link (router) */
@@ -139,7 +148,7 @@ a.linkButton {
     border-bottom: 1px solid white;
 }
 
-.label {
+.label2 {
     font-size: 20px;
     color: black;
     margin-top: 5%;

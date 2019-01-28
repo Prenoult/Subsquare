@@ -8,6 +8,5 @@ module.exports = function (app) {
     app.post('/change/password', account.changePassword);
     app.post('/reset', account.resetPassword);
     app.post('/applyCompany', account.applyCompany);
-    app.post('/isCompany', account.isCompany);
 
 };

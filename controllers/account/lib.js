@@ -39,11 +39,21 @@ function signup(req, res) {
                         "text": "Erreur interne"
                     })
                 } else {
-                    res.status(200).json({
-                        "text": "Succes",
-                        "token": user.getToken(),
-                        "id": req.body.email
-                    })
+                    if (user.account == "company") {
+                        res.status(200).json({
+                            "company": true,
+                            "token": user.getToken(),
+                            "id": req.body.email,
+                            "text": "Authentification réussi",
+                        })
+                    }else{
+                        res.status(200).json({
+                            "company": false,
+                            "token": user.getToken(),
+                            "id": req.body.email,
+                            "text": "Authentification réussi",
+                        })
+                    }
                 }
             })
         }, function (error) {
@@ -87,11 +97,21 @@ function login(req, res) {
                 })
             } else {
                 if (user.authenticate(req.body.password)) {
-                    res.status(200).json({
-                        "token": user.getToken(),
-                        "id": req.body.email,
-                        "text": "Authentification réussi"
-                    })
+                    if (user.account == "company") {
+                        res.status(200).json({
+                            "company": true,
+                            "token": user.getToken(),
+                            "id": req.body.email,
+                            "text": "Authentification réussi",
+                        })
+                    }else{
+                        res.status(200).json({
+                            "company": false,
+                            "token": user.getToken(),
+                            "id": req.body.email,
+                            "text": "Authentification réussi",
+                        })
+                    }
                 } else {
                     res.status(401).json({
                         "text": "Mot de passe incorrect"
@@ -458,28 +478,6 @@ function applyCompany(req, res) {
 
 }
 
-function isCompany(req,res) {
-    User.findOne({
-        email: req.body.email
-    }, function (err, user) {
-        if (user) {
-            if (user.account == "company") {
-                res.status(200).json({
-                    "response": true
-                })
-            }else{
-                res.status(200).json({
-                    "response": false
-                })
-            }
-        }else{
-            res.status(500).json({
-                "response": "Erreur qui n'est pas censée se produire"
-            })
-        }
-    })
-}
-
 //On exporte nos fonctions
 
 exports.login = login;
@@ -489,4 +487,3 @@ exports.changeProfile = changeProfile;
 exports.changePassword = changePassword;
 exports.resetPassword = resetPassword;
 exports.applyCompany = applyCompany;
-exports.isCompany = isCompany;

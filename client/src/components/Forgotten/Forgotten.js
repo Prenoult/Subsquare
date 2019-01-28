@@ -5,10 +5,11 @@
  * Created by Charles on 03/01/2019.
  */
 import React from 'react';
-import {Button, FormGroup, FormControl, ControlLabel, Grid, Row, Col} from "react-bootstrap";
+import {Button, FormGroup, FormControl, ControlLabel, Grid, Row, Col, HelpBlock} from "react-bootstrap";
 import API from '../../utils/API';
 import {Link} from 'react-router-dom';
-import {EnteteLogo} from '../EnteteLogo/EnteteLogo.js'
+import {EnteteLogo} from '../EnteteLogo/EnteteLogo.js';
+import {Footer} from '../Footer/Footer.js';
 
 export class Forgotten extends React.Component {
     constructor(props) {
@@ -16,7 +17,8 @@ export class Forgotten extends React.Component {
         this.handleChange.bind(this);
         this.send.bind(this);
         this.state = {
-            email: ""
+            email: "",
+            er:null
         };
     }
 
@@ -29,15 +31,20 @@ export class Forgotten extends React.Component {
             email: this.state.email
         };
         console.log(_send);
+        let that = this;
         API.resetPassword(_send).then(function (data) {
             console.log(data.data);
             console.log("password reset");
-            //window.location = "/dashboard"
+            that.setState({
+                er: "success"
+            });
         }, function (error) {
             console.log(error);
+            that.setState({
+                er: "error"
+            });
             return;
         })
-        window.location = "/dashboard"
 
 
     };
@@ -52,11 +59,11 @@ export class Forgotten extends React.Component {
         return (
             <Grid className="Form">
                 <EnteteLogo/>
-                <Row>
+                <Row className="Form">
                     <form onSubmit={this.send}>
                     <Row>
-                        <Col md={7} className= "colonne-centree">
-                            <FormGroup controlId="email" bsSize="large">
+                        <Col md={5} className= "colonne-centree">
+                            <FormGroup controlId="email" bsSize="large" validationState={this.state.er}>
                                 <ControlLabel className="label">Réinitialiser votre mot de passe</ControlLabel>
                                 <FormControl 
                                     autoFocus 
@@ -65,11 +72,15 @@ export class Forgotten extends React.Component {
                                     onChange={this.handleChange}
                                     placeholder= "Entrez votre adresse mail ici"
                                     className="FormContLog"/>
+                                    {this.state.er === 'error' &&
+                                    <HelpBlock>L'adresse email que vous avez entré n'est pas présente dans nos fichiers. Veuillez vérifier et réessayer</HelpBlock>}
+                                    {this.state.er === 'success' &&
+                                    <HelpBlock>Votre mot de passe a été réinitialisé et il vous a été envoyé par mail</HelpBlock>}
                             </FormGroup>
                         </Col>
                     </Row>
                     <Row>
-                        <Col md={3} className= "colonne-centree">
+                        <Col md={2} className= "colonne-centree">
                             <Button
                                 block
                                 bsSize="large"
@@ -83,6 +94,10 @@ export class Forgotten extends React.Component {
                     </Row>
                     </form>
                 </Row>
+                <Row className= "centrer">
+                    <Link to={"/"} >Retour à la connexion</Link>
+                </Row>
+                <Footer page="LOGIN"/>
             </Grid>
         )
     }

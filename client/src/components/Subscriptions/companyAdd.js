@@ -90,7 +90,7 @@ export class companyAdd extends React.Component {
                     <Col md={8} mdOffset={1}>
                         <Header page="ABONNEMENTS"/>
                         <Row>
-                            <h2>Créer un Abonnement</h2>
+                            <h2 className="centrer">Créer un Abonnement</h2>
                             <Col md={6} className= "colonne-centree">
                                 <FormGroup controlId="name" bsSize="large">
                                     <FormControl
@@ -143,6 +143,7 @@ export class companyAdd extends React.Component {
                                         type="text"
                                         className="FormContLog">
                                             <option value="ren">Renouvellement...</option>
+                                            <option value="hebdo">Hebdomadaire</option>
                                             <option value="mensuel">Mensuel</option>
                                             <option value="trimestriel">Trimestriel</option>
                                             <option value="semestriel">Semestriel</option>

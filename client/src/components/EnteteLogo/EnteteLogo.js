@@ -9,8 +9,6 @@ export class EnteteLogo extends React.Component {
 	                <Col className= "colonne-centree">
 	                    <Image src={require('../../img/logotest.png')}/>
 	                </Col>
-	            </Row>
-	            <Row>
 	            <h2 >GESTION CENTRALISÉE DE VOS ABONNEMENTS</h2>
 	            </Row>
 	        </Grid>

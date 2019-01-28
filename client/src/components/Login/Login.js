@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {Button, FormGroup, FormControl, ControlLabel, Grid, Row, Col} from "react-bootstrap";
+import {Button, FormGroup, FormControl, ControlLabel, Grid, Row, Col, HelpBlock} from "react-bootstrap";
 import {EnteteLogo} from '../EnteteLogo/EnteteLogo.js'
 import API from '../../utils/API';
 import {Footer} from '../Footer/Footer.js';
@@ -12,7 +12,8 @@ export class Login extends React.Component {
         //this.signup = window.location.origin+"/signup";
         this.state = {
             email: "",
-            password: ""
+            password: "",
+            er:null,
         };
         this.handleChange.bind(this);
         this.send.bind(this);
@@ -26,13 +27,16 @@ export class Login extends React.Component {
         if (this.state.password.length === 0) {
             return;
         }
+        let that = this;
         API.login(this.state.email, this.state.password).then(function (data) {
             localStorage.setItem('token', data.data.token);
             localStorage.setItem('id', data.data.id);
+            localStorage.setItem("account",data.data.company);
             window.location = "/dashboard"
         }, function (error) {
-            console.log(error);
-            return;
+            that.setState({
+                er: "error"
+            });
         })
     };
     handleChange = event => {
@@ -45,19 +49,21 @@ export class Login extends React.Component {
         return (
             <Grid className="Form">
                 <EnteteLogo/>
-                    <Row>
+                <Row className="Form">
                     <form onSubmit={this.send}>
                         <Row>
-                            <Col md={6} className= "colonne-centree">
-                                <FormGroup controlId="email" bsSize="large">
+                            <Col md={5} className= "colonne-centree">
+                                <FormGroup controlId="email" bsSize="large" validationState={this.state.er}>
+                                    {this.state.er === 'error' &&
+                                    <HelpBlock>Le nom d'utilisateur et le mot de passe que vous avez entrés ne correspondent pas à ceux présents dans nos fichiers. Veuillez vérifier et réessayer</HelpBlock>}
                                     <FormControl 
                                         autoFocus type="email" 
                                         value={this.state.email} 
                                         onChange={this.handleChange}
                                         placeholder= "ADRESSE EMAIL"
                                         className="FormContLog"/>
-                                </FormGroup>
-                                <FormGroup controlId="password" bsSize="large">
+                                    </FormGroup>
+                                <FormGroup controlId="password" bsSize="large" validationState={this.state.er}>
                                     <FormControl 
                                         value={this.state.password} 
                                         onChange={this.handleChange} 
@@ -68,7 +74,7 @@ export class Login extends React.Component {
                             </Col>
                         </Row>
                         <Row>
-                            <Col md={3} className= "colonne-centree">
+                            <Col md={2} className= "colonne-centree">
                                 <Button
                                     block
                                     bsSize="large"
@@ -81,9 +87,11 @@ export class Login extends React.Component {
                             </Col>
                         </Row>
                     </form>
-                    <Link to={"/signup"} >Vous ne possedez pas de compte ?</Link>
-                    <br/>
-                    <Link to={"/forgotten"}>Mot de passe oublié ?</Link>
+                    <Row className= "centrer">
+                        <Link to={"/signup"} >Vous ne possedez pas de compte ?</Link>
+                        <br/>
+                        <Link to={"/forgotten"}>Mot de passe oublié ?</Link>
+                    </Row>
                 </Row>
                 <Footer page="LOGIN"/>
             </Grid>

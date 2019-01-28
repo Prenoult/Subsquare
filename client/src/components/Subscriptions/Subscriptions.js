@@ -20,8 +20,6 @@ export class Subscriptions extends React.Component {
             console.log(error);
             return;
         })
-
-
     }
 
 
@@ -58,18 +56,6 @@ function UserAccount(props) {
 }
 
 function Account(props) {
-    var _send = {
-        email: localStorage.getItem("id")
-    };
-    //var company;
-    API.isCompany(_send).then(function (data) {
-       // console.log(data.data.response);
-        window.localStorage.setItem("account",data.data.response);
-    }, function (error) {
-        console.log(error);
-        return;
-    });
-    console.log(window.localStorage.getItem("account")+" fff");
     if (window.localStorage.getItem("account")){
         if (window.localStorage.getItem("account") == "true") {
             return <CompanyAccount />;
