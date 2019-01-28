@@ -1,5 +1,4 @@
 .App {
-    text-align: center;
 }
 
 .App-logo {
@@ -33,11 +32,11 @@
     color: #6a6cac;
 }
 
-a{
+a {
     color: #6a6cac;
 }
 
-a:hover{
+a:hover {
     color: #6a6cac;
 }
 
@@ -52,6 +51,7 @@ a:hover{
 
 .Form {
 }
+
 body {
     background-color: #f1f2f6;
 }
@@ -70,7 +70,7 @@ body {
 }
 
 h2 {
-    color:grey;
+    color: grey;
     font-size: 25px;
     margin-bottom: 30px;
 }
@@ -85,6 +85,17 @@ h2 {
     margin: 0 auto;
 }
 
+/* Si on veut utiliser un Button (style) fonctionnant comme un Link (router) */
+.linkButton {
+    display: block;
+    height: 100%;
+}
+
+a.linkButton {
+    color: white;
+    text-decoration: none;
+}
+
 .buttonEnv {
     margin-top: 15px;
     margin-bottom: 15px;
@@ -92,7 +103,7 @@ h2 {
     border-color: #6a6cac;
 }
 
-.buttonEnv:hover{
+.buttonEnv:hover {
     background-color: #8c7ae6;
     border-color: #8c7ae6;
 }
@@ -105,6 +116,7 @@ h2 {
     background-color: #6a6cac;
     border-color: #6a6cac;
 }
+
 .montagne {
     background-image: url("img/Montagne.jpg");
     background-size: 'cover';
@@ -112,6 +124,7 @@ h2 {
     height: 100vh;
     min-width: 300px;
 }
+
 .entete {
     margin-top: 4%;
     border-bottom: 3px solid black;
