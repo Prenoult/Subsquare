@@ -486,7 +486,6 @@ exports.login = login;
 exports.signup = signup;
 exports.getProfile = getProfile;
 exports.changeProfile = changeProfile;
-exports.changeEmail = changeEmail;
 exports.changePassword = changePassword;
 exports.resetPassword = resetPassword;
 exports.applyCompany = applyCompany;
