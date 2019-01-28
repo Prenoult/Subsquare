@@ -10,6 +10,7 @@ import {Forgotten} from './components/Forgotten/Forgotten.js';
 import {Subscriptions} from './components/Subscriptions/Subscriptions.js';
 import {companyAdd} from './components/Subscriptions/companyAdd.js';
 import {userAdd} from './components/Subscriptions/userAdd.js';
+import {SettingsApply} from './components/Settings/SettingsApply.js';
 import {PrivateRoute} from './components/PrivateRoute.js';
 import './App.css';
 
@@ -29,6 +30,7 @@ class App extends Component {
                         <PrivateRoute exact path="/subscriptions" component={Subscriptions}/>
                         <PrivateRoute exact path="/company/add" component={companyAdd} />
                         <PrivateRoute exact path="/user/add" component={userAdd} />
+                        <PrivateRoute exact path="/settings/apply" component={SettingsApply} />
                     </Switch>
                 </div>
             </div>

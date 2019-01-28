@@ -12,7 +12,8 @@ function signup(req, res) {
         var user = {
             email: req.body.email,
             password: passwordHash.generate(req.body.password),
-            account: "user"
+            account: "user",
+            sub: []
         };
         var findUser = new Promise(function (resolve, reject) {
             User.findOne({
@@ -122,66 +123,6 @@ function getProfile(req, res) {
             })
         }
     })
-}
-
-function changeEmail(req, res) {
-    if (!req.body.email || !req.body.password) {
-        //Le cas où l'email ou bien le password ne serait pas soumit ou nul
-        res.status(400).json({
-            "text": "Requête invalide"
-        })
-    } else {
-        User.findOne({
-            email: req.body.nemail
-        }, function (err, user2) {
-            if (!user2) {
-                User.findOne({
-                    email: req.body.email
-                }, function (err, user) {
-                    if (err) {
-                        res.status(500).json({
-                            "text": "Erreur interne"
-                        })
-                    } else if (!user) {
-                        res.status(401).json({
-                            "text": "L'utilisateur n'existe pas"
-                        })
-                    } else {
-                        if (user.authenticate(req.body.password)) {
-                            User.update({email: req.body.email}, {$set: {email: req.body.nemail}},
-                                function (err, user) {
-                                    if (err) {
-                                        res.status(500).json({
-                                            "text": "Erreur interne"
-                                        })
-                                    } else if (!user) {
-                                        res.status(401).json({
-                                            "text": "L'utilisateur n'existe pas"
-                                        })
-
-                                    } else {
-                                        res.status(200).json({
-                                            "text": "Adresse mail modifiée",
-                                            "id": req.body.nemail
-                                        })
-                                    }
-                                })
-
-
-                        } else {
-                            res.status(401).json({
-                                "text": "Mot de passe incorrect"
-                            })
-                        }
-                    }
-                })
-            } else {
-                res.status(500).json({
-                    "text": "adresse mail deja utilisée"
-                })
-            }
-        })
-    }
 }
 
 function changeProfile(req, res) {
@@ -433,9 +374,109 @@ function resetPassword(req, res) {
 
 }
 
-function isCompany(req, res) {
-    res.status(200).json({
-        "response": false
+function applyCompany(req, res) {
+    //Start Here
+    User.findOne({
+        email: req.body.email
+    }, function (err, user) {
+        if (err) {
+            res.status(500).json({
+                "text": "Erreur interne"
+            })
+        } else if (!user) {
+            res.status(401).json({
+                "text": "L'utilisateur n'existe pas"
+            })
+        } else {
+            // Si l'utilisateur existe
+            var nodemailer = require("nodemailer");
+            var transporter = nodemailer.createTransport({
+                host: "smtp.mailtrap.io",
+                port: 2525,
+                auth: {
+                    user: config.mtusername,
+                    pass: config.mtpassword
+                }
+            });
+
+            var msg = "L'utilisateur " + req.body.email + " souhaite avoir un compte entreprise";
+            var info ={
+                nom: req.body.nom,
+                numSiret: req.body.numSiret,
+                numTel: req.body.numTel,
+                adresse: req.body.adresse,
+                codePostal: req.body.codePostal,
+                ville: req.body.ville
+            }
+            User.update({email: req.body.email},{$addToSet: {infoCompany:[req.body.nom,
+                    req.body.numSiret,
+                    req.body.numTel,
+                    req.body.adresse,
+                    req.body.codePostal,
+                    req.body.ville]}},
+                function (err, user) {
+                    if (err) {
+                        res.status(500).json({
+                            "text": "Erreur interne"
+                        })
+                    } else if (!user) {
+                        res.status(401).json({
+                            "text": "L'utilisateur n'existe pas"
+                        })
+
+                    } else {
+                        res.status(200).json({
+                            "text": "Demande ajouté"
+                        })
+                    }
+                })
+
+
+            const mailOptions = {
+                from: "Server@gmail.com",
+                //to: req.body.email,
+                to: req.body.email,
+                subject: "Demande Entreprise",
+                text: msg
+            };
+
+
+            transporter.sendMail(mailOptions, (err, info) => {
+                if (err) {
+                    //console.log(err);
+                    //return next(err);
+                    res.status(500).json({
+                        "text": "erreur interne"
+                    })
+                } else {
+                }
+
+                transporter.close();
+            });
+        }
+    })
+
+}
+
+function isCompany(req,res) {
+    User.findOne({
+        email: req.body.email
+    }, function (err, user) {
+        if (user) {
+            if (user.account == "company") {
+                res.status(200).json({
+                    "response": true
+                })
+            }else{
+                res.status(200).json({
+                    "response": false
+                })
+            }
+        }else{
+            res.status(500).json({
+                "response": "Erreur qui n'est pas censée se produire"
+            })
+        }
     })
 }
 
@@ -448,4 +489,5 @@ exports.changeProfile = changeProfile;
 exports.changeEmail = changeEmail;
 exports.changePassword = changePassword;
 exports.resetPassword = resetPassword;
+exports.applyCompany = applyCompany;
 exports.isCompany = isCompany;

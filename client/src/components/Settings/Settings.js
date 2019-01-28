@@ -181,6 +181,11 @@ export class Settings extends React.Component {
                                                onChange={this.handleChange}/>
                             </ButtonToolbar>
                         </Row>
+                        <Row>
+                            <Link to={"/settings/apply"}>
+                                Passer en compte entreprise
+                            </Link>
+                        </Row>
                     </Col>
                 </Row>
             </Grid>

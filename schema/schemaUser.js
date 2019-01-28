@@ -11,6 +11,7 @@ var userSchema = mongoose.Schema({
         unique: true,
         required: true
     },
+
     password: {
         type: String,
         required: true
@@ -21,6 +22,20 @@ var userSchema = mongoose.Schema({
     },
     firstname: {
         type: String,
+        required: false
+    },
+    account: {
+        type: String,
+        required: true
+    },
+
+    sub: {
+        type: Array,
+        required: true
+    },
+
+    infoCompany: {
+        type: Array,
         required: false
     }
 }, {timestamps: {createdAt: 'created_at'}});
