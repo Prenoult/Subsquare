@@ -82,6 +82,7 @@ export class Settings extends React.Component {
         API.changeProfile(_send).then(function (data) {
             console.log(data.data.id);
             localStorage.setItem("id", data.data.id);
+            localStorage.setItem("firstname", data.data.firstname);
             window.location = "/settings";
         }, function (error) {
             console.log('Mal passé');

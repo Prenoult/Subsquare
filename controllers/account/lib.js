@@ -13,7 +13,9 @@ function signup(req, res) {
             email: req.body.email,
             password: passwordHash.generate(req.body.password),
             account: "user",
-            sub: []
+            sub: [],
+            lastname: "",
+            firstname: "",
         };
         var findUser = new Promise(function (resolve, reject) {
             User.findOne({
@@ -44,14 +46,18 @@ function signup(req, res) {
                             "company": true,
                             "token": user.getToken(),
                             "id": req.body.email,
+                            "firstname": user.firstname,
                             "text": "Authentification réussi",
+                            "nomC": user.infoCompany[0]
                         })
                     }else{
                         res.status(200).json({
                             "company": false,
                             "token": user.getToken(),
                             "id": req.body.email,
+                            "firstname": user.firstname,
                             "text": "Authentification réussi",
+                            "nomC": user.infoCompany[0]
                         })
                     }
                 }
@@ -102,14 +108,18 @@ function login(req, res) {
                             "company": true,
                             "token": user.getToken(),
                             "id": req.body.email,
+                            "firstname": user.firstname,
                             "text": "Authentification réussi",
+                            "nomC": user.infoCompany[0]
                         })
                     }else{
                         res.status(200).json({
                             "company": false,
                             "token": user.getToken(),
                             "id": req.body.email,
+                            "firstname": user.firstname,
                             "text": "Authentification réussi",
+                            "nomC": user.infoCompany[0]
                         })
                     }
                 } else {
@@ -140,6 +150,33 @@ function getProfile(req, res) {
                 "email": user.email,
                 "lastname": user.lastname,
                 "firstname": user.firstname
+            })
+        }
+    })
+}
+
+function getProfileCompany(req, res) {
+    User.findOne({
+        email: req.body.email
+    }, function (err, user) {
+        if (err) {
+            res.status(500).json({
+                "text": "Erreur interne"
+            })
+        } else if (!user) {
+            res.status(401).json({
+                "text": "L'utilisateur n'existe pas"
+            })
+        } else {
+            res.status(200).json({
+                "text": "Succès",
+                "email": user.email,
+                "nom": user.infoCompany[0],
+                "numSiret": user.infoCompany[1],
+                "numTel": user.infoCompany[2],
+                "adresse": user.infoCompany[3],
+                "codePostal": user.infoCompany[4],
+                "ville" : user.infoCompany[5]
             })
         }
     })
@@ -189,7 +226,8 @@ function changeProfile(req, res) {
                                 } else {
                                     res.status(200).json({
                                         "text": "Adresse email modifiée",
-                                        "id": req.body.id
+                                        "id": req.body.id,
+                                        "firstname": req.body.firstname
                                     })
                                 }
                             })
@@ -239,7 +277,125 @@ function changeProfile(req, res) {
                                         } else {
                                             res.status(200).json({
                                                 "text": "Adresse mail modifiée",
-                                                "id": req.body.email
+                                                "id": req.body.email,
+                                                "firstname": req.body.firstname
+                                            })
+                                        }
+                                    })
+
+
+                            } else {
+                                res.status(401).json({
+                                    "text": "Mot de passe incorrect"
+                                })
+                            }
+                        }
+                    })
+                } else {
+                    res.status(500).json({
+                        "text": "adresse mail deja utilisée"
+                    })
+                }
+            })
+        }
+    }
+}
+
+function changeProfileCompany(req, res) {
+    //On vérifie que l'email est bien soumise en tant qu'ID
+    if (!req.body.id) {
+        res.status(400).json({
+            "text": "Requête invalide"
+        })
+    } else {
+        // On vérifie si l'utilisateur essaye de changer d'adresse email
+        if (req.body.id === req.body.email) {
+            // --- Le cas où l'utilisateur n'essaye pas de changer d'adresse email ---
+            User.findOne({
+                email: req.body.id
+            }, function (err, user) {
+                if (err) {
+                    res.status(500).json({
+                        "text": "Erreur interne"
+                    })
+                } else if (!user) {
+                    res.status(401).json({
+                        'text': "L'utilisateur n'existe pas"
+                    })
+                } else {
+                    // On vérifie si l'association email/mdp correspond
+                    if (user.authenticate(req.body.password)) {
+                        // On effectue les modification de l'utilisateur
+                        User.update({email: req.body.id}, {
+                                $set: {
+                                    infoCompany: [req.body.nom, req.body.numSiret, req.body.numTel, req.body.adresse, req.body.codePostal,req.body.ville]
+                                }
+                            },
+                            function (err, user) {
+                                if (err) {
+                                    res.status(500).json({
+                                        "text": "Erreur interne"
+                                    })
+                                } else if (!user) {
+                                    res.status(401).json({
+                                        "text": "L'utilisateur n'existe pas"
+                                    })
+
+                                } else {
+                                    res.status(200).json({
+                                        "text": "Adresse email modifiée",
+                                        "id": req.body.id,
+                                        "nomC": req.body.nom
+                                    })
+                                }
+                            })
+                    } else {
+                        res.status(401).json({
+                            "text": "Mot de passe incorrect"
+                        })
+                    }
+                }
+            })
+        } else {
+            // --- Le cas où l'utilisateur essaye de changer d'adresse email ---
+            User.findOne({
+                email: req.body.email
+            }, function (err, user2) {
+                if (!user2) {
+                    User.findOne({
+                        email: req.body.id
+                    }, function (err, user) {
+                        if (err) {
+                            res.status(500).json({
+                                "text": "Erreur interne"
+                            })
+                        } else if (!user) {
+                            res.status(401).json({
+                                "text": "L'utilisateur n'existe pas"
+                            })
+                        } else {
+                            if (user.authenticate(req.body.password)) {
+                                User.update({email: req.body.id}, {
+                                        $set: {
+                                            email: req.body.email,
+                                            infoCompany: [req.body.nom, req.body.numSiret, req.body.numTel, req.body.adresse, req.body.codePostal,req.body.ville]
+                                        }
+                                    },
+                                    function (err, user) {
+                                        if (err) {
+                                            res.status(500).json({
+                                                "text": "Erreur interne"
+                                            })
+                                        } else if (!user) {
+                                            res.status(401).json({
+                                                "text": "L'utilisateur n'existe pas"
+                                            })
+
+                                        } else {
+                                            res.status(200).json({
+                                                "text": "Adresse mail modifiée",
+                                                "id": req.body.email,
+                                                "nomC": req.body.nom
                                             })
                                         }
                                     })
@@ -483,7 +639,9 @@ function applyCompany(req, res) {
 exports.login = login;
 exports.signup = signup;
 exports.getProfile = getProfile;
+exports.getProfileCompany = getProfileCompany;
 exports.changeProfile = changeProfile;
+exports.changeProfileCompany = changeProfileCompany;
 exports.changePassword = changePassword;
 exports.resetPassword = resetPassword;
 exports.applyCompany = applyCompany;

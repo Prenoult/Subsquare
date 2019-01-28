@@ -4,6 +4,7 @@ import {Dashboard} from './components/Dashboard/Dashboard.js';
 import {Login} from './components/Login/Login.js';
 import {Signup} from './components/Signup/Signup.js';
 import {Settings} from './components/Settings/Settings.js';
+import {SettingsCompany} from './components/Settings/SettingsCompany.js';
 import {SettingsMail} from './components/Settings/SettingsMail.js';
 import {SettingsPassword} from './components/Settings/SettingsPassword.js';
 import {Forgotten} from './components/Forgotten/Forgotten.js';
@@ -25,6 +26,7 @@ class App extends Component {
                         <Route exact path="/forgotten" component={Forgotten}/>
                         <PrivateRoute path='/dashboard' component={Dashboard}/>
                         <PrivateRoute exact path="/settings" component={Settings}/>
+                        <PrivateRoute exact path="/settings/company" component={SettingsCompany}/>
                         <PrivateRoute exact path="/settings/mail" component={SettingsMail}/>
                         <PrivateRoute exact path="/settings/password" component={SettingsPassword}/>
                         <PrivateRoute exact path="/subscriptions" component={Subscriptions}/>

@@ -39,6 +39,8 @@ export class Signup extends React.Component {
             if (data.status == 200){
                 localStorage.setItem('token', data.data.token);
                 localStorage.setItem('id', data.data.id);
+                localStorage.setItem('firstname', data.data.firstname);
+                localStorage.setItem('nomC', data.data.nomC);
                 localStorage.setItem("account",data.data.company);
                 window.location = "/dashboard"
             }else{

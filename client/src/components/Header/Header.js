@@ -21,14 +21,22 @@ export class Header extends React.Component {
 					{this.page}
 				</Col>
 				<Col md={4} mdOffset={6} style={{fontSize:20, marginTop:10, color:'grey'}}>
-					{localStorage.id}
-					<Link to={"/Settings"}>
+					<Nom/>
+					{localStorage.getItem("account") === "false" 
+					? <Link to={"/Settings"}>
 						<Image src={require('../../img/reglage.png')}  
 	                		style={{ width: 30,
 								height: 30,
 								marginLeft: 10,
 								marginBottom: 5}}/>
 					</Link>
+					: <Link to={"/Settings/Company"}>
+						<Image src={require('../../img/reglage.png')}  
+	                		style={{ width: 30,
+								height: 30,
+								marginLeft: 10,
+								marginBottom: 5}}/>
+					</Link>}
 					<Link to={"/Settings"}>
 					<Image src={require('../../img/shutdown.png')}  
                 		style={{ width: 25,
@@ -40,5 +48,17 @@ export class Header extends React.Component {
 				</Col>
 			</Row>
 		)
+	}
+}
+
+function Nom(props){
+	if(localStorage.firstname ==='undefined' || localStorage.firstname ==='' || localStorage.firstname ==='null'){
+		if(localStorage.nomC ==='undefined' || localStorage.nomC ==='' || localStorage.nomC ==='null'){ 
+			return (localStorage.id)
+		} else {
+			return (localStorage.nomC)
+		}
+	} else {
+		return (localStorage.firstname)
 	}
 }

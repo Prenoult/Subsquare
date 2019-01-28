@@ -24,6 +24,10 @@ export default {
         return axios.post(burl + '/user/settings/modify', send, {headers: headers})
     },
 
+    changeProfileCompany: function (send) {
+        return axios.post(burl + '/user/settings/modifyCompany', send, {headers: headers})
+    },
+
     changeEmail: function (send) {
         return axios.post(burl + '/user/change/Email', send, {headers: headers})
     },
@@ -55,6 +59,9 @@ export default {
     },
     getProfile: function (send) {
         return axios.post(burl + '/user/getProfile', send, {headers: headers})
+    },
+    getProfileCompany: function (send) {
+        return axios.post(burl + '/user/getProfileCompany', send, {headers: headers})
     },
     logout: function () {
         localStorage.clear();
