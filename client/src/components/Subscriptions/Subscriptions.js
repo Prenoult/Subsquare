@@ -13,7 +13,7 @@ export class Subscriptions extends React.Component {
         super(props);
         var _send = {
             email: localStorage.getItem("id")
-        }
+        };
         API.getSub(_send).then(function (data) {
             console.log(data.data);
         }, function (error) {
