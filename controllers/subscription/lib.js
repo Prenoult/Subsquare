@@ -30,6 +30,35 @@ function get(req, res) {
     }
 }
 
+function allSubs(req,res){
+    if(!req.body.email){
+        res.status(400).json({
+            "text": "Requête invalide"
+        })
+    }else {
+        User.findOne({
+            email: req.body.email
+        }, function (err, user) {
+            if(user){
+                Subscription.find({ _id: { $nin: user.sub } }, function (err, s){
+                    if (s){
+                        res.status(200).json({
+                            "text": "succees",
+                            "sub":s
+                        })
+                    }
+                });
+            }else{
+                res.status(500).json({
+                    "text": "Erreur interne"
+                })
+            }
+        })
+
+
+    }
+}
+
 function create(req, res) {
     if (!req.body.name || !req.body.price || !req.body.category || !req.body.descri || !req.body.mensu || !req.body.engage) {
         //Le cas ou il manque des champs
@@ -157,3 +186,4 @@ function create(req, res) {
 
 exports.get = get;
 exports.create = create;
+exports.allSubs = allSubs;

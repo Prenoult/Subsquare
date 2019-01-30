@@ -14,7 +14,7 @@ export class userAdd extends React.Component {
         var _send = {
             email: localStorage.getItem("id")
         }
-        API.getSub(_send).then(function (data) {
+        API.allSubscriptions(_send).then(function (data) {
             console.log(data.data);
         }, function (error) {
             console.log(error);

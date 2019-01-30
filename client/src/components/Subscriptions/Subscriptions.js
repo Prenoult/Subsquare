@@ -11,17 +11,27 @@ import {Header} from '../Header/Header.js';
 export class Subscriptions extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            subscription:[]
+        };
+    }
+
+    componentDidMount() {
+        this.getSubscription()
+        console.log(this.state)
+    }
+    getSubscription(){
+        let that = this;
         var _send = {
             email: localStorage.getItem("id")
         };
         API.getSub(_send).then(function (data) {
-            console.log(data.data);
-        }, function (error) {
-            console.log(error);
-            return;
+            console.log(data.data.dd);
+            that.setState({
+                subscription:data.data.dd
+            });
         })
     }
-
 
 
     //https://reactjs.org/docs/conditional-rendering.html
