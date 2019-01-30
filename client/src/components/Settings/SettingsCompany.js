@@ -7,8 +7,8 @@ import {
     FormGroup,
     FormControl,
     Radio,
-    Well,
-    Grid,
+    Card,
+    Container,
     Row,
     Col
 } from "react-bootstrap";
@@ -49,7 +49,7 @@ export class SettingsCompany extends React.Component {
             that.setState({
                 email: profile.data.email,
                 nom: profile.data.nom,
-                numSiret: profile.data.numSiret,
+              //  numSiret: profile.data.numSiret,
                 numTel: profile.data.numTel,
                 numSiret: profile.data.numSiret,
                 adresse: profile.data.adresse,
@@ -84,7 +84,7 @@ export class SettingsCompany extends React.Component {
             email: this.state.email,
             password: this.state.password,
             nom: this.state.nom,
-            numSiret: this.state.numSiret,
+           // numSiret: this.state.numSiret,
             numTel: this.state.numTel,
             numSiret: this.state.numSiret,
             adresse: this.state.adresse,
@@ -107,7 +107,7 @@ export class SettingsCompany extends React.Component {
 
     render() {
         return (
-            <Grid className="Form">
+            <Container className="Form">
                 <Row>
                     <Menu/>
                     <Col md={8} mdOffset={1}>
@@ -116,7 +116,7 @@ export class SettingsCompany extends React.Component {
                             <Col md={6} className= "colonne-centree">
                             <br/>
                             {this.state.isModifying === false
-                                ? <Well bsSize="small"><b>Email :</b> {this.state.email}</Well>
+                                ? <Card bsSize="small"><Card.Body><b>Email :</b> {this.state.email}</Card.Body></Card>
                                 : <form>
                                     <FormGroup controlId="email">
                                         <InputGroup>
@@ -131,7 +131,7 @@ export class SettingsCompany extends React.Component {
                                 </form>
                             }
                             {this.state.isModifying === false
-                                ? <Well bsSize="small"><b>Nom :</b> {this.state.nom}</Well>
+                                ? <Card bsSize="small"><Card.Body><b>Nom :</b> {this.state.nom}</Card.Body></Card>
                                 : <form>
                                     <FormGroup controlId="nom">
                                         <InputGroup>
@@ -146,7 +146,7 @@ export class SettingsCompany extends React.Component {
                                 </form>
                             }
                             {this.state.isModifying === false
-                                ? <Well bsSize="small"><b>Numéro de Siret :</b> {this.state.numSiret}</Well>
+                                ? <Card bsSize="small"><Card.Body><b>Numéro de Siret :</b> {this.state.numSiret}</Card.Body></Card>
                                 : <form>
                                     <FormGroup controlId="numSiret">
                                         <InputGroup>
@@ -161,7 +161,7 @@ export class SettingsCompany extends React.Component {
                                 </form>
                             }
                             {this.state.isModifying === false
-                                ? <Well bsSize="small"><b>Numéro de Téléphone :</b> {this.state.numTel}</Well>
+                                ? <Card bsSize="small"><Card.Body><b>Numéro de Téléphone :</b> {this.state.numTel}</Card.Body></Card>
                                 : <form>
                                     <FormGroup controlId="numTel">
                                         <InputGroup>
@@ -176,7 +176,7 @@ export class SettingsCompany extends React.Component {
                                 </form>
                             }
                             {this.state.isModifying === false
-                                ? <Well bsSize="small"><b>Adresse :</b> {this.state.adresse}</Well>
+                                ? <Card bsSize="small"><Card.Body><b>Adresse :</b> {this.state.adresse}</Card.Body></Card>
                                 : <form>
                                     <FormGroup controlId="adresse">
                                         <InputGroup>
@@ -191,7 +191,7 @@ export class SettingsCompany extends React.Component {
                                 </form>
                             }
                             {this.state.isModifying === false
-                                ? <Well bsSize="small"><b>Code Postal :</b> {this.state.codePostal}</Well>
+                                ? <Card bsSize="small"><Card.Body><b>Code Postal :</b> {this.state.codePostal}</Card.Body></Card>
                                 : <form>
                                     <FormGroup controlId="codePostal">
                                         <InputGroup>
@@ -206,7 +206,7 @@ export class SettingsCompany extends React.Component {
                                 </form>
                             }
                             {this.state.isModifying === false
-                                ? <Well bsSize="small"><b>Ville :</b> {this.state.ville}</Well>
+                                ? <Card bsSize="small"><Card.Body><b>Ville :</b> {this.state.ville}</Card.Body></Card>
                                 : <form>
                                     <FormGroup controlId="ville">
                                         <InputGroup>
@@ -230,12 +230,12 @@ export class SettingsCompany extends React.Component {
                                 : <div><Button onClick={this.modify.bind(this)}
                                                block>Annuler</Button>
                                     <Button onClick={this.triggerModal.bind(this)}
-                                            bsStyle="success"
+                                            variant="success"
                                             block>Valider</Button>
                                 </div>
                             }
                             {this.state.isModifying === false &&
-                            <Button bsStyle="danger" block>
+                            <Button variant="danger" block>
                                 <Link to={"/settings/password"} className='linkButton'>
                                     Modifier votre mot de passe</Link>
                             </Button>}
@@ -248,7 +248,7 @@ export class SettingsCompany extends React.Component {
                         </Row>
                     </Col>
                 </Row>
-            </Grid>
+            </Container>
         )
     }
 }

@@ -19,7 +19,7 @@ export class Menu extends React.Component {
 						<Button
 		                    block
 		                    bsSize="large"
-		                    bsStyle="primary"
+		                    variant="primary"
 		                    type="submit"
 		                    className="buttonMenu"
 		                >
@@ -38,7 +38,7 @@ export class Menu extends React.Component {
 						<Button
 		                    block
 		                    bsSize="large"
-		                    bsStyle="primary"
+		                    variant="primary"
 		                    type="submit"
 		                    className="buttonMenu"
 		                >
@@ -56,7 +56,7 @@ export class Menu extends React.Component {
 					<Button
 	                    block
 	                    bsSize="large"
-	                    bsStyle="primary"
+	                    variant="primary"
 	                    type="submit"
 	                    className="buttonMenu"
 	                >
@@ -73,7 +73,7 @@ export class Menu extends React.Component {
 					<Button
 	                    block
 	                    bsSize="large"
-	                    bsStyle="primary"
+	                    variant="primary"
 	                    type="submit"
 	                    className="buttonMenu"
 	                >

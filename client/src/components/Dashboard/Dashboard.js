@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Grid, Row, Col, Carousel} from "react-bootstrap";
+import {Button, Container, Row, Col, Carousel} from "react-bootstrap";
 import {Link} from 'react-router-dom';
 import {Menu} from '../Menu/Menu.js';
 import {Header} from '../Header/Header.js';
@@ -19,7 +19,7 @@ export class Dashboard extends React.Component {
 
     render() {
         return (
-            <Grid className="Dashboard">
+            <Container className="Dashboard">
                 <Row>
                     <Menu/>
                     <Col md={8} mdOffset={1}>
@@ -28,7 +28,7 @@ export class Dashboard extends React.Component {
                         </Row>
                     </Col>
                 </Row>
-            </Grid>
+            </Container>
         )
     }
 }

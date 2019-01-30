@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {Button, FormGroup, FormControl, ControlLabel, HelpBlock, Grid, Row, Col} from "react-bootstrap";
+import {Button, Form, FormGroup, FormControl, ControlLabel, HelpBlock, Container, Row, Col} from "react-bootstrap";
 import {EnteteLogo} from '../EnteteLogo/EnteteLogo.js'
 import API from '../../utils/API';
 import {Footer} from '../Footer/Footer.js';
@@ -16,7 +16,7 @@ export class Signup extends React.Component {
             vsEmail: null,
             vsPassword: null,
             vsCPassword: null,
-            er:null,
+            er: null,
         };
         this.handleChange.bind(this);
         this.send.bind(this);
@@ -36,21 +36,21 @@ export class Signup extends React.Component {
             password: this.state.password
         };
         API.signup(_send).then(function (data) {
-            if (data.status == 200){
+            if (data.status == 200) {
                 localStorage.setItem('token', data.data.token);
                 localStorage.setItem('id', data.data.id);
                 localStorage.setItem('firstname', data.data.firstname);
                 localStorage.setItem('nomC', data.data.nomC);
-                localStorage.setItem("account",data.data.company);
+                localStorage.setItem("account", data.data.company);
                 window.location = "/dashboard"
-            }else{
-                if (data.status == 204){
+            } else {
+                if (data.status == 204) {
                     //erreur adresse mail deja utilisée
                     that.setState({
                         er: "error"
                     });
                     console.log("adresse deja utilisée");
-                }else{
+                } else {
                     // Autre erreur
                 }
             }
@@ -123,73 +123,76 @@ export class Signup extends React.Component {
 
     render() {
         return (
-            <Grid className="Form">
+            <Container className="Form">
                 <EnteteLogo/>
                 <Row className="Form">
-                <form onSubmit={this.send}>
-                    <Row>
-                        <Col md={5} className="colonne-centree">
-                            <FormGroup controlId="email" bsSize="large" validationState={this.state.vsEmail && this.state.er}>
-                                <FormControl
-                                    type="email"
-                                    value={this.state.email}
-                                    onChange={this.handleChange}
-                                    onBlur={this.handleBlurEmail.bind(this)}
-                                    placeholder="ADRESSE EMAIL"
-                                    className="FormContLog"/>
-                                {this.state.vsEmail === 'error' &&
-                                <HelpBlock>Veuillez saisir une adresse email valide</HelpBlock>}
-                                {this.state.er === 'error' &&
-                                <HelpBlock>L'adresse mail que vous avez entrée correspond déjà à un compte. Veuillez vérifier et réessayer</HelpBlock>}
-                                <FormControl.Feedback/>
-                            </FormGroup>
-                            <FormGroup controlId="password" bsSize="large" validationState={this.state.vsPassword}>
-                                <FormControl
-                                    value={this.state.password}
-                                    onChange={this.handleChange}
-                                    onBlur={this.handleBlurPassword.bind(this)}
-                                    type="password"
-                                    placeholder="MOT DE PASSE"
-                                    className="FormContLog"/>
-                                {this.state.vsPassword === 'error' &&
-                                <HelpBlock>Votre mot de passe doit contenir au moins 8 caractères dont 1 majuscule, 1
-                                    minuscule, 1 chiffre et 1 caractère spécial</HelpBlock>}
-                                <FormControl.Feedback/>
-                            </FormGroup>
-                            <FormGroup controlId="cpassword" bsSize="large" validationState={this.state.vsCPassword}>
-                                <FormControl
-                                    value={this.state.cpassword}
-                                    onChange={this.handleChange}
-                                    onBlur={this.handleBlurCPassword.bind(this)}
-                                    type="password"
-                                    placeholder="CONFIRMER MOT DE PASSE"
-                                    className="FormContLog"/>
-                                {this.state.vsCPassword === 'error' &&
-                                <HelpBlock>Les mots de passe doivent être identiques</HelpBlock>}
-                                <FormControl.Feedback/>
-                            </FormGroup>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col md={2} className="colonne-centree">
-                            <Button
-                                block
-                                bsSize="large"
-                                bsStyle="primary"
-                                type="submit"
-                                className="buttonEnv"
-                            >
-                                INSCRIPTION
-                            </Button>
-                        </Col>
-                    </Row>
-                </form>
+                    <form onSubmit={this.send}>
+                        <Row>
+                            <Col md={5} className="colonne-centree">
+                                <FormGroup controlId="email" bsSize="large"
+                                           validationState={this.state.vsEmail && this.state.er}>
+                                    <FormControl
+                                        type="email"
+                                        value={this.state.email}
+                                        onChange={this.handleChange}
+                                        onBlur={this.handleBlurEmail.bind(this)}
+                                        placeholder="ADRESSE EMAIL"
+                                        />
+                                    {this.state.vsEmail === 'error' &&
+                                    <Form.Control.Feedback>Veuillez saisir une adresse email valide</Form.Control.Feedback>}
+                                    {this.state.er === 'error' &&
+                                    <Form.Control.Feedback>L'adresse mail que vous avez entrée correspond déjà à un compte. Veuillez
+                                        vérifier et réessayer</Form.Control.Feedback>}
+                                    <FormControl.Feedback/>
+                                </FormGroup>
+                                <FormGroup controlId="password" bsSize="large" validationState={this.state.vsPassword}>
+                                    <FormControl
+                                        value={this.state.password}
+                                        onChange={this.handleChange}
+                                        onBlur={this.handleBlurPassword.bind(this)}
+                                        type="password"
+                                        placeholder="MOT DE PASSE"
+                                        />
+                                    {this.state.vsPassword === 'error' &&
+                                    <Form.Control.Feedback>Votre mot de passe doit contenir au moins 8 caractères dont 1
+                                        majuscule, 1
+                                        minuscule, 1 chiffre et 1 caractère spécial</Form.Control.Feedback>}
+                                </FormGroup>
+                                <FormGroup controlId="cpassword" bsSize="large"
+                                           validationState={this.state.vsCPassword}>
+                                    <FormControl
+                                        value={this.state.cpassword}
+                                        onChange={this.handleChange}
+                                        onBlur={this.handleBlurCPassword.bind(this)}
+                                        type="password"
+                                        placeholder="CONFIRMER MOT DE PASSE"
+                                        />
+                                    {this.state.vsCPassword === 'error' &&
+                                    <Form.Control.Feedback>Les mots de passe doivent être
+                                        identiques</Form.Control.Feedback>}
+                                </FormGroup>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col md={2} className="colonne-centree">
+                                <Button
+                                    block
+                                    bsSize="large"
+                                    variant="primary"
+                                    type="submit"
+                                    className="buttonEnv"
+                                >
+                                    INSCRIPTION
+                                </Button>
+                            </Col>
+                        </Row>
+                    </form>
                 </Row>
                 <Row className="centrer">
                     <Link to={"/"}>Vous possedez déjà un compte ?</Link>
                 </Row>
                 <Footer page="LOGIN"/>
-            </Grid>
+            </Container>
         )
     }
 }

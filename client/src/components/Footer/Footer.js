@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {Button, FormGroup, FormControl, ControlLabel, Grid, Row, Col, Image} from "react-bootstrap";
+import {Button, FormGroup, FormControl, ControlLabel, Container, Row, Col, Image} from "react-bootstrap";
 import API from '../../utils/API';
 
 export class Footer extends React.Component {
@@ -11,11 +11,11 @@ export class Footer extends React.Component {
 
 	render() {
 		return (
-			<Grid className="Accueil-footer">
+			<Container className="Accueil-footer">
     			<Row className="pied">
 					<h3>Pourquoi Subsquare ?</h3>
 				</Row>
-			</Grid>	
+			</Container>
 		)
 	}
 }

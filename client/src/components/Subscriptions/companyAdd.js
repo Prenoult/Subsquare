@@ -2,7 +2,7 @@
  * Created by Charles on 08/01/2019.
  */
 import React from 'react';
-import {Button, FormGroup, FormControl, ControlLabel, Grid, Row, Col} from "react-bootstrap";
+import {Button, FormGroup, FormControl, ControlLabel, Container, Row, Col} from "react-bootstrap";
 import API from '../../utils/API';
 import {Link} from 'react-router-dom';
 import {Menu} from '../Menu/Menu.js';
@@ -84,7 +84,7 @@ export class companyAdd extends React.Component {
     render() {
 
         return (
-            <Grid className="Form">
+            <Container className="Form">
                 <Row>
                     <Menu/>
                     <Col md={8} mdOffset={1}>
@@ -98,7 +98,7 @@ export class companyAdd extends React.Component {
                                         value={this.state.name}
                                         onChange={this.handleChange}
                                         placeholder= "Nom de l'abonnement"
-                                        className="FormContLog"/>
+                                        />
                                 </FormGroup>
                                 <FormGroup controlId="descri" bsSize="large">
                                     <FormControl
@@ -106,7 +106,7 @@ export class companyAdd extends React.Component {
                                         onChange={this.handleChange}
                                         type="text"
                                         placeholder= "Description de l'abonnement"
-                                        className="FormContLog"/>
+                                        />
                                 </FormGroup>
                                 <FormGroup controlId="category" bsSize="large">
                                     <FormControl
@@ -114,7 +114,7 @@ export class companyAdd extends React.Component {
                                         value={this.state.category}
                                         onChange={this.handleChange}
                                         type="text"
-                                        className="FormContLog">
+                                        >
                                             <option value="cat">Catégorie...</option>
                                             <option value="musique">Musique</option>
                                             <option value="actu">Actualité</option>
@@ -133,7 +133,7 @@ export class companyAdd extends React.Component {
                                         onChange={this.handleChange}
                                         type="number"
                                         placeholder= "Prix de l'abonnement"
-                                        className="FormContLog"/>
+                                        />
                                 </FormGroup>
                                 <FormGroup controlId="mensu" bsSize="large">
                                     <FormControl 
@@ -141,7 +141,7 @@ export class companyAdd extends React.Component {
                                         value={this.state.mensu}
                                         onChange={this.handleChange}
                                         type="text"
-                                        className="FormContLog">
+                                        >
                                             <option value="ren">Renouvellement...</option>
                                             <option value="hebdo">Hebdomadaire</option>
                                             <option value="mensuel">Mensuel</option>
@@ -156,7 +156,7 @@ export class companyAdd extends React.Component {
                                         onChange={this.handleChange}
                                         type="number"
                                         placeholder= "Période d'engagement en mois"
-                                        className="FormContLog"/>
+                                        />
                                 </FormGroup>
                             </Col>
                         </Row>
@@ -166,7 +166,7 @@ export class companyAdd extends React.Component {
                                     onClick={this.send}
                                     block
                                     bsSize="large"
-                                    bsStyle="primary"
+                                    variant="primary"
                                     type="submit"
                                     className="buttonEnv"
                                 >
@@ -176,7 +176,7 @@ export class companyAdd extends React.Component {
                         </Row>
                     </Col>
                 </Row>
-            </Grid>
+            </Container>
         )
     }
 }

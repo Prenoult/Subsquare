@@ -7,8 +7,8 @@ import {
     FormGroup,
     FormControl,
     Radio,
-    Well,
-    Grid,
+    Card,
+    Container,
     Row,
     Col
 } from "react-bootstrap";
@@ -94,7 +94,7 @@ export class Settings extends React.Component {
 
     render() {
         return (
-            <Grid className="Form">
+            <Container className="Form">
                 <Row>
                     <Menu/>
                     <Col md={8} mdOffset={1}>
@@ -103,7 +103,7 @@ export class Settings extends React.Component {
                             <Col md={6} className= "colonne-centree">
                             <br/>
                             {this.state.isModifying === false
-                                ? <Well bsSize="small"><b>Email :</b> {this.state.email}</Well>
+                                ? <Card bsSize="small"><Card.Body><b>Email :</b> {this.state.email}</Card.Body></Card>
                                 : <form>
                                     <FormGroup controlId="email">
                                         <InputGroup>
@@ -118,7 +118,7 @@ export class Settings extends React.Component {
                                 </form>
                             }
                             {this.state.isModifying === false
-                                ? <Well bsSize="small"><b>Nom :</b> {this.state.lastname}</Well>
+                                ? <Card bsSize="small"><Card.Body><b>Nom :</b> {this.state.lastname}</Card.Body></Card>
                                 : <form>
                                     <FormGroup controlId="lastname">
                                         <InputGroup>
@@ -133,7 +133,7 @@ export class Settings extends React.Component {
                                 </form>
                             }
                             {this.state.isModifying === false
-                                ? <Well bsSize="small"><b>Prénom :</b> {this.state.firstname}</Well>
+                                ? <Card bsSize="small"><Card.Body><b>Prénom :</b> {this.state.firstname}</Card.Body></Card>
                                 : <form>
                                     <FormGroup controlId="firstname">
                                         <InputGroup>
@@ -170,14 +170,15 @@ export class Settings extends React.Component {
                             {this.state.isModifying === false ?
                                 <Button onClick={this.modify.bind(this)} block>Modifier vos informations</Button>
                                 : <div><Button onClick={this.modify.bind(this)}
+                                               variant="light"
                                                block>Annuler</Button>
                                     <Button onClick={this.triggerModal.bind(this)}
-                                            bsStyle="success"
+                                            variant="success"
                                             block>Valider</Button>
                                 </div>
                             }
                             {this.state.isModifying === false &&
-                            <Button bsStyle="danger" block>
+                            <Button variant="danger" block>
                                 <Link to={"/settings/password"} className='linkButton'>
                                     Modifier votre mot de passe</Link>
                             </Button>}
@@ -195,7 +196,7 @@ export class Settings extends React.Component {
                         </Row>
                     </Col>
                 </Row>
-            </Grid>
+            </Container>
         )
     }
 }

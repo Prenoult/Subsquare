@@ -5,7 +5,7 @@
  * Created by Charles on 03/01/2019.
  */
 import React from 'react';
-import {Button, FormGroup, FormControl, ControlLabel, Grid, Row, Col, HelpBlock} from "react-bootstrap";
+import {Button, Form, FormGroup, FormControl, ControlLabel, Container, Row, Col, HelpBlock} from "react-bootstrap";
 import API from '../../utils/API';
 import {Link} from 'react-router-dom';
 import {EnteteLogo} from '../EnteteLogo/EnteteLogo.js';
@@ -57,25 +57,25 @@ export class Forgotten extends React.Component {
 
     render() {
         return (
-            <Grid className="Form">
+            <Container className="Form">
                 <EnteteLogo/>
                 <Row className="Form">
                     <form onSubmit={this.send}>
                     <Row>
                         <Col md={5} className= "colonne-centree">
                             <FormGroup controlId="email" bsSize="large" validationState={this.state.er}>
-                                <ControlLabel className="label">Réinitialiser votre mot de passe</ControlLabel>
-                                <FormControl 
-                                    autoFocus 
-                                    type="email" 
-                                    value={this.state.email} 
+                                <Form.Label>Réinitialiser votre mot de passe</Form.Label>
+                                <FormControl
+                                    autoFocus
+                                    type="email"
+                                    value={this.state.email}
                                     onChange={this.handleChange}
-                                    placeholder= "Entrez votre adresse mail ici"
-                                    className="FormContLog"/>
+                                    placeholder= "Veuillez saisir votre adresse email"
+                                    />
                                     {this.state.er === 'error' &&
-                                    <HelpBlock>L'adresse email que vous avez entré n'est pas présente dans nos fichiers. Veuillez vérifier et réessayer</HelpBlock>}
+                                    <Form.Control.Feedback>L'adresse email que vous avez entré n'est pas présente dans nos fichiers. Veuillez vérifier et réessayer</Form.Control.Feedback>}
                                     {this.state.er === 'success' &&
-                                    <HelpBlock>Votre mot de passe a été réinitialisé et il vous a été envoyé par mail</HelpBlock>}
+                                    <Form.Control.Feedback>Votre mot de passe a été réinitialisé et il vous a été envoyé par mail</Form.Control.Feedback>}
                             </FormGroup>
                         </Col>
                     </Row>
@@ -84,7 +84,7 @@ export class Forgotten extends React.Component {
                             <Button
                                 block
                                 bsSize="large"
-                                bsStyle="primary"
+                                variant="primary"
                                 type="submit"
                                 className="buttonEnv"
                             >
@@ -98,7 +98,7 @@ export class Forgotten extends React.Component {
                     <Link to={"/"} >Retour à la connexion</Link>
                 </Row>
                 <Footer page="LOGIN"/>
-            </Grid>
+            </Container>
         )
     }
 }

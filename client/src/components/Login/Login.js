@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {Button, FormGroup, FormControl, ControlLabel, Grid, Row, Col, HelpBlock} from "react-bootstrap";
+import {Button, Form, FormGroup, FormControl, ControlLabel, Container, Row, Col} from "react-bootstrap";
 import {EnteteLogo} from '../EnteteLogo/EnteteLogo.js'
 import API from '../../utils/API';
 import {Footer} from '../Footer/Footer.js';
@@ -13,7 +13,7 @@ export class Login extends React.Component {
         this.state = {
             email: "",
             password: "",
-            er:null,
+            error: null,
         };
         this.handleChange.bind(this);
         this.send.bind(this);
@@ -37,7 +37,7 @@ export class Login extends React.Component {
             window.location = "/dashboard"
         }, function (error) {
             that.setState({
-                er: "error"
+                error: "error"
             });
         })
     };
@@ -49,54 +49,56 @@ export class Login extends React.Component {
 
     render() {
         return (
-            <Grid className="Form">
+            <Container className="Form">
                 <EnteteLogo/>
                 <Row className="Form">
                     <form onSubmit={this.send}>
                         <Row>
-                            <Col md={5} className= "colonne-centree">
-                                <FormGroup controlId="email" bsSize="large" validationState={this.state.er}>
-                                    {this.state.er === 'error' &&
-                                    <HelpBlock>Le nom d'utilisateur et le mot de passe que vous avez entrés ne correspondent pas à ceux présents dans nos fichiers. Veuillez vérifier et réessayer</HelpBlock>}
-                                    <FormControl 
-                                        autoFocus type="email" 
-                                        value={this.state.email} 
+                            <Col className= "colonne-centree">
+                                <FormGroup controlId="email" bsSize="large" validationState={this.state.error}>
+                                    {this.state.error === 'error' &&
+                                    <Form.Control.Feedback type="invalid">Le nom d'utilisateur et le mot de passe que vous avez entrés ne correspondent pas à ceux présents dans nos fichiers. Veuillez vérifier et réessayer</Form.Control.Feedback>}
+                                    <FormControl
+                                        autoFocus type="email"
+                                        value={this.state.email}
                                         onChange={this.handleChange}
-                                        placeholder= "ADRESSE EMAIL"
-                                        className="FormContLog"/>
+                                        placeholder= "Email"
+                                        />
                                     </FormGroup>
-                                <FormGroup controlId="password" bsSize="large" validationState={this.state.er}>
-                                    <FormControl 
-                                        value={this.state.password} 
-                                        onChange={this.handleChange} 
+                                <FormGroup controlId="password" bsSize="large" validationState={this.state.error}>
+                                    <FormControl
+                                        value={this.state.password}
+                                        onChange={this.handleChange}
                                         type="password"
-                                        placeholder= "MOT DE PASSE"
-                                        className="FormContLog"/>
+                                        placeholder= "Mot de passe"
+                                        />
                                 </FormGroup>
                             </Col>
                         </Row>
                         <Row>
-                            <Col md={2} className= "colonne-centree">
+                            <Col className="colonne-centree">
                                 <Button
                                     block
                                     bsSize="large"
-                                    bsStyle="primary"
+                                    variant="primary"
                                     type="submit"
                                     className="buttonEnv"
                                 >
                                     CONNEXION
                                 </Button>
+                                <Link to={"/signup"} >Vous ne possedez pas de compte ?</Link>
+                                <br/>
+                                <Link to={"/forgotten"}>Mot de passe oublié ?</Link>
+                                <br/>
                             </Col>
                         </Row>
                     </form>
                     <Row className= "centrer">
-                        <Link to={"/signup"} >Vous ne possedez pas de compte ?</Link>
-                        <br/>
-                        <Link to={"/forgotten"}>Mot de passe oublié ?</Link>
+
                     </Row>
                 </Row>
                 <Footer page="LOGIN"/>
-            </Grid>
+            </Container>
         )
     }
 }

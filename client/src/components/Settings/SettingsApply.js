@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Grid, Row, Col, Carousel, FormGroup, FormControl} from "react-bootstrap";
+import {Button, Container, Row, Col, Carousel, FormGroup, FormControl} from "react-bootstrap";
 import {Link} from 'react-router-dom';
 import {Menu} from '../Menu/Menu.js';
 import {Header} from '../Header/Header.js';
@@ -58,7 +58,7 @@ export class SettingsApply extends React.Component {
 
     render() {
         return (
-            <Grid>
+            <Container>
                 <Row>
                     <Menu/>
                     <Col md={8} mdOffset={1}>
@@ -74,14 +74,14 @@ export class SettingsApply extends React.Component {
                                                 value={this.state.nom} 
                                                 onChange={this.handleChange}
                                                 placeholder= "NOM DE L'ENTREPRISE"
-                                                className="FormContLog"/>
+                                                />
                                         </FormGroup>
                                         <FormGroup controlId="numSiret" bsSize="large">
                                             <FormControl 
                                                 value={this.state.numSiret} 
                                                 onChange={this.handleChange} 
                                                 placeholder= "NUMERO DE SIRET"
-                                                className="FormContLog"/>
+                                                />
                                         </FormGroup>
                                         <FormGroup controlId="numTel" bsSize="large">
                                             <FormControl 
@@ -89,28 +89,28 @@ export class SettingsApply extends React.Component {
                                                 value={this.state.numTel} 
                                                 onChange={this.handleChange} 
                                                 placeholder= "NUMERO DE TELEPHONE"
-                                                className="FormContLog"/>
+                                                />
                                         </FormGroup>
                                         <FormGroup controlId="adresse" bsSize="large">
                                             <FormControl 
                                                 value={this.state.adresse} 
                                                 onChange={this.handleChange} 
                                                 placeholder= "ADRESSE"
-                                                className="FormContLog"/>
+                                                />
                                         </FormGroup>
                                         <FormGroup controlId="codePostal" bsSize="large">
                                             <FormControl 
                                                 value={this.state.codePostal} 
                                                 onChange={this.handleChange} 
                                                 placeholder= "CODE POSTAL"
-                                                className="FormContLog"/>
+                                                />
                                         </FormGroup>
                                         <FormGroup controlId="ville" bsSize="large">
                                             <FormControl 
                                                 value={this.state.ville} 
                                                 onChange={this.handleChange} 
                                                 placeholder= "VILLE"
-                                                className="FormContLog"/>
+                                                />
                                         </FormGroup>
                                     </Col>
                                 </Row>
@@ -119,7 +119,7 @@ export class SettingsApply extends React.Component {
                                         <Button
                                             block
                                             bsSize="large"
-                                            bsStyle="primary"
+                                            variant="primary"
                                             type="submit"
                                             className="buttonEnv"
                                         >
@@ -131,7 +131,7 @@ export class SettingsApply extends React.Component {
                         </Row>
                     </Col>
                 </Row>
-            </Grid>
+            </Container>
         )
     }
 }

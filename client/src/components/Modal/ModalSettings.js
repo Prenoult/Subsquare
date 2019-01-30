@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, FormControl, FormGroup, ControlLabel, Modal} from "react-bootstrap";
+import {Button, Form, FormControl, FormGroup, Modal} from "react-bootstrap";
 
 
 export class ModalSettings extends React.Component {
@@ -15,12 +15,12 @@ export class ModalSettings extends React.Component {
                 </Modal.Header>
                 <Modal.Body>
                     <FormGroup controlId="password" validationState={null}>
-                        <ControlLabel>Veuillez confirmer la modification à l'aide votre mot de passe</ControlLabel>
+                        <Form.Label>Veuillez confirmer la modification à l'aide votre mot de passe</Form.Label>
                         <FormControl autoFocus type="password" placeholder="Mot de passe" value={this.props.value} onChange={this.props.onChange}/>
                     </FormGroup>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button onClick={this.props.onSubmit} bsStyle="success">Confirmer</Button>
+                    <Button onClick={this.props.onSubmit} variant="success">Confirmer</Button>
                 </Modal.Footer>
             </Modal>
         );

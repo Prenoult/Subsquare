@@ -65,11 +65,6 @@ body {
     width: 100%;
 }
 
-.FormContLog {
-    border-color: white;
-    border-radius: 15px 15px 0px 0px;
-}
-
 .LogoLog {
     margin-top: 7%;
     text-align: center;
@@ -94,6 +89,7 @@ h3 {
 .colonne-centree {
     float: none;
     margin: 0 auto;
+    text-align: center;
 }
 .centrer {
     text-align: center;
@@ -109,6 +105,7 @@ a.linkButton {
     color: white;
     text-decoration: none;
 }
+/* --- */
 
 .buttonEnv {
     margin-top: 15px;
