@@ -18,7 +18,7 @@ export class Forgotten extends React.Component {
         this.send.bind(this);
         this.state = {
             email: "",
-            er:null
+            er: null
         };
     }
 
@@ -60,44 +60,45 @@ export class Forgotten extends React.Component {
             <Container className="Form">
                 <EnteteLogo/>
                 <Row className="Form">
-                    <form onSubmit={this.send}>
-                    <Row>
-                        <Col md={5} className= "colonne-centree">
-                            <FormGroup controlId="email" bsSize="large" validationState={this.state.er}>
-                                <Form.Label>Réinitialiser votre mot de passe</Form.Label>
-                                <FormControl
-                                    autoFocus
-                                    type="email"
-                                    value={this.state.email}
-                                    onChange={this.handleChange}
-                                    placeholder= "Veuillez saisir votre adresse email"
-                                    />
-                                    {this.state.er === 'error' &&
-                                    <Form.Control.Feedback>L'adresse email que vous avez entré n'est pas présente dans nos fichiers. Veuillez vérifier et réessayer</Form.Control.Feedback>}
-                                    {this.state.er === 'success' &&
-                                    <Form.Control.Feedback>Votre mot de passe a été réinitialisé et il vous a été envoyé par mail</Form.Control.Feedback>}
-                            </FormGroup>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col md={2} className= "colonne-centree">
-                            <Button
-                                block
-                                bsSize="large"
-                                variant="primary"
-                                type="submit"
-                                className="buttonEnv"
-                            >
-                                VALIDER
-                            </Button>
-                        </Col>
-                    </Row>
-                    </form>
+                    <Col md={{span: 4, offset: 4}}>
+                        <form onSubmit={this.send}>
+                            <Row>
+                                <Col>
+                                    <FormGroup controlId="email" bsSize="large" validationState={this.state.er}>
+                                        <Form.Label>Réinitialiser votre mot de passe</Form.Label>
+                                        <FormControl
+                                            autoFocus
+                                            type="email"
+                                            value={this.state.email}
+                                            onChange={this.handleChange}
+                                            placeholder="Veuillez saisir votre adresse email"
+                                        />
+                                        {this.state.er === 'error' &&
+                                        <Form.Control.Feedback>L'adresse email que vous avez entré n'est pas présente
+                                            dans nos fichiers. Veuillez vérifier et réessayer</Form.Control.Feedback>}
+                                        {this.state.er === 'success' &&
+                                        <Form.Control.Feedback>Votre mot de passe a été réinitialisé et il vous a été
+                                            envoyé par mail</Form.Control.Feedback>}
+                                    </FormGroup>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col className="colonne-centree">
+                                    <Button
+                                        block
+                                        bsSize="large"
+                                        variant="primary"
+                                        type="submit"
+                                        className="buttonEnv"
+                                    >
+                                        VALIDER
+                                    </Button>
+                                    <Link to={"/"}>Retour à la connexion</Link>
+                                </Col>
+                            </Row>
+                        </form>
+                    </Col>
                 </Row>
-                <Row className= "centrer">
-                    <Link to={"/"} >Retour à la connexion</Link>
-                </Row>
-                <Footer page="LOGIN"/>
             </Container>
         )
     }
