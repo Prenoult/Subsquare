@@ -54,7 +54,7 @@ export class Login extends React.Component {
                 <Row className="Form">
                     <form onSubmit={this.send}>
                         <Row>
-                            <Col md={5} className= "colonne-centree">
+                            <Col xs={6} sm={5} md={5} className= "colonne-centree">
                                 <FormGroup controlId="email" bsSize="large" validationState={this.state.er}>
                                     {this.state.er === 'error' &&
                                     <HelpBlock>Le nom d'utilisateur et le mot de passe que vous avez entrés ne correspondent pas à ceux présents dans nos fichiers. Veuillez vérifier et réessayer</HelpBlock>}
@@ -76,7 +76,7 @@ export class Login extends React.Component {
                             </Col>
                         </Row>
                         <Row>
-                            <Col md={2} className= "colonne-centree">
+                            <Col xs={7} sm={6} md={6} className= "colonne-centree">
                                 <Button
                                     block
                                     bsSize="large"
@@ -95,7 +95,6 @@ export class Login extends React.Component {
                         <Link to={"/forgotten"}>Mot de passe oublié ?</Link>
                     </Row>
                 </Row>
-                <Footer page="LOGIN"/>
             </Grid>
         )
     }

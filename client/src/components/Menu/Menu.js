@@ -6,7 +6,7 @@ export class Menu extends React.Component {
 
 	render() {
 		return (
-			<Col sm={2} md={4} xs={1} className="montagne">
+			<Col sm={2} md={2} xs={1} className="montagne">
 				<Row>
 					<Image src={require('../../img/Logo.png')}  
                 		style={{ width: 280,

@@ -17,10 +17,10 @@ export class Header extends React.Component {
 	render() {
 		return (
 			<Row className="entete">
-				<Col md={8} style={{fontSize:30}}>
+				<Col sm={6} md={4} style={{fontSize:30}}>
 					{this.page}
 				</Col>
-				<Col mdOffset={8} style={{fontSize:20, marginTop:10, color:'grey'}}>
+				<Col mdOffset={6} md={8} style={{fontSize:20, marginTop:10, color:'grey'}}>
 					<Nom/>
 					{localStorage.getItem("account") === "false" 
 					? <Link to={"/Settings"}>
