@@ -51,6 +51,9 @@ export default {
     getSub: function (send) {
         return axios.post(burl + '/subscriptions/get', send, {headers: headers})
     },
+    allSubscriptions: function (send) {
+        return axios.post(burl + '/subscriptions/all', send, {headers: headers})
+    },
     createSub: function (send) {
         return axios.post(burl + '/subscriptions/create', send, {headers: headers})
     },

@@ -1,9 +1,62 @@
 const Subscription = require('../../schema/schemaSubscription.js');
 const User = require('../../schema/schemaUser.js');
+
 function get(req, res) {
-    res.status(200).json({
-        "text": "Il n'existe pas d'abonnement dans la base de données"
-    })
+    if(!req.body.email){
+        res.status(400).json({
+            "text": "Requête invalide"
+        })
+    }else {
+        User.findOne({
+            email: req.body.email
+        }, function (err, user) {
+            if(user){
+                Subscription.find({ _id: { $in: user.sub } }, function (err, s){
+                    if (s){
+                        res.status(200).json({
+                            "text": "succees",
+                            "dd":s
+                        })
+                    }
+                });
+            }else{
+                res.status(500).json({
+                    "text": "Erreur interne"
+                })
+            }
+        })
+
+
+    }
+}
+
+function allSubs(req,res){
+    if(!req.body.email){
+        res.status(400).json({
+            "text": "Requête invalide"
+        })
+    }else {
+        User.findOne({
+            email: req.body.email
+        }, function (err, user) {
+            if(user){
+                Subscription.find({ _id: { $nin: user.sub } }, function (err, s){
+                    if (s){
+                        res.status(200).json({
+                            "text": "succees",
+                            "sub":s
+                        })
+                    }
+                });
+            }else{
+                res.status(500).json({
+                    "text": "Erreur interne"
+                })
+            }
+        })
+
+
+    }
 }
 
 function create(req, res) {
@@ -133,3 +186,4 @@ function create(req, res) {
 
 exports.get = get;
 exports.create = create;
+exports.allSubs = allSubs;
