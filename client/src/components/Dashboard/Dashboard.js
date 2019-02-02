@@ -22,7 +22,7 @@ export class Dashboard extends React.Component {
             <Grid className="Dashboard">
                 <Row>
                     <Menu/>
-                    <Col md={8} mdOffset={1}>
+                    <Col md={8} mdOffset lg={8} lgOffset>
                         <Header page="ACCUEIL"/>
                         <Row>
                         </Row>
