@@ -45,7 +45,7 @@ export class SettingsMail extends React.Component {
 
     render() {
         return (
-            <Container className="Form">
+            <Container className="Form" fluid>
                 <Row>
                     <Col md={{ span: 2, offset: 0 }}>
                         <Menu/>

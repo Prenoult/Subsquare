@@ -1,6 +1,3 @@
-/**
- * Created by Charles on 08/01/2019.
- */
 import React from 'react';
 import {Container, Row, Col} from "react-bootstrap";
 import API from '../../utils/API';
@@ -31,7 +28,7 @@ export class userAdd extends React.Component {
     render() {
 
         return (
-            <Container className="Form">
+            <Container className="Form" fluid>
                 <Row>
                     <Col md={{ span: 2, offset: 0 }}>
                         <Menu/>

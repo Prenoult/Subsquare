@@ -122,7 +122,7 @@ export class Signup extends React.Component {
 
     render() {
         return (
-            <Container className="Form">
+            <Container className="Form" fluid>
                 <EnteteLogo/>
                     <Row className="Form">
                         <Col md={4} className="colonne-centree">

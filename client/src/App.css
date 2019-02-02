@@ -17,6 +17,10 @@
     color: white;
 }
 
+/*.container{
+    max-width: 100%;
+}*/
+
 .Accueil-footer {
     background-color: #6a6cac;
     display: flex;
@@ -148,10 +152,11 @@ a.linkButton {
 
 .montagne {
     /*background-image: url("img/Montagne.jpg");*/
+    background-color: white;
     background-size: 'cover';
     background-attachment: fixed;
     height: 100vh;
-    min-width: 300px;
+    min-width: 270px;
 }
 
 .entete {

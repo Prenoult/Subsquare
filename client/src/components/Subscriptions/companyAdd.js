@@ -81,7 +81,7 @@ export class companyAdd extends React.Component {
     render() {
 
         return (
-            <Container>
+            <Container fluid>
                 <Row>
                     <Col md={{ span: 2, offset: 0 }}>
                         <Menu/>
