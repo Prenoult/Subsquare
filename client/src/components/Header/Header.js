@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {Button, FormGroup, FormControl, ControlLabel, Grid, Row, Col, Image} from "react-bootstrap";
+import {Row, Col, Image} from "react-bootstrap";
 import API from '../../utils/API';
 
 export class Header extends React.Component {
@@ -20,7 +20,7 @@ export class Header extends React.Component {
 				<Col md={2} style={{fontSize:30}}>
 					{this.page}
 				</Col>
-				<Col md={4} mdOffset={6} style={{fontSize:20, marginTop:10, color:'grey'}}>
+				<Col md={{ span: 4, offset: 6}}  style={{fontSize:20, marginTop:10, color:'grey'}}>
 					<Nom/>
 					{localStorage.getItem("account") === "false" 
 					? <Link to={"/Settings"}>

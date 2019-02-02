@@ -1,9 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {Button, Form, FormGroup, FormControl, ControlLabel, HelpBlock, Container, Row, Col} from "react-bootstrap";
+import {Button, Form, Container, Row, Col} from "react-bootstrap";
 import {EnteteLogo} from '../EnteteLogo/EnteteLogo.js'
 import API from '../../utils/API';
-import {Footer} from '../Footer/Footer.js';
 
 export class Signup extends React.Component {
     constructor(props) {
@@ -126,63 +125,57 @@ export class Signup extends React.Component {
             <Container className="Form">
                 <EnteteLogo/>
                     <Row className="Form">
-                        <Col md={{span: 4, offset: 4}}>
-                        <form onSubmit={this.send}>
+                        <Col md={4} className="colonne-centree">
+                        <Form onSubmit={this.send}>
                             <Row>
                                 <Col>
-                                    <FormGroup controlId="email" bsSize="large"
-                                               validationState={this.state.vsEmail && this.state.error}>
-                                        <FormControl
+                                    <Form.Group controlId="email" size="lg">
+                                        <Form.Control
                                             type="email"
                                             value={this.state.email}
                                             onChange={this.handleChange}
                                             onBlur={this.handleBlurEmail.bind(this)}
                                             placeholder="Email"
+                                            isInvalid={this.state.error == 'error'}
                                         />
-                                        {this.state.vsEmail === 'error' &&
-                                        <Form.Control.Feedback>Veuillez saisir une adresse email
-                                            valide</Form.Control.Feedback>}
-                                        {this.state.error === 'error' &&
-                                        <Form.Control.Feedback>L'adresse mail que vous avez entrée correspond déjà à un
+                                        <Form.Control.Feedback type="invalid">L'adresse mail que vous avez entrée correspond déjà à un
                                             compte. Veuillez
-                                            vérifier et réessayer</Form.Control.Feedback>}
-                                        <FormControl.Feedback/>
-                                    </FormGroup>
-                                    <FormGroup controlId="password" bsSize="large"
-                                               validationState={this.state.vsPassword}>
-                                        <FormControl
+                                            vérifier et réessayer</Form.Control.Feedback>
+                                        <Form.Control.Feedback/>
+                                    </Form.Group>
+                                    <Form.Group controlId="password" size="lg">
+                                        <Form.Control
                                             value={this.state.password}
                                             onChange={this.handleChange}
                                             onBlur={this.handleBlurPassword.bind(this)}
                                             type="password"
                                             placeholder="Mot de passe"
+                                            isInvalid={this.state.vsPassword == 'error'}
                                         />
-                                        {this.state.vsPassword === 'error' &&
-                                        <Form.Control.Feedback>Votre mot de passe doit contenir au moins 8 caractères
+                                        <Form.Control.Feedback type="invalid">Votre mot de passe doit contenir au moins 8 caractères
                                             dont 1
                                             majuscule, 1
-                                            minuscule, 1 chiffre et 1 caractère spécial</Form.Control.Feedback>}
-                                    </FormGroup>
-                                    <FormGroup controlId="cpassword" bsSize="large"
-                                               validationState={this.state.vsCPassword}>
-                                        <FormControl
+                                            minuscule, 1 chiffre et 1 caractère spécial</Form.Control.Feedback>
+                                    </Form.Group>
+                                    <Form.Group controlId="cpassword" size="lg">
+                                        <Form.Control
                                             value={this.state.cpassword}
                                             onChange={this.handleChange}
                                             onBlur={this.handleBlurCPassword.bind(this)}
                                             type="password"
                                             placeholder="Confirmer mot de passe"
+                                            isInvalid={this.state.vsCPassword == 'error'}
                                         />
-                                        {this.state.vsCPassword === 'error' &&
-                                        <Form.Control.Feedback>Les mots de passe doivent être
-                                            identiques</Form.Control.Feedback>}
-                                    </FormGroup>
+                                        <Form.Control.Feedback type="invalid">Les mots de passe doivent être
+                                            identiques</Form.Control.Feedback>
+                                    </Form.Group>
                                 </Col>
                             </Row>
                             <Row>
                                 <Col className="colonne-centree">
                                     <Button
                                         block
-                                        bsSize="large"
+                                        size="md"
                                         variant="primary"
                                         type="submit"
                                         className="buttonEnv"
@@ -192,7 +185,7 @@ export class Signup extends React.Component {
                                     <Link to={"/"}>Vous possedez déjà un compte ?</Link>
                                 </Col>
                             </Row>
-                        </form>
+                        </Form>
                         </Col>
                     </Row>
             </Container>

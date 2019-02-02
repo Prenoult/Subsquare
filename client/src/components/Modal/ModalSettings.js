@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Form, FormControl, FormGroup, Modal} from "react-bootstrap";
+import {Button, Form, Modal} from "react-bootstrap";
 
 
 export class ModalSettings extends React.Component {
@@ -7,17 +7,17 @@ export class ModalSettings extends React.Component {
         return (
             <Modal
                 {...this.props}
-                bsSize="large"
+                size="lg"
                 aria-labelledby="contained-modal-title-lg"
             >
                 <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title-lg">Modification des informations du profil</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <FormGroup controlId="password" validationState={null}>
+                    <Form.Group controlId="password">
                         <Form.Label>Veuillez confirmer la modification à l'aide votre mot de passe</Form.Label>
-                        <FormControl autoFocus type="password" placeholder="Mot de passe" value={this.props.value} onChange={this.props.onChange}/>
-                    </FormGroup>
+                        <Form.Control autoFocus type="password" placeholder="Mot de passe" value={this.props.value} onChange={this.props.onChange}/>
+                    </Form.Group>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button onClick={this.props.onSubmit} variant="success">Confirmer</Button>

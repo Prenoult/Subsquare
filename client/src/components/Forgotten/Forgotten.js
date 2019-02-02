@@ -1,15 +1,8 @@
-/**
- * Created by Charles on 05/01/2019.
- */
-/**
- * Created by Charles on 03/01/2019.
- */
 import React from 'react';
-import {Button, Form, FormGroup, FormControl, ControlLabel, Container, Row, Col, HelpBlock} from "react-bootstrap";
+import {Button, Form, Container, Row, Col} from "react-bootstrap";
 import API from '../../utils/API';
 import {Link} from 'react-router-dom';
 import {EnteteLogo} from '../EnteteLogo/EnteteLogo.js';
-import {Footer} from '../Footer/Footer.js';
 
 export class Forgotten extends React.Component {
     constructor(props) {
@@ -60,33 +53,33 @@ export class Forgotten extends React.Component {
             <Container className="Form">
                 <EnteteLogo/>
                 <Row className="Form">
-                    <Col md={{span: 4, offset: 4}}>
-                        <form onSubmit={this.send}>
+                    <Col md={4} className="colonne-centree">
+                        <Form onSubmit={this.send}>
                             <Row>
                                 <Col>
-                                    <FormGroup controlId="email" bsSize="large" validationState={this.state.er}>
+                                    <Form.Group controlId="email" size="lg" className="colonne-centree label">
                                         <Form.Label>Réinitialiser votre mot de passe</Form.Label>
-                                        <FormControl
+                                        <Form.Control
                                             autoFocus
                                             type="email"
                                             value={this.state.email}
                                             onChange={this.handleChange}
                                             placeholder="Veuillez saisir votre adresse email"
+                                            isInvalid={this.state.er=='error'}
+                                            isValid={this.state.er=='success'}
                                         />
-                                        {this.state.er === 'error' &&
-                                        <Form.Control.Feedback>L'adresse email que vous avez entré n'est pas présente
-                                            dans nos fichiers. Veuillez vérifier et réessayer</Form.Control.Feedback>}
-                                        {this.state.er === 'success' &&
-                                        <Form.Control.Feedback>Votre mot de passe a été réinitialisé et il vous a été
-                                            envoyé par mail</Form.Control.Feedback>}
-                                    </FormGroup>
+                                        <Form.Control.Feedback type="invalid">L'adresse email que vous avez entré n'est pas présente
+                                            dans nos fichiers. Veuillez vérifier et réessayer</Form.Control.Feedback>
+                                        <Form.Control.Feedback type= "valid">Votre mot de passe a été réinitialisé et il vous a été
+                                            envoyé par mail</Form.Control.Feedback>
+                                    </Form.Group>
                                 </Col>
                             </Row>
                             <Row>
                                 <Col className="colonne-centree">
                                     <Button
                                         block
-                                        bsSize="large"
+                                        size="md"
                                         variant="primary"
                                         type="submit"
                                         className="buttonEnv"
@@ -96,7 +89,7 @@ export class Forgotten extends React.Component {
                                     <Link to={"/"}>Retour à la connexion</Link>
                                 </Col>
                             </Row>
-                        </form>
+                        </Form>
                     </Col>
                 </Row>
             </Container>

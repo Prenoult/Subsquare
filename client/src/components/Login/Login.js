@@ -1,9 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {Button, Form, FormGroup, FormControl, ControlLabel, Container, Row, Col} from "react-bootstrap";
+import {Button, Form, Container, Row, Col} from "react-bootstrap";
 import {EnteteLogo} from '../EnteteLogo/EnteteLogo.js'
 import API from '../../utils/API';
-import {Footer} from '../Footer/Footer.js';
 
 export class Login extends React.Component {
     constructor(props) {
@@ -52,38 +51,39 @@ export class Login extends React.Component {
             <Container className="Form">
                 <EnteteLogo/>
                 <Row className="Form">
-                    <Col md={{span: 4, offset: 4}}>
-                        <form onSubmit={this.send}>
+                    <Col md={4} className="colonne-centree">
+                        <Form onSubmit={this.send}>
                             <Row>
                                 <Col>
-                                    <FormGroup controlId="email" bsSize="large" validationState={this.state.error}>
-                                        {this.state.error === 'error' &&
-                                        <Form.Control.Feedback type="invalid">Le nom d'utilisateur et le mot de passe
-                                            que
-                                            vous avez entrés ne correspondent pas à ceux présents dans nos fichiers.
-                                            Veuillez vérifier et réessayer</Form.Control.Feedback>}
-                                        <FormControl
+                                    <Form.Group controlId="email" size="lg">
+                                        <Form.Control
                                             autoFocus type="email"
                                             value={this.state.email}
                                             onChange={this.handleChange}
                                             placeholder="Email"
+                                            isInvalid={this.state.error=='error'}
                                         />
-                                    </FormGroup>
-                                    <FormGroup controlId="password" bsSize="large" validationState={this.state.error}>
-                                        <FormControl
+                                        <Form.Control.Feedback type="invalid">Le nom d'utilisateur et le mot de passe
+                                            que
+                                            vous avez entrés ne correspondent pas à ceux présents dans nos fichiers.
+                                            Veuillez vérifier et réessayer</Form.Control.Feedback>
+                                    </Form.Group>
+                                    <Form.Group controlId="password" size="lg">
+                                        <Form.Control
                                             value={this.state.password}
                                             onChange={this.handleChange}
                                             type="password"
                                             placeholder="Mot de passe"
+                                            isInvalid={this.state.error=='error'}
                                         />
-                                    </FormGroup>
+                                    </Form.Group>
                                 </Col>
                             </Row>
                             <Row>
                                 <Col className="colonne-centree">
                                     <Button
                                         block
-                                        bsSize="large"
+                                        size="md"
                                         type="submit"
                                         className="buttonEnv"
                                     >
@@ -95,7 +95,7 @@ export class Login extends React.Component {
                                     <br/>
                                 </Col>
                             </Row>
-                        </form>
+                        </Form>
                     </Col>
                 </Row>
             </Container>

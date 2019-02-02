@@ -1,8 +1,5 @@
-/**
- * Created by Charles on 03/01/2019.
- */
 import React from 'react';
-import {Button, FormGroup, FormControl, ControlLabel, Container, Row, Col, Image} from "react-bootstrap";
+import {Button, Form, Container, Row, Col} from "react-bootstrap";
 import API from '../../utils/API';
 import {Menu} from '../Menu/Menu.js';
 import {Header} from '../Header/Header.js';
@@ -49,51 +46,57 @@ export class SettingsPassword extends React.Component {
         return (
             <Container className="Form">
                 <Row>
-                    <Menu/>
-                    <Col md={8} mdOffset={1}>
+                    <Col md={{ span: 2, offset: 0 }}>
+                        <Menu/>
+                    </Col>
+                    <Col md={{ span: 8, offset: 1 }}>
                         <Header page="PROFIL"/>
-                        <Col md={6}>
+                        <Row>
+                            <h2>
+                                MODIFICATION MOT DE PASSE:
+                            </h2>
+                        </Row>
+                        <Form>
                             <Row>
-                                <Col md={6} className="label">
-                                    MODIFICATION MOT DE PASSE:
-                                </Col>
+                            <Col md={6} className="colonne-centree">
+                            <Form.Group controlId="password" size="lg">
+                                <Form.Control 
+                                    value={this.state.password} 
+                                    onChange={this.handleChange} 
+                                    type="password"
+                                    placeholder= "ANCIEN MOT DE PASSE"/>
+                            </Form.Group>
+                            <Form.Group controlId="npassword" bsSize="large">
+                                <Form.Control 
+                                    value={this.state.npassword} 
+                                    onChange={this.handleChange} 
+                                    type="password"
+                                    placeholder= "NOUVEAU MOT DE PASSE"/>
+                            </Form.Group>
+                            <Form.Group controlId="cpassword" bsSize="large">    
+                                <Form.Control 
+                                    value={this.state.cpassword} 
+                                    onChange={this.handleChange} 
+                                    type="password"
+                                    placeholder= "CONFIRMATION NOUVEAU MOT DE PASSE"/>
+                            </Form.Group>
+                            </Col>
                             </Row>
                             <Row>
-                                <FormGroup controlId="password" bsSize="large">
-                                    <FormControl 
-                                        value={this.state.password} 
-                                        onChange={this.handleChange} 
-                                        type="password"
-                                        placeholder= "ANCIEN MOT DE PASSE"/>
-                                </FormGroup>
-                                <FormGroup controlId="npassword" bsSize="large">
-                                    <FormControl 
-                                        value={this.state.npassword} 
-                                        onChange={this.handleChange} 
-                                        type="password"
-                                        placeholder= "NOUVEAU MOT DE PASSE"/>
-                                </FormGroup>
-                                <FormGroup controlId="cpassword" bsSize="large">    
-                                    <FormControl 
-                                        value={this.state.cpassword} 
-                                        onChange={this.handleChange} 
-                                        type="password"
-                                        placeholder= "CONFIRMATION NOUVEAU MOT DE PASSE"/>
-                                </FormGroup>
-                                <Col md={3} className= "colonne-centree">
-                                    <Button
-                                        onClick={this.send}
-                                        block
-                                        bsSize="large"
-                                        variant="primary"
-                                        type="submit"
-                                        className="buttonEnv"
-                                    >
-                                        MODIFIER
-                                    </Button>
+                                <Col md={6} className="colonne-centree">
+                                <Button
+                                    onClick={this.send}
+                                    block
+                                    size="md"
+                                    variant="primary"
+                                    type="submit"
+                                    className="buttonEnv"
+                                >
+                                    MODIFIER
+                                </Button>
                                 </Col>
                             </Row>
-                        </Col>
+                        </Form>
                     </Col>
                 </Row>
             </Container>

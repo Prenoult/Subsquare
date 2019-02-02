@@ -1,28 +1,21 @@
 import React from 'react';
-import {Button, Container, Row, Col, Carousel} from "react-bootstrap";
-import {Link} from 'react-router-dom';
+import {Container, Row, Col} from "react-bootstrap";
 import {Menu} from '../Menu/Menu.js';
 import {Header} from '../Header/Header.js';
-
-import API from '../../utils/API';
 
 export class Dashboard extends React.Component {
     constructor(props) {
         super(props);
-        this.disconnect.bind(this);
     }
-
-    disconnect = event => {
-        API.logout();
-        window.location = "/";
-    };
 
     render() {
         return (
             <Container className="Dashboard">
                 <Row>
-                    <Menu/>
-                    <Col md={8} mdOffset={1}>
+                    <Col md={{ span: 2, offset: 0 }}>
+                        <Menu/>
+                    </Col>
+                    <Col md={{ span: 8, offset: 1 }}>
                         <Header page="ACCUEIL"/>
                         <Row>
                         </Row>

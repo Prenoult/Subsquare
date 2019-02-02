@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Container, Row, Col, Carousel, FormGroup, FormControl} from "react-bootstrap";
+import {Button, Container, Row, Col, Form} from "react-bootstrap";
 import {Link} from 'react-router-dom';
 import {Menu} from '../Menu/Menu.js';
 import {Header} from '../Header/Header.js';
@@ -60,74 +60,78 @@ export class SettingsApply extends React.Component {
         return (
             <Container>
                 <Row>
-                    <Menu/>
-                    <Col md={8} mdOffset={1}>
+                    <Col md={{ span: 2, offset: 0 }}>
+                        <Menu/>
+                    </Col>
+                    <Col md={{ span: 8, offset: 1 }}>
                         <Header page="PROFIL"/>
                         <Row>
                             <h3>Veuillez remplir ce formulaire afin de demander un compte entreprise</h3>
-                            <form onSubmit={this.send}>
-                                <Row>
-                                    <Col md={6} className= "colonne-centree">
-                                        <FormGroup controlId="nom" bsSize="large">
-                                            <FormControl 
-                                                autoFocus 
-                                                value={this.state.nom} 
-                                                onChange={this.handleChange}
-                                                placeholder= "NOM DE L'ENTREPRISE"
-                                                />
-                                        </FormGroup>
-                                        <FormGroup controlId="numSiret" bsSize="large">
-                                            <FormControl 
-                                                value={this.state.numSiret} 
-                                                onChange={this.handleChange} 
-                                                placeholder= "NUMERO DE SIRET"
-                                                />
-                                        </FormGroup>
-                                        <FormGroup controlId="numTel" bsSize="large">
-                                            <FormControl 
-                                                type="tel"
-                                                value={this.state.numTel} 
-                                                onChange={this.handleChange} 
-                                                placeholder= "NUMERO DE TELEPHONE"
-                                                />
-                                        </FormGroup>
-                                        <FormGroup controlId="adresse" bsSize="large">
-                                            <FormControl 
-                                                value={this.state.adresse} 
-                                                onChange={this.handleChange} 
-                                                placeholder= "ADRESSE"
-                                                />
-                                        </FormGroup>
-                                        <FormGroup controlId="codePostal" bsSize="large">
-                                            <FormControl 
-                                                value={this.state.codePostal} 
-                                                onChange={this.handleChange} 
-                                                placeholder= "CODE POSTAL"
-                                                />
-                                        </FormGroup>
-                                        <FormGroup controlId="ville" bsSize="large">
-                                            <FormControl 
-                                                value={this.state.ville} 
-                                                onChange={this.handleChange} 
-                                                placeholder= "VILLE"
-                                                />
-                                        </FormGroup>
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col md={3} className= "colonne-centree">
-                                        <Button
-                                            block
-                                            bsSize="large"
-                                            variant="primary"
-                                            type="submit"
-                                            className="buttonEnv"
-                                        >
-                                            VALIDER
-                                        </Button>
-                                    </Col>
-                                </Row>
-                            </form>
+                            <Col md={6} className= "colonne-centree">
+                                <Form onSubmit={this.send}>
+                                    <Row>
+                                        <Col className= "colonne-centree">
+                                            <Form.Group controlId="nom" size="lg">
+                                                <Form.Control 
+                                                    autoFocus 
+                                                    value={this.state.nom} 
+                                                    onChange={this.handleChange}
+                                                    placeholder= "NOM DE L'ENTREPRISE"
+                                                    />
+                                            </Form.Group>
+                                            <Form.Group controlId="numSiret" size="lg">
+                                                <Form.Control 
+                                                    value={this.state.numSiret} 
+                                                    onChange={this.handleChange} 
+                                                    placeholder= "NUMERO DE SIRET"
+                                                    />
+                                            </Form.Group>
+                                            <Form.Group controlId="numTel" size="lg">
+                                                <Form.Control 
+                                                    type="tel"
+                                                    value={this.state.numTel} 
+                                                    onChange={this.handleChange} 
+                                                    placeholder= "NUMERO DE TELEPHONE"
+                                                    />
+                                            </Form.Group>
+                                            <Form.Group controlId="adresse" size="lg">
+                                                <Form.Control 
+                                                    value={this.state.adresse} 
+                                                    onChange={this.handleChange} 
+                                                    placeholder= "ADRESSE"
+                                                    />
+                                            </Form.Group>
+                                            <Form.Group controlId="codePostal" size="lg">
+                                                <Form.Control 
+                                                    value={this.state.codePostal} 
+                                                    onChange={this.handleChange} 
+                                                    placeholder= "CODE POSTAL"
+                                                    />
+                                            </Form.Group>
+                                            <Form.Group controlId="ville" size="lg">
+                                                <Form.Control 
+                                                    value={this.state.ville} 
+                                                    onChange={this.handleChange} 
+                                                    placeholder= "VILLE"
+                                                    />
+                                            </Form.Group>
+                                        </Col>
+                                    </Row>
+                                    <Row>
+                                        <Col className= "colonne-centree">
+                                            <Button
+                                                block
+                                                size="md"
+                                                variant="primary"
+                                                type="submit"
+                                                className="buttonEnv"
+                                            >
+                                                VALIDER
+                                            </Button>
+                                        </Col>
+                                    </Row>
+                                </Form>
+                            </Col>
                         </Row>
                     </Col>
                 </Row>

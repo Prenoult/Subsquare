@@ -2,7 +2,7 @@
  * Created by Charles on 08/01/2019.
  */
 import React from 'react';
-import {Button, FormGroup, FormControl, ControlLabel, Container, Row, Col} from "react-bootstrap";
+import {Container, Row, Col} from "react-bootstrap";
 import API from '../../utils/API';
 import {Link} from 'react-router-dom';
 import {Menu} from '../Menu/Menu.js';
@@ -33,8 +33,10 @@ export class userAdd extends React.Component {
         return (
             <Container className="Form">
                 <Row>
-                    <Menu/>
-                    <Col md={8} mdOffset={1}>
+                    <Col md={{ span: 2, offset: 0 }}>
+                        <Menu/>
+                    </Col>
+                    <Col md={{ span: 8, offset: 1 }}>
                         <Header page="ABONNEMENTS"/>
                         <Row>
                             <h2>ajouter Abonnements</h2>
