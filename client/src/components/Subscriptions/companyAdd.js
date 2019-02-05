@@ -1,8 +1,5 @@
-/**
- * Created by Charles on 08/01/2019.
- */
 import React from 'react';
-import {Button, FormGroup, FormControl, ControlLabel, Grid, Row, Col} from "react-bootstrap";
+import {Button, Form, Container, Row, Col} from "react-bootstrap";
 import API from '../../utils/API';
 import {Link} from 'react-router-dom';
 import {Menu} from '../Menu/Menu.js';
@@ -84,99 +81,107 @@ export class companyAdd extends React.Component {
     render() {
 
         return (
-            <Grid className="Form">
+            <Container fluid>
                 <Row>
-                    <Menu/>
-                    <Col md={8} mdOffset={1}>
+                    <Col md={{ span: 2, offset: 0 }}>
+                        <Menu/>
+                    </Col>
+                    <Col md={{ span: 8, offset: 1 }}>
                         <Header page="ABONNEMENTS"/>
                         <Row>
-                            <h2 className="centrer">Créer un Abonnement</h2>
+                            <h3>Créer un Abonnement</h3>
                             <Col md={6} className= "colonne-centree">
-                                <FormGroup controlId="name" bsSize="large">
-                                    <FormControl
-                                        autoFocus type="text"
-                                        value={this.state.name}
-                                        onChange={this.handleChange}
-                                        placeholder= "Nom de l'abonnement"
-                                        className="FormContLog"/>
-                                </FormGroup>
-                                <FormGroup controlId="descri" bsSize="large">
-                                    <FormControl
-                                        value={this.state.descri}
-                                        onChange={this.handleChange}
-                                        type="text"
-                                        placeholder= "Description de l'abonnement"
-                                        className="FormContLog"/>
-                                </FormGroup>
-                                <FormGroup controlId="category" bsSize="large">
-                                    <FormControl
-                                        componentClass="select"
-                                        value={this.state.category}
-                                        onChange={this.handleChange}
-                                        type="text"
-                                        className="FormContLog">
-                                            <option value="cat">Catégorie...</option>
-                                            <option value="musique">Musique</option>
-                                            <option value="actu">Actualité</option>
-                                            <option value="assurance">Assurance</option>
-                                            <option value="photo">Photo</option>
-                                            <option value="prod">Productivité</option>
-                                            <option value="vidéo">Vidéo</option>
-                                            <option value="shopping">Shopping</option>
-                                            <option value="stock">Stockage</option>
-                                            <option value="util">Utilitaire</option>
-                                    </FormControl>
-                                </FormGroup>
-                                <FormGroup controlId="price" bsSize="large">
-                                    <FormControl
-                                        value={this.state.price}
-                                        onChange={this.handleChange}
-                                        type="number"
-                                        placeholder= "Prix de l'abonnement"
-                                        className="FormContLog"/>
-                                </FormGroup>
-                                <FormGroup controlId="mensu" bsSize="large">
-                                    <FormControl 
-                                        componentClass="select" 
-                                        value={this.state.mensu}
-                                        onChange={this.handleChange}
-                                        type="text"
-                                        className="FormContLog">
-                                            <option value="ren">Renouvellement...</option>
-                                            <option value="hebdo">Hebdomadaire</option>
-                                            <option value="mensuel">Mensuel</option>
-                                            <option value="trimestriel">Trimestriel</option>
-                                            <option value="semestriel">Semestriel</option>
-                                            <option value="annuel">Annuel</option>
-                                    </FormControl>
-                                </FormGroup>
-                                <FormGroup controlId="engage" bsSize="large">
-                                    <FormControl
-                                        value={this.state.engage}
-                                        onChange={this.handleChange}
-                                        type="number"
-                                        placeholder= "Période d'engagement en mois"
-                                        className="FormContLog"/>
-                                </FormGroup>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col md={3} className= "colonne-centree">
-                                <Button
-                                    onClick={this.send}
-                                    block
-                                    bsSize="large"
-                                    bsStyle="primary"
-                                    type="submit"
-                                    className="buttonEnv"
-                                >
-                                    CREER
-                                </Button>   
+                                <Form>
+                                    <Row>
+                                        <Col className= "colonne-centree">
+                                            <Form.Group controlId="name" size="lg">
+                                                <Form.Control
+                                                    autoFocus type="text"
+                                                    value={this.state.name}
+                                                    onChange={this.handleChange}
+                                                    placeholder= "Nom de l'abonnement"
+                                                    />
+                                            </Form.Group>
+                                            <Form.Group controlId="descri" size="lg">
+                                                <Form.Control
+                                                    value={this.state.descri}
+                                                    onChange={this.handleChange}
+                                                    type="text"
+                                                    placeholder= "Description de l'abonnement"
+                                                    />
+                                            </Form.Group>
+                                            <Form.Group controlId="category" size="lg">
+                                                <Form.Control
+                                                    as="select"
+                                                    value={this.state.category}
+                                                    onChange={this.handleChange}
+                                                    type="text"
+                                                    >
+                                                        <option value="cat">Catégorie...</option>
+                                                        <option value="musique">Musique</option>
+                                                        <option value="actu">Actualité</option>
+                                                        <option value="assurance">Assurance</option>
+                                                        <option value="photo">Photo</option>
+                                                        <option value="prod">Productivité</option>
+                                                        <option value="vidéo">Vidéo</option>
+                                                        <option value="shopping">Shopping</option>
+                                                        <option value="stock">Stockage</option>
+                                                        <option value="util">Utilitaire</option>
+                                                </Form.Control>
+                                            </Form.Group>
+                                            <Form.Group controlId="price" size="lg">
+                                                <Form.Control
+                                                    value={this.state.price}
+                                                    onChange={this.handleChange}
+                                                    type="number"
+                                                    placeholder= "Prix de l'abonnement"
+                                                    />
+                                            </Form.Group>
+                                            <Form.Group controlId="mensu" size="lg">
+                                                <Form.Control 
+                                                    as="select" 
+                                                    value={this.state.mensu}
+                                                    onChange={this.handleChange}
+                                                    type="text"
+                                                    >
+                                                        <option value="ren">Renouvellement...</option>
+                                                        <option value="hebdo">Hebdomadaire</option>
+                                                        <option value="mensuel">Mensuel</option>
+                                                        <option value="trimestriel">Trimestriel</option>
+                                                        <option value="semestriel">Semestriel</option>
+                                                        <option value="annuel">Annuel</option>
+                                                </Form.Control>
+                                            </Form.Group>
+                                            <Form.Group controlId="engage" size="lg">
+                                                <Form.Control
+                                                    value={this.state.engage}
+                                                    onChange={this.handleChange}
+                                                    type="number"
+                                                    placeholder= "Période d'engagement en mois"
+                                                    />
+                                            </Form.Group>
+                                        </Col>
+                                    </Row>
+                                    <Row>
+                                        <Col md={3} className= "colonne-centree">
+                                            <Button
+                                                onClick={this.send}
+                                                block
+                                                size="lg"
+                                                variant="primary"
+                                                type="submit"
+                                                className="buttonEnv"
+                                            >
+                                                CREER
+                                            </Button>   
+                                        </Col>
+                                    </Row>
+                                </Form>
                             </Col>
                         </Row>
                     </Col>
                 </Row>
-            </Grid>
+            </Container>
         )
     }
 }

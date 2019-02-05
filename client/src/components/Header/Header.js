@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {Button, FormGroup, FormControl, ControlLabel, Grid, Row, Col, Image} from "react-bootstrap";
+import {Row, Col, Image} from "react-bootstrap";
 import API from '../../utils/API';
 
 export class Header extends React.Component {
@@ -20,31 +20,37 @@ export class Header extends React.Component {
 				<Col md={2} style={{fontSize:30}}>
 					{this.page}
 				</Col>
-				<Col md={4} mdOffset={6} style={{fontSize:20, marginTop:10, color:'grey'}}>
-					<Nom/>
-					{localStorage.getItem("account") === "false" 
-					? <Link to={"/Settings"}>
-						<Image src={require('../../img/reglage.png')}  
-	                		style={{ width: 30,
-								height: 30,
-								marginLeft: 10,
-								marginBottom: 5}}/>
-					</Link>
-					: <Link to={"/Settings/Company"}>
-						<Image src={require('../../img/reglage.png')}  
-	                		style={{ width: 30,
-								height: 30,
-								marginLeft: 10,
-								marginBottom: 5}}/>
-					</Link>}
-					<Link to={"/Settings"}>
-					<Image src={require('../../img/shutdown.png')}  
-                		style={{ width: 25,
-							height: 25,
-							marginLeft: 10,
-							marginBottom: 3}}
-						onClick={this.disconnect}/>
-					</Link>
+				<Col xs={{ span: 4, offset: 6}}  style={{fontSize:20, marginTop:10, color:'grey'}}>
+					<row>
+						<Nom/>
+					</row>
+					<row>
+						<Col xs={{offset: 8}}>
+							{localStorage.getItem("account") === "false" 
+							? <Link to={"/Settings"}>
+								<Image src={require('../../img/reglage.png')}  
+									style={{ width: 30,
+										height: 30,
+										marginLeft: 10,
+										marginBottom: 5}}/>
+							</Link>
+							: <Link to={"/Settings/Company"}>
+								<Image src={require('../../img/reglage.png')}  
+									style={{ width: 30,
+										height: 30,
+										marginLeft: 10,
+										marginBottom: 5}}/>
+							</Link>}
+							<Link to={"/Settings"}>
+							<Image src={require('../../img/shutdown.png')}  
+								style={{ width: 25,
+									height: 25,
+									marginLeft: 10,
+									marginBottom: 3}}
+								onClick={this.disconnect}/>
+							</Link>
+						</Col>
+					</row>
 				</Col>
 			</Row>
 		)

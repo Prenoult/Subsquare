@@ -52,38 +52,49 @@ a:hover {
     }
 }
 
-.Form {
+/**.Form {
     margin-left: 0px;
     margin-right: 0px;
-}
+}*/
 
 body {
     background-color: #f1f2f6;
 }
 
-.container {
-    width: 100%;
+.card {
+    text-align: left;
+    height: 50px;
+    margin-bottom: 5px;
 }
 
-.FormContLog {
-    border-color: white;
-    border-radius: 15px 15px 0px 0px;
+.card-body {
+    padding-top: 10px;
+    padding-left: 10px;
 }
+
+/**.container {
+    width: 100%;
+}*/
 
 .LogoLog {
-    margin-top: 7%;
-    text-align: center;
+    margin-top: 20%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 h2 {
     color: grey;
     font-size: 25px;
+    margin: auto;
     margin-bottom: 30px;
 }
+
 h3 {
     text-align: center;
+    margin: auto;
     margin-bottom: 40px;
     margin-top: 30px;
+    font-size: 25px;
 }
 
 .label {
@@ -94,21 +105,23 @@ h3 {
 .colonne-centree {
     float: none;
     margin: 0 auto;
+    text-align: center;
 }
+
 .centrer {
     text-align: center;
 }
 
 /* Si on veut utiliser un Button (style) fonctionnant comme un Link (router) */
 .linkButton {
-    display: block;
-    height: 100%;
 }
 
 a.linkButton {
     color: white;
     text-decoration: none;
 }
+
+/* --- */
 
 .buttonEnv {
     margin-top: 15px;
@@ -122,21 +135,24 @@ a.linkButton {
     border-color: #8c7ae6;
 }
 
+
 .buttonMenu {
     border-radius: 40px;
     margin-bottom: 30px;
-    width: 200px;
-    margin-left: 15%;
+    margin-left: 10px;
+    width: 220px;
     background-color: #6a6cac;
     border-color: #6a6cac;
+    text-align: left;
 }
 
 .montagne {
-    background-image: url("img/Montagne.jpg");
+    /*background-image: url("img/Montagne.jpg");*/
+    background-color: white;
     background-size: 'cover';
     background-attachment: fixed;
     height: 100vh;
-    min-width: 300px;
+    min-width: 270px;
 }
 
 .entete {

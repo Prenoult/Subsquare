@@ -1,8 +1,5 @@
-/**
- * Created by Charles on 08/01/2019.
- */
 import React from 'react';
-import {Button, FormGroup, FormControl, ControlLabel, Grid, Row, Col} from "react-bootstrap";
+import {Container, Row, Col} from "react-bootstrap";
 import API from '../../utils/API';
 import {Link} from 'react-router-dom';
 import {Menu} from '../Menu/Menu.js';
@@ -39,18 +36,20 @@ export class Subscriptions extends React.Component {
     render() {
 
         return (
-            <Grid className="Form">
+            <Container className="Form" fluid>
                 <Row>
-                    <Menu/>
-                    <Col md={8} mdOffset={1}>
+                    <Col md={{ span: 2, offset: 0 }}>
+                        <Menu/>
+                    </Col>
+                    <Col md={{ span: 8, offset: 1 }}>
                         <Header page="ABONNEMENTS"/>
                         <Row>
-                            <h2>Abonnements</h2>
+                            <h3>Abonnements</h3>
                             <Account company />
                         </Row>
                     </Col>
                 </Row>
-            </Grid>
+            </Container>
         )
     }
 }
