@@ -76,14 +76,14 @@ export class SettingsApply extends React.Component {
                                                     autoFocus 
                                                     value={this.state.nom} 
                                                     onChange={this.handleChange}
-                                                    placeholder= "NOM DE L'ENTREPRISE"
+                                                    placeholder= "Nom de l'entreprise"
                                                     />
                                             </Form.Group>
                                             <Form.Group controlId="numSiret" size="lg">
                                                 <Form.Control 
                                                     value={this.state.numSiret} 
                                                     onChange={this.handleChange} 
-                                                    placeholder= "NUMERO DE SIRET"
+                                                    placeholder= "Numéro de SIRET"
                                                     />
                                             </Form.Group>
                                             <Form.Group controlId="numTel" size="lg">
@@ -91,28 +91,28 @@ export class SettingsApply extends React.Component {
                                                     type="tel"
                                                     value={this.state.numTel} 
                                                     onChange={this.handleChange} 
-                                                    placeholder= "NUMERO DE TELEPHONE"
+                                                    placeholder= "Numéro de téléphone"
                                                     />
                                             </Form.Group>
                                             <Form.Group controlId="adresse" size="lg">
                                                 <Form.Control 
                                                     value={this.state.adresse} 
                                                     onChange={this.handleChange} 
-                                                    placeholder= "ADRESSE"
+                                                    placeholder= "Adresse postale"
                                                     />
                                             </Form.Group>
                                             <Form.Group controlId="codePostal" size="lg">
                                                 <Form.Control 
                                                     value={this.state.codePostal} 
                                                     onChange={this.handleChange} 
-                                                    placeholder= "CODE POSTAL"
+                                                    placeholder= "Code postal"
                                                     />
                                             </Form.Group>
                                             <Form.Group controlId="ville" size="lg">
                                                 <Form.Control 
                                                     value={this.state.ville} 
                                                     onChange={this.handleChange} 
-                                                    placeholder= "VILLE"
+                                                    placeholder= "Ville"
                                                     />
                                             </Form.Group>
                                         </Col>

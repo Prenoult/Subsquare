@@ -64,21 +64,21 @@ export class SettingsPassword extends React.Component {
                                     value={this.state.password} 
                                     onChange={this.handleChange} 
                                     type="password"
-                                    placeholder= "ANCIEN MOT DE PASSE"/>
+                                    placeholder= "Ancien mot de passe"/>
                             </Form.Group>
                             <Form.Group controlId="npassword" bsSize="large">
                                 <Form.Control 
                                     value={this.state.npassword} 
                                     onChange={this.handleChange} 
                                     type="password"
-                                    placeholder= "NOUVEAU MOT DE PASSE"/>
+                                    placeholder= "Nouveau mot de passe"/>
                             </Form.Group>
                             <Form.Group controlId="cpassword" bsSize="large">    
                                 <Form.Control 
                                     value={this.state.cpassword} 
                                     onChange={this.handleChange} 
                                     type="password"
-                                    placeholder= "CONFIRMATION NOUVEAU MOT DE PASSE"/>
+                                    placeholder= "Confirmation du nouveau mot de passe"/>
                             </Form.Group>
                             </Col>
                             </Row>

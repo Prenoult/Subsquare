@@ -17,10 +17,6 @@
     color: white;
 }
 
-/*.container{
-    max-width: 100%;
-}*/
-
 .Accueil-footer {
     background-color: #6a6cac;
     display: flex;
@@ -70,6 +66,7 @@ body {
     height: 50px;
     margin-bottom: 5px;
 }
+
 .card-body {
     padding-top: 10px;
     padding-left: 10px;
@@ -80,12 +77,9 @@ body {
 }*/
 
 .LogoLog {
-    max-width:100%;
-    height:auto;
-    object-fit: contain;
-    margin: 0 auto;
-    margin-top: 10%;
-
+    margin-top: 20%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 h2 {
@@ -120,8 +114,6 @@ h3 {
 
 /* Si on veut utiliser un Button (style) fonctionnant comme un Link (router) */
 .linkButton {
-    display: block;
-    height: 100%;
 }
 
 a.linkButton {

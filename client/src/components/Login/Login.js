@@ -51,7 +51,7 @@ export class Login extends React.Component {
             <Container className="Form" fluid>
                 <EnteteLogo/>
                 <Row className="Form">
-                    <Col xs={7} sm={6} md={5} lg={4} className="colonne-centree">
+                    <Col xs={7} sm={6} md={3} lg={4} className="colonne-centree">
                         <Form onSubmit={this.send}>
                             <Row>
                                 <Col>
@@ -61,7 +61,7 @@ export class Login extends React.Component {
                                             value={this.state.email}
                                             onChange={this.handleChange}
                                             placeholder="Email"
-                                            isInvalid={this.state.error=='error'}
+                                            isInvalid={this.state.error == 'error'}
                                         />
                                         <Form.Control.Feedback type="invalid">Le nom d'utilisateur et le mot de passe
                                             que
@@ -74,7 +74,7 @@ export class Login extends React.Component {
                                             onChange={this.handleChange}
                                             type="password"
                                             placeholder="Mot de passe"
-                                            isInvalid={this.state.error=='error'}
+                                            isInvalid={this.state.error == 'error'}
                                         />
                                     </Form.Group>
                                 </Col>
@@ -99,10 +99,6 @@ export class Login extends React.Component {
                                     <br/>
                                 </Col>
                             </Row>
-
-
-                                
-                            
                         </Form>
                     </Col>
                 </Row>

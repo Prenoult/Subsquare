@@ -164,7 +164,7 @@ export class Settings extends React.Component {
                         <Row>
                             <Col md={6} className= "colonne-centree" style={{marginTop: 15}}>
                             {this.state.isModifying === false ?
-                                <Button onClick={this.modify.bind(this)} block>MODIFIER VOS INFORMATIONS</Button>
+                                <Button onClick={this.modify.bind(this)} variant='light' block>MODIFIER VOS INFORMATIONS</Button>
                                 : <div><Button onClick={this.modify.bind(this)}
                                                variant="light"
                                                block>Annuler</Button>
