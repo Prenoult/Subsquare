@@ -84,13 +84,12 @@ export class Settings extends React.Component {
         return (
             <Container className="Form" fluid>
                 <Row>
-                    <Col md={{ span: 2, offset: 0 }}>
+                    <Col xs={2}>
                         <Menu/>
                     </Col>
-                    <Col md={{ span: 8, offset: 1 }}>
-                        <Header page="PROFIL"/>
+                        <Col xs={{ span: 6, offset: 1 }} sm={{ span: 7, offset: 1 }} md={{ span: 8, offset: 1 }} lg={{ span: 8, offset: 1 }}>                        <Header page="PROFIL"/>
                         <Row>
-                            <Col md={6} className= "colonne-centree">
+                            <Col sm={9} md={8} lg={6} className= "colonne-centree">
                             <br/>
                             {this.state.isModifying === false
                                 ? <Card className="card"><Card.Body><b>Email :</b> {this.state.email}</Card.Body></Card>
@@ -162,7 +161,7 @@ export class Settings extends React.Component {
                             </Col>
                         </Row>
                         <Row>
-                            <Col md={6} className= "colonne-centree" style={{marginTop: 15}}>
+                            <Col sm={9} md={8} lg={6} className= "colonne-centree" style={{marginTop: 15}}>
                             {this.state.isModifying === false ?
                                 <Button onClick={this.modify.bind(this)} variant='light' block>MODIFIER VOS INFORMATIONS</Button>
                                 : <div><Button onClick={this.modify.bind(this)}

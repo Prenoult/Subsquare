@@ -53,7 +53,7 @@ export class Forgotten extends React.Component {
             <Container className="Form" fluid>
                 <EnteteLogo/>
                 <Row className="Form">
-                    <Col md={4} className="colonne-centree">
+                    <Col xs={8} sm={6} md={3} className="colonne-centree">
                         <Form onSubmit={this.send}>
                             <Row>
                                 <Col>

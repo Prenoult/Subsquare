@@ -125,7 +125,7 @@ export class Signup extends React.Component {
             <Container className="Form" fluid>
                 <EnteteLogo/>
                     <Row className="Form">
-                        <Col xs={7} sm={6} md={5} lg={4} className="colonne-centree">
+                        <Col xs={7} sm={6} md={4} lg={3} className="colonne-centree">
                         <Form onSubmit={this.send}>
                             <Row>
                                 <Col>
@@ -172,7 +172,7 @@ export class Signup extends React.Component {
                                 </Col>
                             </Row>
                             <Row>
-                                <Col className="colonne-centree">
+                                <Col xs={8} className="colonne-centree">
                                     <Button
                                         block
                                         size="md"

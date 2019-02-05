@@ -12,10 +12,10 @@ export class Dashboard extends React.Component {
         return (
             <Container className="Dashboard" fluid>
                 <Row>
-                    <Col xs={2} sm={2} md={2} lg={2}>
+                    <Col xs={2}>
                         <Menu/>
                     </Col>
-                    <Col xs={5} sm={6} md={7} lg={8}>
+                    <Col xs={{ span: 6, offset: 1 }} sm={{ span: 7, offset: 1 }} md={{ span: 8, offset: 1 }} lg={{ span: 8, offset: 1 }}>
                         <Header page="ACCUEIL"/>
                         <Row>
                         </Row>

@@ -30,13 +30,13 @@ export class userAdd extends React.Component {
         return (
             <Container className="Form" fluid>
                 <Row>
-                    <Col md={{ span: 2, offset: 0 }}>
+                    <Col xs={2}>
                         <Menu/>
                     </Col>
-                    <Col md={{ span: 8, offset: 1 }}>
+                    <Col xs={{ span: 6, offset: 1 }} sm={{ span: 7, offset: 1 }} md={{ span: 8, offset: 1 }} lg={{ span: 8, offset: 1 }}>
                         <Header page="ABONNEMENTS"/>
                         <Row>
-                            <h2>ajouter Abonnements</h2>
+                            <h2>Ajouter un Abonnement</h2>
                         </Row>
                     </Col>
                 </Row>

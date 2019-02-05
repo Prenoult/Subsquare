@@ -5,17 +5,15 @@ import {Button, Row, Col, Image} from "react-bootstrap";
 export class Menu extends React.Component {
     render() {
         return (
-            <Col sm={2} xs={1} className="montagne">
+            <Col className="montagne">
                 <Row>
+                  <Col>
                     <Image src={require('../../img/Logo.png')}
-                           style={{
-                               width: 280,
-                               height: 150,
-                               marginLeft: -20,
-                               marginBottom: 70
-                           }}/>
+                           className="logoMenu"/>
+                  </Col>
                 </Row>
                 <Row>
+                  <Col className="colonne-centree">
                     <Link to={"/dashboard"}>
                         <Button
                             block
@@ -25,17 +23,14 @@ export class Menu extends React.Component {
                             className="buttonMenu"
                         >
                             <Image src={require('../../img/Accueil.png')}
-                                   style={{
-                                       width: 30,
-                                       height: 30,
-                                       marginBottom: 2,
-                                       marginRight: 10
-                                   }}/>
+                                   className="imgMenu"/>
                             ACCUEIL
                         </Button>
                     </Link>
+                  </Col>
                 </Row>
                 <Row>
+                  <Col className="colonne-centree">
                     <Link to={"/subscriptions"}>
                         <Button
                             block
@@ -45,17 +40,14 @@ export class Menu extends React.Component {
                             className="buttonMenu"
                         >
                             <Image src={require('../../img/abonnements.png')}
-                                   style={{
-                                       width: 30,
-                                       height: 30,
-                                       marginBottom: 2,
-                                       marginRight: 10
-                                   }}/>
+                                    className="imgMenu"/>
                             ABONNEMENTS
                         </Button>
                     </Link>
+                  </Col>
                 </Row>
                 <Row>
+                  <Col className="colonne-centree">
                     <Button
                         block
                         size="lg"
@@ -64,16 +56,13 @@ export class Menu extends React.Component {
                         className="buttonMenu"
                     >
                         <Image src={require('../../img/recherche.png')}
-                               style={{
-                                   width: 30,
-                                   height: 30,
-                                   marginBottom: 2,
-                                   marginRight: 10
-                               }}/>
+                                className="imgMenu"/>
                         EXPLORER
                     </Button>
+                  </Col>
                 </Row>
                 <Row>
+                  <Col className="colonne-centree">
                     <Button
                         block
                         size="lg"
@@ -82,14 +71,10 @@ export class Menu extends React.Component {
                         className="buttonMenu"
                     >
                         <Image src={require('../../img/finance.png')}
-                               style={{
-                                   width: 30,
-                                   height: 30,
-                                   marginBottom: 2,
-                                   marginRight: 10
-                               }}/>
+                                className="imgMenu"/>
                         MES FINANCES
                     </Button>
+                  </Col>
                 </Row>
             </Col>
         )

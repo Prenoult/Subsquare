@@ -51,7 +51,7 @@ export class Login extends React.Component {
             <Container className="Form" fluid>
                 <EnteteLogo/>
                 <Row className="Form">
-                    <Col xs={7} sm={6} md={3} lg={4} className="colonne-centree">
+                    <Col xs={7} sm={6} md={4} lg={3} className="colonne-centree">
                         <Form onSubmit={this.send}>
                             <Row>
                                 <Col>
@@ -92,7 +92,7 @@ export class Login extends React.Component {
                                 </Col>
                             </Row>
                             <Row>
-                                <Col xs={12} className="colonne-centree">
+                                <Col className="colonne-centree">
                                     <Link to={"/signup"}>Vous ne possedez pas de compte ?</Link>
                                     <br/>
                                     <Link to={"/forgotten"}>Mot de passe oublié ?</Link>

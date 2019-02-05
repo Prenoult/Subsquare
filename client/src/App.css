@@ -35,6 +35,17 @@
     color: #6a6cac;
 }
 
+.container-fluid{
+    padding-left: 0px;
+}
+
+.logoMenu {
+    width: 16vw;
+   margin-left: -20px;
+   margin-bottom: 70px;
+   margin-top: 20px;
+}
+
 a {
     color: #6a6cac;
 }
@@ -138,12 +149,14 @@ a.linkButton {
 
 .buttonMenu {
     border-radius: 40px;
+    margin: auto;
     margin-bottom: 30px;
-    margin-left: 10px;
-    width: 220px;
+    width: 13vw;
+    height: 3vw;
     background-color: #6a6cac;
     border-color: #6a6cac;
     text-align: left;
+    font-size: 1vw;
 }
 
 .montagne {
@@ -151,13 +164,18 @@ a.linkButton {
     background-color: white;
     background-size: 'cover';
     background-attachment: fixed;
+    min-width: 17vw;
     height: 100vh;
-    min-width: 270px;
 }
 
 .entete {
     margin-top: 4%;
     border-bottom: 3px solid black;
+}
+
+.imgMenu {
+    width: 2vw;
+   margin-right: 0.7vw;
 }
 
 .pied {

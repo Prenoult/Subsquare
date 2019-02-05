@@ -60,14 +60,14 @@ export class SettingsApply extends React.Component {
         return (
             <Container fluid>
                 <Row>
-                    <Col md={{ span: 2, offset: 0 }}>
+                    <Col xs={2}>
                         <Menu/>
                     </Col>
-                    <Col md={{ span: 8, offset: 1 }}>
+                    <Col xs={{ span: 6, offset: 1 }} sm={{ span: 7, offset: 1 }} md={{ span: 8, offset: 1 }} lg={{ span: 8, offset: 1 }}>
                         <Header page="PROFIL"/>
                         <Row>
                             <h3>Veuillez remplir ce formulaire afin de demander un compte entreprise</h3>
-                            <Col md={6} className= "colonne-centree">
+                            <Col sm={9} md={8} lg={6} className= "colonne-centree">
                                 <Form onSubmit={this.send}>
                                     <Row>
                                         <Col className= "colonne-centree">
