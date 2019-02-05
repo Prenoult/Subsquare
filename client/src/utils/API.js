@@ -54,6 +54,12 @@ export default {
     allSubscriptions: function (send) {
         return axios.post(burl + '/subscriptions/all', send, {headers: headers})
     },
+    addSubscription: function (send) {
+        return axios.post(burl + '/subscriptions/add', send, {headers: headers})
+    },
+    deleteSubscription: function (send) {
+        return axios.post(burl + '/subscriptions/del', send, {headers: headers})
+    },
     createSub: function (send) {
         return axios.post(burl + '/subscriptions/create', send, {headers: headers})
     },
