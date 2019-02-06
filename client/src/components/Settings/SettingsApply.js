@@ -125,7 +125,7 @@ export class SettingsApply extends React.Component {
                                         </Col>
                                     </Row>
                                     <Row>
-                                        <Col className= "colonne-centree">
+                                        <Col xs={8} className= "colonne-centree">
                                             <Button
                                                 block
                                                 size="md"

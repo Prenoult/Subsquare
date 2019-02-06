@@ -56,7 +56,7 @@ export class Explore extends React.Component {
         const listSubNin = this.state.subscriptionNin.map((item) => <ListGroup.Item
             key={item._id}>
             <Row>
-                <Col md={10}>{item.name} {item.company} {item.price}€
+                <Col><Row><Col md={{span:1, offset:0}}>{item.name}</Col><Col md={{span:1, offset:1}}> {item.company}</Col> <Col md={{span:1, offset:1}}> {item.price}€
                     {
                         item.mensu === 'hebdo'
                             ? '/semaine'
@@ -68,7 +68,7 @@ export class Explore extends React.Component {
                                     ? '/semestre' : item.mensu === 'annuel'
                                         ? '/année'
                                         : ''
-                    } {item.name}
+                    }</Col><Col md={{span:1, offset:2}}>
                     {
                         item.category === 'musique'
                             ? ' Musique'
@@ -89,7 +89,7 @@ export class Explore extends React.Component {
                                                     : item.category === 'util'
                                                         ? ' Utilitaire'
                                                         : ' '
-                    } {item.descri} {item.engage}</Col>
+                    }</Col><Col md={{span:2, offset:2}}> {item.engage} mois</Col></Row></Col>
                 <Col md={2}>
                     <Button variant="success" onClick={this.addSubscription.bind(this, item._id)}>Ajouter</Button>
                 </Col>
@@ -98,7 +98,7 @@ export class Explore extends React.Component {
         const listSubIn = this.state.subscriptionIn.map((item) => <ListGroup.Item
             key={item._id}>
             <Row>
-                <Col md={10}>{item.name} {item.company} {item.price}€
+                <Col><Row><Col md={{span:1, offset:0}}>{item.name}</Col><Col md={{span:1, offset:1}}> {item.company}</Col> <Col md={{span:1, offset:1}}> {item.price}€
                     {
                         item.mensu === 'hebdo'
                             ? '/semaine'
@@ -110,7 +110,7 @@ export class Explore extends React.Component {
                                     ? '/semestre' : item.mensu === 'annuel'
                                         ? '/année'
                                         : ''
-                    } {item.name}
+                    }</Col><Col md={{span:1, offset:2}}>
                     {
                         item.category === 'musique'
                             ? ' Musique'
@@ -131,7 +131,7 @@ export class Explore extends React.Component {
                                                     : item.category === 'util'
                                                         ? ' Utilitaire'
                                                         : ' '
-                    } {item.descri} {item.engage}</Col>
+                    }</Col><Col md={{span:2, offset:2}}> {item.engage} mois</Col></Row></Col>
                 <Col md={2}>
                     <Button variant="secondary" onClick={this.addSubscription.bind(this, item._id)}
                             disabled>Ajouté</Button>
@@ -148,8 +148,27 @@ export class Explore extends React.Component {
                          lg={{span: 8, offset: 1}}>
                         <Header page="EXPLORER"/>
                         <Row>
+                            <Col xs={12} className="EnteteAbo">
+                                <Row>
+                                <Col md={{span:1, offset:0}}>
+                                    Abonnement
+                                </Col>
+                                <Col md={{span:1, offset:1}}>
+                                    Compagnie
+                                </Col>
+                                <Col md={{span:1, offset:1}}>
+                                    Prix
+                                </Col>
+                                <Col md={{span:1, offset:1}}>
+                                    Catégorie
+                                </Col>
+                                <Col md={{span:1, offset:1}}>
+                                    Engagement
+                                </Col>
+                                </Row>
+                            </Col>
                             <Col>
-                                <ListGroup>
+                                <ListGroup className="list">
                                     {listSubIn}
                                 </ListGroup>
                                 <ListGroup>

@@ -190,6 +190,16 @@ a.linkButton {
     margin-top: 40px;
 }
 
+.photoAccueil{
+   width: 55vw; 
+   margin: auto;
+}
+
+.EnteteAbo{
+    margin-top: 20px;
+    border-bottom: 3px solid grey; 
+}
+
 .entete {
     margin-top: 4%;
     border-bottom: 3px solid black;
