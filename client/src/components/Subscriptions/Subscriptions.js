@@ -11,13 +11,12 @@ export class Subscriptions extends React.Component {
         this.state = {
             subscriptions: [],
             isCompany: localStorage.getItem('account'),
-            price:0
+            price: 0
         };
     }
 
     componentDidMount() {
         this.getSubscription();
-        console.log(this.state.isCompany)
     }
 
     getSubscription() {
@@ -26,35 +25,9 @@ export class Subscriptions extends React.Component {
             email: localStorage.getItem("id")
         };
         API.getSub(_send).then(function (data) {
-            //console.log(data.data.dd);
-            let count = 0;
-            data.data.dd.forEach(function(item) {
-                switch (item.mensu){
-                    case "hebdo":
-                        count += (parseFloat(item.price)*4);
-                        break;
-                    case "mensuel":
-                        count += parseFloat(item.price);
-                        break;
-                    case "trimestriel":
-                        count += (parseFloat(item.price)/3);
-                        break;
-                    case "semestriel":
-                        count += (parseFloat(item.price)/6);
-                        break;
-                    case "annuel":
-                        count += (parseFloat(item.price)/12);
-                        break;
-                    default:
-                        console.log('pas censé arriver')
-                }
-            });
-            console.log(count);
             that.setState({
-                subscriptions: data.data.dd,
-                price: count
-
-            }, () => console.log(that.state.subscriptions[0]));
+                subscriptions: data.data.dd
+            });
         })
     }
 

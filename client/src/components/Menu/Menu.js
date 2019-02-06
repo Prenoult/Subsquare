@@ -65,17 +65,19 @@ export class Menu extends React.Component {
                 </Row>
                 <Row>
                     <Col className="colonne-centree">
-                        <Button
-                            block
-                            size="lg"
-                            variant="primary"
-                            type="submit"
-                            className="buttonMenu"
-                        >
-                            <Image src={require('../../img/finance.png')}
-                                   className="imgMenu"/>
-                            MES FINANCES
-                        </Button>
+                        <Link to={"/finances"}>
+                            <Button
+                                block
+                                size="lg"
+                                variant="primary"
+                                type="submit"
+                                className="buttonMenu"
+                            >
+                                <Image src={require('../../img/finance.png')}
+                                       className="imgMenu"/>
+                                MES FINANCES
+                            </Button>
+                        </Link>
                     </Col>
                 </Row>
             </Col>

@@ -14,6 +14,7 @@ import {Explore} from './components/Explore/Explore'
 import {SettingsApply} from './components/Settings/SettingsApply';
 import {PrivateRoute} from './components/PrivateRoute';
 import './App.css';
+import {MyFinances} from "./components/Finances/MyFinances";
 
 class App extends Component {
     render() {
@@ -30,9 +31,10 @@ class App extends Component {
                         <PrivateRoute exact path="/settings/mail" component={SettingsMail}/>
                         <PrivateRoute exact path="/settings/password" component={SettingsPassword}/>
                         <PrivateRoute exact path="/subscriptions" component={Subscriptions}/>
-                        <PrivateRoute exact path="/company/add" component={companyAdd} />
-                        <PrivateRoute exact path="/explore" component={Explore} />
-                        <PrivateRoute exact path="/settings/apply" component={SettingsApply} />
+                        <PrivateRoute exact path="/company/add" component={companyAdd}/>
+                        <PrivateRoute exact path="/explore" component={Explore}/>
+                        <PrivateRoute exact path="/finances" component={MyFinances}/>
+                        <PrivateRoute exact path="/settings/apply" component={SettingsApply}/>
                     </Switch>
                 </div>
             </div>
