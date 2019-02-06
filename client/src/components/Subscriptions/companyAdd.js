@@ -90,7 +90,7 @@ export class companyAdd extends React.Component {
                         <Header page="ABONNEMENTS"/>
                         <Row>
                             <h3>Créer un Abonnement</h3>
-                            <Col md={6} className= "colonne-centree">
+                            <Col md={6} className= "colonne-centree add_sub">
                                 <Form>
                                     <Row>
                                         <Col className= "colonne-centree">

@@ -168,6 +168,10 @@ a.linkButton {
     height: 100vh;
 }
 
+.add_sub {
+    margin-top: 40px;
+}
+
 .entete {
     margin-top: 4%;
     border-bottom: 3px solid black;
