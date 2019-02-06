@@ -121,6 +121,11 @@ h3 {
     text-align: center;
 }
 
+.search{
+    border-radius: 20px;
+    margin-top: 30px;
+}
+
 .centrer {
     text-align: center;
 }
@@ -197,8 +202,12 @@ a.linkButton {
    margin: auto;
 }
 
+.titre {
+    margin-top: 50px;
+}
+
 .EnteteAbo{
-    margin-top: 20px;
+    margin-top: 30px;
     border-bottom: 3px solid grey; 
 }
 

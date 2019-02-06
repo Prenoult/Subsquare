@@ -52,9 +52,7 @@ export class SettingsPassword extends React.Component {
                     <Col xs={{ span: 6, offset: 1 }} sm={{ span: 7, offset: 1 }} md={{ span: 8, offset: 1 }} lg={{ span: 8, offset: 1 }}>
                         <Header page="PROFIL"/>
                         <Row>
-                            <h2>
-                                MODIFICATION MOT DE PASSE:
-                            </h2>
+                            <h3>Veuillez remplir ce formulaire afin de modifier votre mot de passe</h3>
                         </Row>
                         <Form>
                             <Row>
@@ -83,7 +81,7 @@ export class SettingsPassword extends React.Component {
                             </Col>
                             </Row>
                             <Row>
-                                <Col md={6} className="colonne-centree">
+                                <Col md={4} className="colonne-centree">
                                 <Button
                                     onClick={this.send}
                                     block

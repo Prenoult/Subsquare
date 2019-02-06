@@ -161,7 +161,7 @@ export class Settings extends React.Component {
                             </Col>
                         </Row>
                         <Row>
-                            <Col sm={9} md={8} lg={6} className= "colonne-centree" style={{marginTop: 15}}>
+                            <Col sm={6} md={5} lg={4} className= "colonne-centree" style={{marginTop: 15}}>
                             {this.state.isModifying === false ?
                                 <Button onClick={this.modify.bind(this)} variant='light' block>MODIFIER VOS INFORMATIONS</Button>
                                 : <div><Button onClick={this.modify.bind(this)}

@@ -101,11 +101,11 @@ export class MyFinances extends React.Component {
                     </Col>
                     <Col xs={{span: 6, offset: 1}} sm={{span: 7, offset: 1}} md={{span: 8, offset: 1}}
                          lg={{span: 8, offset: 1}}>
-                        <Header page="ABONNEMENTS"/>
+                        <Header page="MES FINANCES"/>
                         <Row className="headerRight">
                         </Row>
                         <Row>
-                            <Col md={{span: 6, offset: 4}}>
+                            <Col md={{span: 7, offset: 3}}>
                                 {this.state.temp === 1
                                     ? <ButtonGroup aria-label="Basic example">
                                         <Button variant="dark" onClick={this.getPriceWeek.bind(this)}>Semaine</Button>
@@ -182,8 +182,8 @@ export class MyFinances extends React.Component {
                             </Col>
                         </Row>
                         <Row>
-                            <Col md={{span: 6, offset: 4}}>
-                                <h1>
+                            <Col md={{span: 8, offset: 2}}>
+                                <h1 className="titre">{"Vos dépenses sont de "}
                                     <Badge variant="dark">
                                         {this.state.displayedPrice} €
                                         {

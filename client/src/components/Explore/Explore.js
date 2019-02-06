@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container, Row, Col, ListGroup, Button} from "react-bootstrap";
+import {Container, Row, Col, ListGroup, Button, Form} from "react-bootstrap";
 import API from '../../utils/API';
 import {Link} from 'react-router-dom';
 import {Menu} from '../Menu/Menu.js';
@@ -151,6 +151,9 @@ export class Explore extends React.Component {
                     <Col xs={{span: 6, offset: 1}} sm={{span: 7, offset: 1}} md={{span: 8, offset: 1}}
                          lg={{span: 8, offset: 1}}>
                         <Header page="EXPLORER"/>
+                        <Form>
+                          <Form.Control type="text" placeholder="Rechercher" className="search" />
+                        </Form>
                         <Row>
                             <Col xs={12} className="EnteteAbo">
                                 <Row>
