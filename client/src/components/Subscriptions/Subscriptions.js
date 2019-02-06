@@ -9,7 +9,7 @@ export class Subscriptions extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            subscription: [],
+            subscriptions: [],
             isCompany: localStorage.getItem('account')
         };
     }
@@ -27,8 +27,8 @@ export class Subscriptions extends React.Component {
         API.getSub(_send).then(function (data) {
             //console.log(data.data.dd);
             that.setState({
-                subscription: data.data.dd
-            }, () => console.log(that.state.subscription[0]));
+                subscriptions: data.data.dd
+            }, () => console.log(that.state.subscriptions[0]));
         })
     }
 
@@ -51,37 +51,8 @@ export class Subscriptions extends React.Component {
         })
     };
 
-    /** CompanyAccount(props) {
-        return (
-            <Link to={"/Company/add"}>Ajouter un abonnement</Link>
-        )
-    }
-
-     UserAccount(props) {
-        return <Link to={"/user/add"}>Ajouter un abonnement</Link>
-    }
-
-     Account(props) {
-        if (window.localStorage.getItem("account")) {
-            if (window.localStorage.getItem("account") == "true") {
-                return <CompanyAccount />;
-            } else {
-                return <UserAccount />;
-            }
-        } else {
-            console.log("Pas censée arriver");
-            //return <UserAccount />;
-        }
-
-
-    }*/
-
-
-    //https://reactjs.org/docs/conditional-rendering.html
-
-
     render() {
-        const listItems = this.state.subscription.map((item) => <ListGroup.Item
+        const listItems = this.state.subscriptions.map((item) => <ListGroup.Item
             key={item._id}>
             <Row>
                 <Col md={10}>{item.name} {item.company} {item.price}€
@@ -94,9 +65,30 @@ export class Subscriptions extends React.Component {
                                 ? '/trismestre'
                                 : item.mensu === 'semestriel'
                                     ? '/semestre' : item.mensu === 'annuel'
-                                        ? 'année'
+                                        ? '/année'
                                         : ''
-                    } {item.name} {item.category} {item.descri} {item.engage}</Col>
+                    } {item.name}
+                    {
+                        item.category === 'musique'
+                            ? ' Musique'
+                            : item.category === 'actu'
+                            ? ' Actualité'
+                            : item.category === 'assurance'
+                                ? ' Assurance'
+                                : item.category === 'photo'
+                                    ? ' Photo'
+                                    : item.category === 'prod'
+                                        ? ' Productivité'
+                                        : item.category === 'vidéo'
+                                            ? ' Vidéo'
+                                            : item.category === 'shopping'
+                                                ? ' Shopping'
+                                                : item.category === 'stock'
+                                                    ? ' Stockage'
+                                                    : item.category === 'util'
+                                                        ? ' Utilitaire'
+                                                        : ' '
+                    } {item.descri} {item.engage}</Col>
                 <Col md={2}>
                     {this.state.isCompany === 'false' &&
                     <Button variant="danger" onClick={this.delSubscription.bind(this, item._id)}>Supprimer</Button>
@@ -119,12 +111,13 @@ export class Subscriptions extends React.Component {
                                 ? <Link to={"/Company/add"}>Créer un abonnement</Link>
                                 : <Link to={"/user/add"}>Ajouter un abonnement</Link>}
                         </Row>
-                        <Row>
-                            <Col>
+                        <Row> {this.state.subscriptions.length > 0
+                            ? <Col>
                                 <ListGroup className="list">
                                     {listItems}
                                 </ListGroup>
                             </Col>
+                            : <Col md={{span: 6, offset: 4}}>Oups! Votre liste d'abonnement semble être vide…</Col>}
                         </Row>
                     </Col>
                 </Row>

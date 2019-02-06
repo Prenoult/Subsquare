@@ -9,10 +9,10 @@ export class Explore extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            subscription: []
+            subscriptionIn: [],
+            subscriptionNin: []
         };
     }
-
 
     componentDidMount() {
         this.getSubscriptions();
@@ -26,12 +26,14 @@ export class Explore extends React.Component {
         API.allSubscriptions(_send).then(function (data) {
             console.log(data.data);
             that.setState({
-                subscription: data.data.sub
+                subscriptionIn: data.data.SubIn,
+                subscriptionNin: data.data.SubNin
             });
         })
     }
 
     addSubscription(id) {
+        let that = this;
         let _s = {
             id: id,
             email: localStorage.getItem("id")
@@ -39,8 +41,7 @@ export class Explore extends React.Component {
         API.addSubscription(_s).then(function (data) {
             if (data.status === 200) {
                 console.log("succès");
-                //console.log(data.data);
-                window.location = "/subscriptions";
+                that.getSubscriptions()
             } else {
                 console.log("erreur");
             }
@@ -52,7 +53,7 @@ export class Explore extends React.Component {
     };
 
     render() {
-        const listItems = this.state.subscription.map((item) => <ListGroup.Item
+        const listSubNin = this.state.subscriptionNin.map((item) => <ListGroup.Item
             key={item._id}>
             <Row>
                 <Col md={10}>{item.name} {item.company} {item.price}€
@@ -67,9 +68,73 @@ export class Explore extends React.Component {
                                     ? '/semestre' : item.mensu === 'annuel'
                                         ? 'année'
                                         : ''
-                    } {item.name} {item.category} {item.descri} {item.engage}</Col>
+                    } {item.name}
+                    {
+                        item.category === 'musique'
+                            ? ' Musique'
+                            : item.category === 'actu'
+                            ? ' Actualité'
+                            : item.category === 'assurance'
+                                ? ' Assurance'
+                                : item.category === 'photo'
+                                    ? ' Photo'
+                                    : item.category === 'prod'
+                                        ? ' Productivité'
+                                        : item.category === 'vidéo'
+                                            ? ' Vidéo'
+                                            : item.category === 'shopping'
+                                                ? ' Shopping'
+                                                : item.category === 'stock'
+                                                    ? ' Stockage'
+                                                    : item.category === 'util'
+                                                        ? ' Utilitaire'
+                                                        : ' '
+                    } {item.descri} {item.engage}</Col>
                 <Col md={2}>
                     <Button variant="success" onClick={this.addSubscription.bind(this, item._id)}>Ajouter</Button>
+                </Col>
+            </Row>
+        </ListGroup.Item>);
+        const listSubIn = this.state.subscriptionIn.map((item) => <ListGroup.Item
+            key={item._id}>
+            <Row>
+                <Col md={10}>{item.name} {item.company} {item.price}€
+                    {
+                        item.mensu === 'hebdo'
+                            ? '/semaine'
+                            : item.mensu === 'mensuel'
+                            ? '/mois'
+                            : item.mensu === 'trismestriel'
+                                ? '/trismestre'
+                                : item.mensu === 'semestriel'
+                                    ? '/semestre' : item.mensu === 'annuel'
+                                        ? 'année'
+                                        : ''
+                    } {item.name}
+                    {
+                        item.category === 'musique'
+                            ? ' Musique'
+                            : item.category === 'actu'
+                            ? ' Actualité'
+                            : item.category === 'assurance'
+                                ? ' Assurance'
+                                : item.category === 'photo'
+                                    ? ' Photo'
+                                    : item.category === 'prod'
+                                        ? ' Productivité'
+                                        : item.category === 'vidéo'
+                                            ? ' Vidéo'
+                                            : item.category === 'shopping'
+                                                ? ' Shopping'
+                                                : item.category === 'stock'
+                                                    ? ' Stockage'
+                                                    : item.category === 'util'
+                                                        ? ' Utilitaire'
+                                                        : ' '
+                    } {item.descri} {item.engage}</Col>
+                <Col md={2}>
+                    <Button variant="secondary" onClick={this.addSubscription.bind(this, item._id)}
+                            disabled>Ajouté</Button>
                 </Col>
             </Row>
         </ListGroup.Item>);
@@ -85,7 +150,10 @@ export class Explore extends React.Component {
                         <Row>
                             <Col>
                                 <ListGroup>
-                                    {listItems}
+                                    {listSubIn}
+                                </ListGroup>
+                                <ListGroup>
+                                    {listSubNin}
                                 </ListGroup>
                             </Col>
                         </Row>
