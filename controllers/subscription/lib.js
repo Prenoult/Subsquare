@@ -122,10 +122,20 @@ function allSubs(req,res){
             if(user){
                 Subscription.find({ _id: { $nin: user.sub } }, function (err, s){
                     if (s){
-                        res.status(200).json({
-                            "text": "succees",
-                            "sub":s
-                        })
+                        Subscription.find({ _id: { $in: user.sub } }, function (err, s1){
+                            if (s1){
+                                res.status(200).json({
+                                    "text": "succees",
+                                    "SubIn":s1,
+                                    "SubNin":s
+                                })
+                            }else{
+                                res.status(500).json({
+                                    "text": "Erreur interne"
+                                })
+                            }
+
+                        });
                     }
                 });
             }else{
