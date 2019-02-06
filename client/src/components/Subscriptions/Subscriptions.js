@@ -116,7 +116,8 @@ export class Subscriptions extends React.Component {
                         <Header page="ABONNEMENTS"/>
                         <Row className="headerRight">
                             {this.state.isCompany === 'true'
-                                ? <Link to={"/Company/add"}>Créer un abonnement</Link>
+                                ? 
+                                <Link to={"/Company/add"}>Créer un abonnement</Link>
                                 : <Link to={"/user/add"}>Ajouter un abonnement</Link>}
                         </Row>
                         <Row>
