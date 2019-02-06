@@ -207,7 +207,7 @@ export class MyFinances extends React.Component {
                                 <Col md={{span: 8, offset: 2}}>
                                     <h1 className="titre">
                                         <Badge variant="dark">
-                                            Bientôt disponible : Visualisation de vos gain
+                                            Bientôt disponible : Visualisation de vos gains
                                         </Badge>
                                     </h1>
                                 </Col>
