@@ -159,6 +159,19 @@ a.linkButton {
     font-size: 1vw;
 }
 
+.buttonAjout {
+    border-radius: 40px;
+    margin: auto;
+    margin-bottom: 30px;
+    margin-top: 10px;
+    width: 13vw;
+    height: 3vw;
+    background-color: #6a6cac;
+    border-color: #6a6cac;
+    text-align: center;
+    font-size: 1vw;
+}
+
 .montagne {
     /*background-image: url("img/Montagne.jpg");*/
     background-color: white;

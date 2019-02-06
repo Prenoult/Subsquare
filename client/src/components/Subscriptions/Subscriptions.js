@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container, Row, Col, ListGroup, Button} from "react-bootstrap";
+import {Container, Row, Col, ListGroup, Button, Image} from "react-bootstrap";
 import API from '../../utils/API';
 import {Link} from 'react-router-dom';
 import {Menu} from '../Menu/Menu.js';
@@ -109,8 +109,29 @@ export class Subscriptions extends React.Component {
                         <Row className="headerRight">
                             {this.state.isCompany === 'true'
                                 ? 
-                                <Link to={"/Company/add"}>Créer un abonnement</Link>
-                                : <Link to={"/user/add"}>Ajouter un abonnement</Link>}
+                                <Link to={"/Company/add"}>
+                                    <Button
+                                        block
+                                        size="lg"
+                                        variant="primary"
+                                        type="submit"
+                                        className="buttonAjout"
+                                    >
+                                        Créer un abonnement
+                                    </Button>
+                                </Link>
+                                : <Link to={"/user/add"}>
+                                    <Button
+                                            block
+                                            size="lg"
+                                            variant="primary"
+                                            type="submit"
+                                            className="buttonAjout"
+                                        >
+                                            Ajouter un abonnement
+                                    </Button>
+                                
+                                </Link>}
                         </Row>
                         <Row> {this.state.subscriptions.length > 0
                             ? <Col>
