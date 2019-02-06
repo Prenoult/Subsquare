@@ -1,18 +1,18 @@
 import React, {Component} from 'react';
 import {Route, Switch} from 'react-router-dom';
-import {Dashboard} from './components/Dashboard/Dashboard.js';
-import {Login} from './components/Login/Login.js';
-import {Signup} from './components/Signup/Signup.js';
-import {Settings} from './components/Settings/Settings.js';
-import {SettingsCompany} from './components/Settings/SettingsCompany.js';
-import {SettingsMail} from './components/Settings/SettingsMail.js';
-import {SettingsPassword} from './components/Settings/SettingsPassword.js';
-import {Forgotten} from './components/Forgotten/Forgotten.js';
-import {Subscriptions} from './components/Subscriptions/Subscriptions.js';
-import {companyAdd} from './components/Subscriptions/companyAdd.js';
-import {userAdd} from './components/Subscriptions/userAdd.js';
-import {SettingsApply} from './components/Settings/SettingsApply.js';
-import {PrivateRoute} from './components/PrivateRoute.js';
+import {Dashboard} from './components/Dashboard/Dashboard';
+import {Login} from './components/Login/Login';
+import {Signup} from './components/Signup/Signup';
+import {Settings} from './components/Settings/Settings';
+import {SettingsCompany} from './components/Settings/SettingsCompany';
+import {SettingsMail} from './components/Settings/SettingsMail';
+import {SettingsPassword} from './components/Settings/SettingsPassword';
+import {Forgotten} from './components/Forgotten/Forgotten';
+import {Subscriptions} from './components/Subscriptions/Subscriptions';
+import {companyAdd} from './components/Subscriptions/companyAdd';
+import {Explore} from './components/Explore/Explore'
+import {SettingsApply} from './components/Settings/SettingsApply';
+import {PrivateRoute} from './components/PrivateRoute';
 import './App.css';
 
 class App extends Component {
@@ -31,7 +31,7 @@ class App extends Component {
                         <PrivateRoute exact path="/settings/password" component={SettingsPassword}/>
                         <PrivateRoute exact path="/subscriptions" component={Subscriptions}/>
                         <PrivateRoute exact path="/company/add" component={companyAdd} />
-                        <PrivateRoute exact path="/user/add" component={userAdd} />
+                        <PrivateRoute exact path="/explore" component={Explore} />
                         <PrivateRoute exact path="/settings/apply" component={SettingsApply} />
                     </Switch>
                 </div>
