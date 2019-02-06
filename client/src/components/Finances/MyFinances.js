@@ -181,28 +181,37 @@ export class MyFinances extends React.Component {
                                                     </ButtonGroup>}
                             </Col>
                         </Row>
-                        <Row>
-                            <Col md={{span: 8, offset: 2}}>
-                                <h1 className="titre">{"Vos dépenses sont de "}
-                                    <Badge variant="dark">
-                                        {this.state.displayedPrice} €
-                                        {
-                                            this.state.temp === 1
-                                                ? '/Semaine'
-                                                : this.state.temp === 2
-                                                ? '/Mois'
-                                                : this.state.temp === 3
-                                                    ? '/Trimestre'
-                                                    : this.state.temp === 4
-                                                        ? '/Semestre'
-                                                        : this.state.temp === 5
-                                                            ? '/An'
-                                                            : ''
-                                        }
-                                    </Badge>
-                                </h1>
-                            </Col>
-                        </Row>
+                        {this.state.isCompany === 'false' ? <Row>
+                                <Col md={{span: 8, offset: 2}}>
+                                    <h1 className="titre">{"Vos dépenses sont de "}
+                                        <Badge variant="dark">
+                                            {this.state.displayedPrice} €
+                                            {
+                                                this.state.temp === 1
+                                                    ? '/Semaine'
+                                                    : this.state.temp === 2
+                                                    ? '/Mois'
+                                                    : this.state.temp === 3
+                                                        ? '/Trimestre'
+                                                        : this.state.temp === 4
+                                                            ? '/Semestre'
+                                                            : this.state.temp === 5
+                                                                ? '/An'
+                                                                : ''
+                                            }
+                                        </Badge>
+                                    </h1>
+                                </Col>
+                            </Row>
+                            : <Row>
+                                <Col md={{span: 8, offset: 2}}>
+                                    <h1 className="titre">
+                                        <Badge variant="dark">
+                                            Bientôt disponible : Visualisation de vos gain
+                                        </Badge>
+                                    </h1>
+                                </Col>
+                            </Row>}
                     </Col>
                 </Row>
             </Container>
