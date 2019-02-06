@@ -126,16 +126,27 @@ export class Subscriptions extends React.Component {
                                             Engagement
                                         </Col>
                                     </Row>
-                                </Col><Col>
-                                <ListGroup className="list">
-                                    {listItems}
-                                </ListGroup>
-                                {this.state.isCompany === 'true' &&
-                                <Link to={"/Company/add"} className="linkButton"><Button className="buttonEnv" block>Créer
-                                    un abonnement</Button></Link>}
-                            </Col>
+                                </Col>
+                                <Col>
+                                    <ListGroup className="list">
+                                        {listItems}
+                                    </ListGroup>
+                                    {this.state.isCompany === 'true' &&
+                                    <Link to={"/Company/add"} className="linkButton"><Button className="buttonEnv"
+                                                                                             block>Créer
+                                        un abonnement</Button></Link>}
+                                </Col>
                             </Row>
-                            : <Col md={{span: 6, offset: 4}}>Oups! Votre liste d'abonnement semble être vide…</Col>}
+                            : <Row>
+                                <Col md={{span: 6, offset: 4}}>Oups! Votre liste d'abonnement semble être vide…
+                                </Col>
+                                <Col>
+                                    {this.state.isCompany === 'true' &&
+                                    <Link to={"/Company/add"} className="linkButton"><Button className="buttonEnv"
+                                                                                             block>Créer
+                                        un abonnement</Button></Link>}
+                                </Col>
+                            </Row>}
                     </Col>
                 </Row>
             </Container>
