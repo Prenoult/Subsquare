@@ -10,7 +10,7 @@ export class Subscriptions extends React.Component {
         super(props);
         this.state = {
             subscription: [],
-            isCompany: false
+            isCompany: localStorage.getItem('account')
         };
     }
 
@@ -31,17 +31,17 @@ export class Subscriptions extends React.Component {
             }, () => console.log(that.state.subscription[0]));
         })
     }
+
     delSubscription(id) {
         let _s = {
             id: id,
-            email:localStorage.getItem("id")
+            email: localStorage.getItem("id")
         };
         API.deleteSubscription(_s).then(function (data) {
-            if(data.status == 200){
-                console.log("succes");
-                //console.log(data.data);
+            if (data.status === 200) {
+                console.log("succès");
                 window.location = "/subscriptions";
-            }else{
+            } else {
                 console.log("erreur");
             }
 
@@ -89,16 +89,16 @@ export class Subscriptions extends React.Component {
                         item.mensu === 'hebdo'
                             ? '/semaine'
                             : item.mensu === 'mensuel'
-                                ? '/mois'
-                                : item.mensu === 'trismestriel'
-                                    ? '/trismestre'
-                                    : item.mensu === 'semestriel'
-                                        ? '/semestre' : item.mensu === 'annuel'
-                                            ? 'année'
-                                            : ''
+                            ? '/mois'
+                            : item.mensu === 'trismestriel'
+                                ? '/trismestre'
+                                : item.mensu === 'semestriel'
+                                    ? '/semestre' : item.mensu === 'annuel'
+                                        ? 'année'
+                                        : ''
                     } {item.name} {item.category} {item.descri} {item.engage}</Col>
                 <Col md={2}>
-                    {this.state.isCompany === false &&
+                    {this.state.isCompany === 'false' &&
                     <Button variant="danger" onClick={this.delSubscription.bind(this, item._id)}>Supprimer</Button>
 
                     }
@@ -111,12 +111,13 @@ export class Subscriptions extends React.Component {
                     <Col xs={2}>
                         <Menu/>
                     </Col>
-                    <Col xs={{ span: 6, offset: 1 }} sm={{ span: 7, offset: 1 }} md={{ span: 8, offset: 1 }} lg={{ span: 8, offset: 1 }}>
-
+                    <Col xs={{span: 6, offset: 1}} sm={{span: 7, offset: 1}} md={{span: 8, offset: 1}}
+                         lg={{span: 8, offset: 1}}>
                         <Header page="ABONNEMENTS"/>
                         <Row>
-                            <h3>Abonnements</h3>
-                            {/* <Account company/> */}
+                            {this.state.isCompany === 'true'
+                                ? <Link to={"/Company/add"}>Créer un abonnement</Link>
+                                : <Link to={"/user/add"}>Ajouter un abonnement</Link>}
                         </Row>
                         <Row>
                             <Col>

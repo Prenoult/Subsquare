@@ -33,14 +33,14 @@ export class userAdd extends React.Component {
     addSubscription(id) {
         let _s = {
             id: id,
-            email:localStorage.getItem("id")
+            email: localStorage.getItem("id")
         };
         API.addSubscription(_s).then(function (data) {
-            if(data.status == 200){
-               console.log("succes");
-               //console.log(data.data);
+            if (data.status === 200) {
+                console.log("succes");
+                //console.log(data.data);
                 window.location = "/subscriptions";
-            }else{
+            } else {
                 console.log("erreur");
             }
 
@@ -59,13 +59,13 @@ export class userAdd extends React.Component {
                         item.mensu === 'hebdo'
                             ? '/semaine'
                             : item.mensu === 'mensuel'
-                                ? '/mois'
-                                : item.mensu === 'trismestriel'
-                                    ? '/trismestre'
-                                    : item.mensu === 'semestriel'
-                                        ? '/semestre' : item.mensu === 'annuel'
-                                            ? 'année'
-                                            : ''
+                            ? '/mois'
+                            : item.mensu === 'trismestriel'
+                                ? '/trismestre'
+                                : item.mensu === 'semestriel'
+                                    ? '/semestre' : item.mensu === 'annuel'
+                                        ? 'année'
+                                        : ''
                     } {item.name} {item.category} {item.descri} {item.engage}</Col>
                 <Col md={2}>
                     <Button variant="success" onClick={this.addSubscription.bind(this, item._id)}>Ajouter</Button>
@@ -78,11 +78,9 @@ export class userAdd extends React.Component {
                     <Col xs={2}>
                         <Menu/>
                     </Col>
-                    <Col xs={{ span: 6, offset: 1 }} sm={{ span: 7, offset: 1 }} md={{ span: 8, offset: 1 }} lg={{ span: 8, offset: 1 }}>
+                    <Col xs={{span: 6, offset: 1}} sm={{span: 7, offset: 1}} md={{span: 8, offset: 1}}
+                         lg={{span: 8, offset: 1}}>
                         <Header page="ABONNEMENTS"/>
-                        <Row>
-                            <h2>Ajouter un Abonnement</h2>
-                        </Row>
                         <Row>
                             <Col>
                                 <ListGroup>
