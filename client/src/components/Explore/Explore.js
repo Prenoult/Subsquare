@@ -66,7 +66,7 @@ export class Explore extends React.Component {
                                 ? '/trismestre'
                                 : item.mensu === 'semestriel'
                                     ? '/semestre' : item.mensu === 'annuel'
-                                        ? 'année'
+                                        ? '/année'
                                         : ''
                     } {item.name}
                     {
@@ -108,7 +108,7 @@ export class Explore extends React.Component {
                                 ? '/trismestre'
                                 : item.mensu === 'semestriel'
                                     ? '/semestre' : item.mensu === 'annuel'
-                                        ? 'année'
+                                        ? '/année'
                                         : ''
                     } {item.name}
                     {
