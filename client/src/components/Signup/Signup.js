@@ -35,7 +35,7 @@ export class Signup extends React.Component {
             password: this.state.password
         };
         API.signup(_send).then(function (data) {
-            if (data.status == 200) {
+            if (data.status === 200) {
                 localStorage.setItem('token', data.data.token);
                 localStorage.setItem('id', data.data.id);
                 localStorage.setItem('firstname', data.data.firstname);
@@ -43,7 +43,7 @@ export class Signup extends React.Component {
                 localStorage.setItem("account", data.data.company);
                 window.location = "/dashboard"
             } else {
-                if (data.status == 204) {
+                if (data.status === 204) {
                     //erreur adresse mail deja utilisée
                     that.setState({
                         error: "error"
@@ -57,7 +57,7 @@ export class Signup extends React.Component {
         }, function (error) {
             console.log(error);
             return;
-        })
+        });
         console.log("45");
     };
 
@@ -136,7 +136,7 @@ export class Signup extends React.Component {
                                             onChange={this.handleChange}
                                             onBlur={this.handleBlurEmail.bind(this)}
                                             placeholder="Email"
-                                            isInvalid={this.state.error == 'error'}
+                                            isInvalid={this.state.error === 'error'}
                                         />
                                         <Form.Control.Feedback type="invalid">L'adresse mail que vous avez entrée correspond déjà à un
                                             compte. Veuillez
@@ -150,7 +150,7 @@ export class Signup extends React.Component {
                                             onBlur={this.handleBlurPassword.bind(this)}
                                             type="password"
                                             placeholder="Mot de passe"
-                                            isInvalid={this.state.vsPassword == 'error'}
+                                            isInvalid={this.state.vsPassword === 'error'}
                                         />
                                         <Form.Control.Feedback type="invalid">Votre mot de passe doit contenir au moins 8 caractères
                                             dont 1
@@ -164,7 +164,7 @@ export class Signup extends React.Component {
                                             onBlur={this.handleBlurCPassword.bind(this)}
                                             type="password"
                                             placeholder="Confirmer mot de passe"
-                                            isInvalid={this.state.vsCPassword == 'error'}
+                                            isInvalid={this.state.vsCPassword === 'error'}
                                         />
                                         <Form.Control.Feedback type="invalid">Les mots de passe doivent être
                                             identiques</Form.Control.Feedback>

@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 import {Menu} from '../Menu/Menu.js';
 import {Header} from '../Header/Header.js';
 
-export class userAdd extends React.Component {
+export class Explore extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -24,9 +24,10 @@ export class userAdd extends React.Component {
             email: localStorage.getItem("id")
         };
         API.allSubscriptions(_send).then(function (data) {
+            console.log(data.data);
             that.setState({
                 subscription: data.data.sub
-            }, () => console.log(that.state.subscription[0]));
+            });
         })
     }
 
@@ -37,7 +38,7 @@ export class userAdd extends React.Component {
         };
         API.addSubscription(_s).then(function (data) {
             if (data.status === 200) {
-                console.log("succes");
+                console.log("succès");
                 //console.log(data.data);
                 window.location = "/subscriptions";
             } else {
@@ -80,7 +81,7 @@ export class userAdd extends React.Component {
                     </Col>
                     <Col xs={{span: 6, offset: 1}} sm={{span: 7, offset: 1}} md={{span: 8, offset: 1}}
                          lg={{span: 8, offset: 1}}>
-                        <Header page="ABONNEMENTS"/>
+                        <Header page="EXPLORER"/>
                         <Row>
                             <Col>
                                 <ListGroup>
