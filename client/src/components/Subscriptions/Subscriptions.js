@@ -1,8 +1,5 @@
-/**
- * Created by Charles on 08/01/2019.
- */
 import React from 'react';
-import {Button, FormGroup, FormControl, ControlLabel, Grid, Row, Col} from "react-bootstrap";
+import {Container, Row, Col, ListGroup, Button} from "react-bootstrap";
 import API from '../../utils/API';
 import {Link} from 'react-router-dom';
 import {Menu} from '../Menu/Menu.js';
@@ -12,70 +9,125 @@ export class Subscriptions extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            subscription:[]
+            subscription: [],
+            isCompany: false
         };
     }
 
     componentDidMount() {
-        this.getSubscription()
-        console.log(this.state)
+        this.getSubscription();
+        console.log(this.state.isCompany)
     }
-    getSubscription(){
+
+    getSubscription() {
         let that = this;
-        var _send = {
+        let _send = {
             email: localStorage.getItem("id")
         };
         API.getSub(_send).then(function (data) {
-            console.log(data.data.dd);
+            //console.log(data.data.dd);
             that.setState({
-                subscription:data.data.dd
-            });
+                subscription: data.data.dd
+            }, () => console.log(that.state.subscription[0]));
         })
     }
+    delSubscription(id) {
+        let _s = {
+            id: id,
+            email:localStorage.getItem("id")
+        };
+        API.deleteSubscription(_s).then(function (data) {
+            if(data.status == 200){
+                console.log("succes");
+                //console.log(data.data);
+                window.location = "/subscriptions";
+            }else{
+                console.log("erreur");
+            }
+
+        }, function (error) {
+            console.log(error);
+            return;
+        })
+    };
+
+    /** CompanyAccount(props) {
+        return (
+            <Link to={"/Company/add"}>Ajouter un abonnement</Link>
+        )
+    }
+
+     UserAccount(props) {
+        return <Link to={"/user/add"}>Ajouter un abonnement</Link>
+    }
+
+     Account(props) {
+        if (window.localStorage.getItem("account")) {
+            if (window.localStorage.getItem("account") == "true") {
+                return <CompanyAccount />;
+            } else {
+                return <UserAccount />;
+            }
+        } else {
+            console.log("Pas censée arriver");
+            //return <UserAccount />;
+        }
+
+
+    }*/
 
 
     //https://reactjs.org/docs/conditional-rendering.html
 
-    render() {
 
+    render() {
+        const listItems = this.state.subscription.map((item) => <ListGroup.Item
+            key={item._id}>
+            <Row>
+                <Col md={10}>{item.name} {item.company} {item.price}€
+                    {
+                        item.mensu === 'hebdo'
+                            ? '/semaine'
+                            : item.mensu === 'mensuel'
+                                ? '/mois'
+                                : item.mensu === 'trismestriel'
+                                    ? '/trismestre'
+                                    : item.mensu === 'semestriel'
+                                        ? '/semestre' : item.mensu === 'annuel'
+                                            ? 'année'
+                                            : ''
+                    } {item.name} {item.category} {item.descri} {item.engage}</Col>
+                <Col md={2}>
+                    {this.state.isCompany === false &&
+                    <Button variant="danger" onClick={this.delSubscription.bind(this, item._id)}>Supprimer</Button>
+
+                    }
+                </Col>
+            </Row>
+        </ListGroup.Item>);
         return (
-            <Grid className="Form">
+            <Container className="Form" fluid>
                 <Row>
-                    <Menu/>
-                    <Col md={8} mdOffset={1}>
+                    <Col xs={2}>
+                        <Menu/>
+                    </Col>
+                    <Col xs={{ span: 6, offset: 1 }} sm={{ span: 7, offset: 1 }} md={{ span: 8, offset: 1 }} lg={{ span: 8, offset: 1 }}>
+
                         <Header page="ABONNEMENTS"/>
                         <Row>
-                            <h2>Abonnements</h2>
-                            <Account company />
+                            <h3>Abonnements</h3>
+                            {/* <Account company/> */}
+                        </Row>
+                        <Row>
+                            <Col>
+                                <ListGroup>
+                                    {listItems}
+                                </ListGroup>
+                            </Col>
                         </Row>
                     </Col>
                 </Row>
-            </Grid>
+            </Container>
         )
     }
-}
-
-
-function CompanyAccount(props) {
-    return (
-    <Link to={"/Company/add"}>Ajouter un abonnement</Link>
-    )}
-
-function UserAccount(props) {
-    return  <Link to={"/user/add"}>Ajouter un abonnement</Link>
-}
-
-function Account(props) {
-    if (window.localStorage.getItem("account")){
-        if (window.localStorage.getItem("account") == "true") {
-            return <CompanyAccount />;
-        }else {
-            return <UserAccount />;
-        }
-    }else{
-        console.log("Pas censée arriver");
-        //return <UserAccount />;
-    }
-
-
 }

@@ -1,15 +1,8 @@
-/**
- * Created by Charles on 05/01/2019.
- */
-/**
- * Created by Charles on 03/01/2019.
- */
 import React from 'react';
-import {Button, FormGroup, FormControl, ControlLabel, Grid, Row, Col, HelpBlock} from "react-bootstrap";
+import {Button, Form, Container, Row, Col} from "react-bootstrap";
 import API from '../../utils/API';
 import {Link} from 'react-router-dom';
 import {EnteteLogo} from '../EnteteLogo/EnteteLogo.js';
-import {Footer} from '../Footer/Footer.js';
 
 export class Forgotten extends React.Component {
     constructor(props) {
@@ -18,7 +11,7 @@ export class Forgotten extends React.Component {
         this.send.bind(this);
         this.state = {
             email: "",
-            er:null
+            er: null
         };
     }
 
@@ -57,48 +50,49 @@ export class Forgotten extends React.Component {
 
     render() {
         return (
-            <Grid className="Form">
+            <Container className="Form" fluid>
                 <EnteteLogo/>
                 <Row className="Form">
-                    <form onSubmit={this.send}>
-                    <Row>
-                        <Col md={5} className= "colonne-centree">
-                            <FormGroup controlId="email" bsSize="large" validationState={this.state.er}>
-                                <ControlLabel className="label">Réinitialiser votre mot de passe</ControlLabel>
-                                <FormControl 
-                                    autoFocus 
-                                    type="email" 
-                                    value={this.state.email} 
-                                    onChange={this.handleChange}
-                                    placeholder= "Entrez votre adresse mail ici"
-                                    className="FormContLog"/>
-                                    {this.state.er === 'error' &&
-                                    <HelpBlock>L'adresse email que vous avez entré n'est pas présente dans nos fichiers. Veuillez vérifier et réessayer</HelpBlock>}
-                                    {this.state.er === 'success' &&
-                                    <HelpBlock>Votre mot de passe a été réinitialisé et il vous a été envoyé par mail</HelpBlock>}
-                            </FormGroup>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col md={2} className= "colonne-centree">
-                            <Button
-                                block
-                                bsSize="large"
-                                bsStyle="primary"
-                                type="submit"
-                                className="buttonEnv"
-                            >
-                                VALIDER
-                            </Button>
-                        </Col>
-                    </Row>
-                    </form>
+                    <Col xs={8} sm={6} md={3} className="colonne-centree">
+                        <Form onSubmit={this.send}>
+                            <Row>
+                                <Col>
+                                    <Form.Group controlId="email" size="lg" className="colonne-centree label">
+                                        <Form.Label>Réinitialiser votre mot de passe</Form.Label>
+                                        <Form.Control
+                                            autoFocus
+                                            type="email"
+                                            value={this.state.email}
+                                            onChange={this.handleChange}
+                                            placeholder="Veuillez saisir votre adresse email"
+                                            isInvalid={this.state.er=='error'}
+                                            isValid={this.state.er=='success'}
+                                        />
+                                        <Form.Control.Feedback type="invalid">L'adresse email que vous avez entré n'est pas présente
+                                            dans nos fichiers. Veuillez vérifier et réessayer</Form.Control.Feedback>
+                                        <Form.Control.Feedback type= "valid">Votre mot de passe a été réinitialisé et il vous a été
+                                            envoyé par mail</Form.Control.Feedback>
+                                    </Form.Group>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col className="colonne-centree">
+                                    <Button
+                                        block
+                                        size="md"
+                                        variant="primary"
+                                        type="submit"
+                                        className="buttonEnv"
+                                    >
+                                        VALIDER
+                                    </Button>
+                                    <Link to={"/"}>Retour à la connexion</Link>
+                                </Col>
+                            </Row>
+                        </Form>
+                    </Col>
                 </Row>
-                <Row className= "centrer">
-                    <Link to={"/"} >Retour à la connexion</Link>
-                </Row>
-                <Footer page="LOGIN"/>
-            </Grid>
+            </Container>
         )
     }
 }

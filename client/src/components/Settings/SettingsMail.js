@@ -1,8 +1,5 @@
-/**
- * Created by Charles on 03/01/2019.
- */
 import React from 'react';
-import {Button, FormGroup, FormControl, ControlLabel, Grid, Row, Col, Image} from "react-bootstrap";
+import {Button, Form, Control, Container, Row, Col, Image} from "react-bootstrap";
 import API from '../../utils/API';
 import {Menu} from '../Menu/Menu.js';
 import {Header} from '../Header/Header.js';
@@ -48,10 +45,12 @@ export class SettingsMail extends React.Component {
 
     render() {
         return (
-            <Grid className="Form">
+            <Container className="Form" fluid>
                 <Row>
-                    <Menu/>
-                    <Col md={8} mdOffset={1}>
+                    <Col md={{ span: 2, offset: 0 }}>
+                        <Menu/>
+                    </Col>
+                    <Col md={{ span: 8, offset: 1 }}>
                         <Header page="PROFIL"/>
                         <Col md={6}>
                             <Row>
@@ -60,27 +59,27 @@ export class SettingsMail extends React.Component {
                                 </Col>
                             </Row>
                             <Row>
-                                <FormGroup controlId="nemail" bsSize="large">
-                                    <FormControl
+                                <Form.Group controlId="nemail" size="lg">
+                                    <Form.Control
                                         autoFocus 
                                         type="email" 
                                         value={this.state.nemail}
                                         onChange={this.handleChange}
                                         placeholder= "NOUVELLE ADRESSE MAIL"/>
-                                </FormGroup>
-                                <FormGroup controlId="password" bsSize="large">
-                                    <FormControl 
+                                </Form.Group>
+                                <Form.Group controlId="password" bsSize="large">
+                                    <Form.Control 
                                         value={this.state.password} 
                                         onChange={this.handleChange} 
                                         type="password"
                                         placeholder= "MOT DE PASSE"/>
-                                </FormGroup>
+                                </Form.Group>
                                 <Col md={3} className= "colonne-centree">
                                     <Button
                                         onClick={this.send}
                                         block
-                                        bsSize="large"
-                                        bsStyle="primary"
+                                        size="lg"
+                                        variant="primary"
                                         type="submit"
                                         className="buttonEnv"
                                     >
@@ -91,7 +90,7 @@ export class SettingsMail extends React.Component {
                         </Col>
                     </Col>
                 </Row>
-            </Grid>
+            </Container>
         )
     }
 }

@@ -1,9 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {Button, FormGroup, FormControl, ControlLabel, Grid, Row, Col, HelpBlock} from "react-bootstrap";
+import {Button, Form, Container, Row, Col} from "react-bootstrap";
 import {EnteteLogo} from '../EnteteLogo/EnteteLogo.js'
 import API from '../../utils/API';
-import {Footer} from '../Footer/Footer.js';
 
 export class Login extends React.Component {
     constructor(props) {
@@ -13,7 +12,7 @@ export class Login extends React.Component {
         this.state = {
             email: "",
             password: "",
-            er:null,
+            error: null,
         };
         this.handleChange.bind(this);
         this.send.bind(this);
@@ -33,11 +32,11 @@ export class Login extends React.Component {
             localStorage.setItem('id', data.data.id);
             localStorage.setItem('firstname', data.data.firstname);
             localStorage.setItem('nomC', data.data.nomC);
-            localStorage.setItem("account",data.data.company);
+            localStorage.setItem("account", data.data.company);
             window.location = "/dashboard"
         }, function (error) {
             that.setState({
-                er: "error"
+                error: "error"
             });
         })
     };
@@ -49,53 +48,61 @@ export class Login extends React.Component {
 
     render() {
         return (
-            <Grid className="Form">
+            <Container className="Form" fluid>
                 <EnteteLogo/>
                 <Row className="Form">
-                    <form onSubmit={this.send}>
-                        <Row>
-                            <Col xs={6} sm={5} md={5} className= "colonne-centree">
-                                <FormGroup controlId="email" bsSize="large" validationState={this.state.er}>
-                                    {this.state.er === 'error' &&
-                                    <HelpBlock>Le nom d'utilisateur et le mot de passe que vous avez entrés ne correspondent pas à ceux présents dans nos fichiers. Veuillez vérifier et réessayer</HelpBlock>}
-                                    <FormControl 
-                                        autoFocus type="email" 
-                                        value={this.state.email} 
-                                        onChange={this.handleChange}
-                                        placeholder= "ADRESSE EMAIL"
-                                        className="FormContLog"/>
-                                    </FormGroup>
-                                <FormGroup controlId="password" bsSize="large" validationState={this.state.er}>
-                                    <FormControl 
-                                        value={this.state.password} 
-                                        onChange={this.handleChange} 
-                                        type="password"
-                                        placeholder= "MOT DE PASSE"
-                                        className="FormContLog"/>
-                                </FormGroup>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col xs={7} sm={6} md={6} className= "colonne-centree">
-                                <Button
-                                    block
-                                    bsSize="large"
-                                    bsStyle="primary"
-                                    type="submit"
-                                    className="buttonEnv"
-                                >
-                                    CONNEXION
-                                </Button>
-                            </Col>
-                        </Row>
-                    </form>
-                    <Row className= "centrer">
-                        <Link to={"/signup"} >Vous ne possedez pas de compte ?</Link>
-                        <br/>
-                        <Link to={"/forgotten"}>Mot de passe oublié ?</Link>
-                    </Row>
+                    <Col xs={7} sm={6} md={4} lg={3} className="colonne-centree">
+                        <Form onSubmit={this.send}>
+                            <Row>
+                                <Col>
+                                    <Form.Group controlId="email" size="lg">
+                                        <Form.Control
+                                            autoFocus type="email"
+                                            value={this.state.email}
+                                            onChange={this.handleChange}
+                                            placeholder="Email"
+                                            isInvalid={this.state.error == 'error'}
+                                        />
+                                        <Form.Control.Feedback type="invalid">Le nom d'utilisateur et le mot de passe
+                                            que
+                                            vous avez entrés ne correspondent pas à ceux présents dans nos fichiers.
+                                            Veuillez vérifier et réessayer</Form.Control.Feedback>
+                                    </Form.Group>
+                                    <Form.Group controlId="password" size="lg">
+                                        <Form.Control
+                                            value={this.state.password}
+                                            onChange={this.handleChange}
+                                            type="password"
+                                            placeholder="Mot de passe"
+                                            isInvalid={this.state.error == 'error'}
+                                        />
+                                    </Form.Group>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col xs={8} className="colonne-centree">
+                                    <Button
+                                        block
+                                        size="md"
+                                        type="submit"
+                                        className="buttonEnv"
+                                    >
+                                        CONNEXION
+                                    </Button>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col className="colonne-centree">
+                                    <Link to={"/signup"}>Vous ne possedez pas de compte ?</Link>
+                                    <br/>
+                                    <Link to={"/forgotten"}>Mot de passe oublié ?</Link>
+                                    <br/>
+                                </Col>
+                            </Row>
+                        </Form>
+                    </Col>
                 </Row>
-            </Grid>
+            </Container>
         )
     }
 }

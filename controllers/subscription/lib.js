@@ -30,6 +30,86 @@ function get(req, res) {
     }
 }
 
+function add(req, res) {
+    if(!req.body.id || !req.body.email){
+        res.status(400).json({
+            "text": "Requête invalide"
+        })
+    }else {
+        User.findOne({
+            email: req.body.email
+        }, function (err, user) {
+            if(user){
+                User.update({email: user.email}, {$push: {sub: req.body.id}},
+                    function (err, user1) {
+                        if (err) {
+                            res.status(500).json({
+                                "text": "Erreur interne"
+                            })
+                        } else if (!user1) {
+                            res.status(401).json({
+                                "text": "L'utilisateur n'existe pas"
+                            })
+
+                        } else {
+                            res.status(200).json({
+                                "text": "succees",
+                                "id":user.email,
+                                "sub": user1.sub
+                            })
+                        }
+                    })
+            }else{
+                res.status(500).json({
+                    "text": "Erreur interne"
+                })
+            }
+        })
+
+
+    }
+}
+
+function del(req, res) {
+    if(!req.body.id || !req.body.email){
+        res.status(400).json({
+            "text": "Requête invalide"
+        })
+    }else {
+        User.findOne({
+            email: req.body.email
+        }, function (err, user) {
+            if(user){
+                User.update({email: user.email}, {$pull: {sub: req.body.id}},
+                    function (err, user1) {
+                        if (err) {
+                            res.status(500).json({
+                                "text": "Erreur interne"
+                            })
+                        } else if (!user1) {
+                            res.status(401).json({
+                                "text": "L'utilisateur n'existe pas"
+                            })
+
+                        } else {
+                            res.status(200).json({
+                                "text": "succees",
+                                "id":user.email,
+                                "sub": user1.sub
+                            })
+                        }
+                    })
+            }else{
+                res.status(500).json({
+                    "text": "Erreur interne"
+                })
+            }
+        })
+
+
+    }
+}
+
 function allSubs(req,res){
     if(!req.body.email){
         res.status(400).json({
@@ -187,3 +267,5 @@ function create(req, res) {
 exports.get = get;
 exports.create = create;
 exports.allSubs = allSubs;
+exports.add = add;
+exports.del = del;

@@ -35,6 +35,17 @@
     color: #6a6cac;
 }
 
+.container-fluid{
+    padding-left: 0px;
+}
+
+.logoMenu {
+    width: 16vw;
+   margin-left: -20px;
+   margin-bottom: 70px;
+   margin-top: 20px;
+}
+
 a {
     color: #6a6cac;
 }
@@ -52,38 +63,49 @@ a:hover {
     }
 }
 
-.Form {
+/**.Form {
     margin-left: 0px;
     margin-right: 0px;
-}
+}*/
 
 body {
     background-color: #f1f2f6;
 }
 
-.container {
-    width: 100%;
+.card {
+    text-align: left;
+    height: 50px;
+    margin-bottom: 5px;
 }
 
-.FormContLog {
-    border-color: white;
-    border-radius: 15px 15px 0px 0px;
+.card-body {
+    padding-top: 10px;
+    padding-left: 10px;
 }
+
+/**.container {
+    width: 100%;
+}*/
 
 .LogoLog {
-    margin-top: 7%;
-    text-align: center;
+    margin-top: 20%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 h2 {
     color: grey;
     font-size: 25px;
+    margin: auto;
     margin-bottom: 30px;
 }
+
 h3 {
     text-align: center;
+    margin: auto;
     margin-bottom: 40px;
     margin-top: 30px;
+    font-size: 25px;
 }
 
 .label {
@@ -94,21 +116,23 @@ h3 {
 .colonne-centree {
     float: none;
     margin: 0 auto;
+    text-align: center;
 }
+
 .centrer {
     text-align: center;
 }
 
 /* Si on veut utiliser un Button (style) fonctionnant comme un Link (router) */
 .linkButton {
-    display: block;
-    height: 100%;
 }
 
 a.linkButton {
     color: white;
     text-decoration: none;
 }
+
+/* --- */
 
 .buttonEnv {
     margin-top: 15px;
@@ -122,26 +146,36 @@ a.linkButton {
     border-color: #8c7ae6;
 }
 
+
 .buttonMenu {
     border-radius: 40px;
+    margin: auto;
     margin-bottom: 30px;
-    width: 200px;
-    margin-left: 15%;
+    width: 13vw;
+    height: 3vw;
     background-color: #6a6cac;
     border-color: #6a6cac;
+    text-align: left;
+    font-size: 1vw;
 }
 
 .montagne {
-    background-image: url("img/Montagne.jpg");
+    /*background-image: url("img/Montagne.jpg");*/
+    background-color: white;
     background-size: 'cover';
     background-attachment: fixed;
+    min-width: 17vw;
     height: 100vh;
-    min-width: 300px;
 }
 
 .entete {
     margin-top: 4%;
     border-bottom: 3px solid black;
+}
+
+.imgMenu {
+    width: 2vw;
+   margin-right: 0.7vw;
 }
 
 .pied {

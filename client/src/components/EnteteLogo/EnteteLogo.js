@@ -1,17 +1,20 @@
 import React from 'react';
-import {Button, FormGroup, FormControl, ControlLabel, Grid, Row, Col, Image} from "react-bootstrap";
+import {Row, Col, Image} from "react-bootstrap";
 
 export class EnteteLogo extends React.Component {
-	render() {
-		return (
-			<Grid>
-				<Row className="LogoLog">
-	                <Col className= "colonne-centree">
-	                    <Image src={require('../../img/logotest.png')}/>
-	                </Col>
-	            <h2 >GESTION CENTRALISÉE DE VOS ABONNEMENTS</h2>
-	            </Row>
-	        </Grid>
-		)
-	}
+    render() {
+        return (
+            <Row>
+                <Col xs={8} md={5} className="colonne-centree">
+                    <Row>
+                        <Image src={require('../../img/logotest.png')} className="LogoLog"/>
+                    </Row>
+                    <Row>
+                        <h2>GESTION CENTRALISÉE DE VOS ABONNEMENTS</h2>
+                    </Row>
+                </Col>
+            </Row>
+                
+        )
+    }
 }
