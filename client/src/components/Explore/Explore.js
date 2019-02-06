@@ -92,7 +92,8 @@ export class Explore extends React.Component {
                                                         : ' '
                     }</Col><Col md={{span: 2, offset: 2}}> {item.engage} mois</Col></Row></Col>
                 <Col md={2}>
-                    <Button variant="success" onClick={this.addSubscription.bind(this, item._id)}>Ajouter</Button>
+                    {this.state.isCompany === 'false' &&
+                    <Button variant="success" onClick={this.addSubscription.bind(this, item._id)}>Ajouter</Button>}
                 </Col>
             </Row>
         </ListGroup.Item>);
