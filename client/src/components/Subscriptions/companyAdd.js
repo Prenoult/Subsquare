@@ -15,13 +15,15 @@ export class companyAdd extends React.Component {
             category: "",
             mensu: "",
             engage: "",
-            descri: ""
+            descri: "",
+            error:""
         };
         this.handleChange.bind(this);
         this.send.bind(this);
     }
 
     send = event => {
+        event.preventDefault();
         if (this.state.name.length === 0) {
             return;
         }
@@ -29,17 +31,24 @@ export class companyAdd extends React.Component {
             return;
         }
         if (this.state.category.length === 0 || this.state.category=="cat") {
+            this.setState({
+                category:"cat"
+            })
             return;
         }
         if (this.state.descri.length === 0) {
             return;
         }
         if (this.state.mensu.length === 0 || this.state.mensu=="ren") {
+            this.setState({
+                mensu:"ren"
+            })
             return;
         }
         if (this.state.engage.length === 0) {
             return;
         }
+        let that = this;
 
         var _send = {
             name: this.state.name,
@@ -50,12 +59,14 @@ export class companyAdd extends React.Component {
             engage: this.state.engage,
             user: localStorage.getItem("id")
         };
-        console.log(_send);
         API.createSub(_send).then(function (data) {
            if(data.status == 200){
                console.log("abonnement ajouté");
                console.log(data);
                console.log(data.data.id);
+               that.setState({
+                    error: "send"
+                });
                //window.location = "/subscriptions"
            }else{
                console.log(data);
@@ -89,10 +100,14 @@ export class companyAdd extends React.Component {
                     <Col xs={{ span: 6, offset: 1 }} sm={{ span: 7, offset: 1 }} md={{ span: 8, offset: 1 }} lg={{ span: 8, offset: 1 }}>
                         <Header page="ABONNEMENTS"/>
                         <Row>
+                            <Col xs={12}>
                             <h3>Créer un Abonnement</h3>
-                            <Col md={6} className= "colonne-centree add_sub">
-                                <Form>
+                            </Col>
+                            <Col sm={9} md={8} lg={6} className= "colonne-centree">
+                                <Form onSubmit={this.send}>
                                     <Row>
+                                        {this.state.error=='send' &&
+                                            <Col xs={12} style={{color:"green"}}>Votre abonnement a bien été ajouté</Col>}
                                         <Col className= "colonne-centree">
                                             <Form.Group controlId="name" size="lg">
                                                 <Form.Control
@@ -116,6 +131,7 @@ export class companyAdd extends React.Component {
                                                     value={this.state.category}
                                                     onChange={this.handleChange}
                                                     type="text"
+                                                    isInvalid={this.state.category =="cat"}
                                                     >
                                                         <option value="cat">Catégorie...</option>
                                                         <option value="musique">Musique</option>
@@ -128,6 +144,7 @@ export class companyAdd extends React.Component {
                                                         <option value="stock">Stockage</option>
                                                         <option value="util">Utilitaire</option>
                                                 </Form.Control>
+                                                <Form.Control.Feedback type="invalid">Veuillez séléctionner une catégorie</Form.Control.Feedback>
                                             </Form.Group>
                                             <Form.Group controlId="price" size="lg">
                                                 <Form.Control
@@ -143,6 +160,7 @@ export class companyAdd extends React.Component {
                                                     value={this.state.mensu}
                                                     onChange={this.handleChange}
                                                     type="text"
+                                                     isInvalid={this.state.mensu == 'ren'}
                                                     >
                                                         <option value="ren">Renouvellement...</option>
                                                         <option value="hebdo">Hebdomadaire</option>
@@ -151,6 +169,7 @@ export class companyAdd extends React.Component {
                                                         <option value="semestriel">Semestriel</option>
                                                         <option value="annuel">Annuel</option>
                                                 </Form.Control>
+                                                <Form.Control.Feedback type="invalid">Veuillez séléctionner une période</Form.Control.Feedback>
                                             </Form.Group>
                                             <Form.Group controlId="engage" size="lg">
                                                 <Form.Control
@@ -163,11 +182,9 @@ export class companyAdd extends React.Component {
                                         </Col>
                                     </Row>
                                     <Row>
-                                        <Col md={3} className= "colonne-centree">
+                                        <Col xs={8} className= "colonne-centree">
                                             <Button
-                                                onClick={this.send}
                                                 block
-                                                size="lg"
                                                 variant="primary"
                                                 type="submit"
                                                 className="buttonEnv"

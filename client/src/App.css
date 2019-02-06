@@ -168,7 +168,12 @@ a.linkButton {
     height: 100vh;
 }
 
-.add_sub {
+.headerRight {
+    text-align: right;
+    float: right;
+}
+
+.list {
     margin-top: 40px;
 }
 

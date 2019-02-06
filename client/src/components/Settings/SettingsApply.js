@@ -17,7 +17,8 @@ export class SettingsApply extends React.Component {
             numTel:"",
             adresse:"",
             codePostal:"",
-            ville:""
+            ville:"",
+            error: null
         };
         this.handleChange.bind(this);
         this.send.bind(this);
@@ -25,6 +26,8 @@ export class SettingsApply extends React.Component {
 
     send = event => {
         event.preventDefault();
+
+        let that = this;
         if (this.state.nom.length === 0 || 
                 this.state.numSiret.length === 0 ||
                 this.state.numTel.length === 0 ||
@@ -45,9 +48,10 @@ export class SettingsApply extends React.Component {
         API.applyCompany(_send).then(function () {
             console.log("email send");
             //window.location = "/dashboard"
+            that.setState({
+                error: "send"
+            });
         }, function (error) {
-            console.log(error);
-            return;
         })
     };
     handleChange = event => {
@@ -70,6 +74,9 @@ export class SettingsApply extends React.Component {
                             <Col sm={9} md={8} lg={6} className= "colonne-centree">
                                 <Form onSubmit={this.send}>
                                     <Row>
+                                        {this.state.error=='send' &&
+                                            <span style={{color:"green"}}>Votre demande a été prise en compte.
+                                            Un mail vous sera envoyé pour vous confirmer votre passage en compte entreprise.</span>}
                                         <Col className= "colonne-centree">
                                             <Form.Group controlId="nom" size="lg">
                                                 <Form.Control 

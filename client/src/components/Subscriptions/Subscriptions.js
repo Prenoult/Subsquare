@@ -114,14 +114,14 @@ export class Subscriptions extends React.Component {
                     <Col xs={{span: 6, offset: 1}} sm={{span: 7, offset: 1}} md={{span: 8, offset: 1}}
                          lg={{span: 8, offset: 1}}>
                         <Header page="ABONNEMENTS"/>
-                        <Row>
+                        <Row className="headerRight">
                             {this.state.isCompany === 'true'
                                 ? <Link to={"/Company/add"}>Créer un abonnement</Link>
                                 : <Link to={"/user/add"}>Ajouter un abonnement</Link>}
                         </Row>
                         <Row>
                             <Col>
-                                <ListGroup>
+                                <ListGroup className="list">
                                     {listItems}
                                 </ListGroup>
                             </Col>
