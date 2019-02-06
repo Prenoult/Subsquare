@@ -35,15 +35,15 @@
     color: #6a6cac;
 }
 
-.container-fluid{
+.container-fluid {
     padding-left: 0px;
 }
 
 .logoMenu {
     width: 16vw;
-   margin-left: -20px;
-   margin-bottom: 70px;
-   margin-top: 20px;
+    margin-left: -20px;
+    margin-bottom: 70px;
+    margin-top: 20px;
 }
 
 a {
@@ -88,8 +88,8 @@ body {
 }*/
 
 .LogoLog {
-    max-width:100%;
-    height:auto;
+    max-width: 100%;
+    height: auto;
     object-fit: contain;
     margin: 0 auto;
     margin-top: 10%;
@@ -153,6 +153,16 @@ a.linkButton {
     border-color: #8c7ae6;
 }
 
+.buttonEnv:not(:disabled):not(.disabled):active {
+    background-color: #8c7ae6;
+    border-color: #8c7ae6;
+}
+
+a.buttonEnv {
+    color: white;
+    text-decoration: none;
+}
+
 
 .buttonMenu {
     border-radius: 40px;
@@ -164,6 +174,16 @@ a.linkButton {
     border-color: #6a6cac;
     text-align: left;
     font-size: 1vw;
+}
+
+.buttonMenu:hover {
+    background-color: #8c7ae6;
+    border-color: #8c7ae6;
+}
+
+.buttonMenu:not(:disabled):not(.disabled):active {
+    background-color: #8c7ae6;
+    border-color: #8c7ae6;
 }
 
 .buttonAjout {
@@ -197,9 +217,9 @@ a.linkButton {
     margin-top: 40px;
 }
 
-.photoAccueil{
-   width: 55vw; 
-   margin: auto;
+.photoAccueil {
+    width: 55vw;
+    margin: auto;
 }
 
 .titre {
@@ -208,7 +228,7 @@ a.linkButton {
 
 .EnteteAbo{
     margin-top: 30px;
-    border-bottom: 3px solid grey; 
+    border-bottom: 3px solid grey;
 }
 
 .entete {

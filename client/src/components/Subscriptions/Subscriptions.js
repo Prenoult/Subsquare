@@ -54,7 +54,8 @@ export class Subscriptions extends React.Component {
         const listItems = this.state.subscriptions.map((item) => <ListGroup.Item
             key={item._id}>
             <Row>
-                <Col><Row><Col md={{span:1, offset:0}}>{item.name}</Col><Col md={{span:1, offset:1}}>{item.company}</Col><Col md={{span:1, offset:1}}> {item.price}€
+                <Col><Row><Col md={{span: 1, offset: 0}}>{item.name}</Col><Col
+                    md={{span: 1, offset: 1}}>{item.company}</Col><Col md={{span: 1, offset: 1}}> {item.price}€
                     {
                         item.mensu === 'hebdo'
                             ? '/semaine'
@@ -66,7 +67,7 @@ export class Subscriptions extends React.Component {
                                     ? '/semestre' : item.mensu === 'annuel'
                                         ? '/année'
                                         : ''
-                    }</Col><Col md={{span:1, offset:2}}>
+                    }</Col><Col md={{span: 1, offset: 2}}>
                     {
                         item.category === 'musique'
                             ? ' Musique'
@@ -87,7 +88,7 @@ export class Subscriptions extends React.Component {
                                                     : item.category === 'util'
                                                         ? ' Utilitaire'
                                                         : ' '
-                    }</Col><Col md={{span:2, offset:2}}> {item.engage} mois</Col></Row></Col>
+                    }</Col><Col md={{span: 2, offset: 2}}> {item.engage} mois</Col></Row></Col>
                 <Col md={2}>
                     {this.state.isCompany === 'false' &&
                     <Button variant="danger" onClick={this.delSubscription.bind(this, item._id)}>Supprimer</Button>
@@ -105,44 +106,33 @@ export class Subscriptions extends React.Component {
                     <Col xs={{span: 6, offset: 1}} sm={{span: 7, offset: 1}} md={{span: 8, offset: 1}}
                          lg={{span: 8, offset: 1}}>
                         <Header page="ABONNEMENTS"/>
-                        <Row className="headerRight">
-                            {this.state.isCompany === 'true' &&
-                                <Link to={"/Company/add"}>
-                                    <Button
-                                        block
-                                        size="lg"
-                                        variant="primary"
-                                        type="submit"
-                                        className="buttonAjout"
-                                    >
-                                        Créer un abonnement
-                                    </Button>
-                                </Link>}
-                        </Row>
                         {this.state.subscriptions.length > 0
                             ? <Row>
-                            <Col xs={12} className="EnteteAbo">
-                                <Row>
-                                <Col md={{span:1, offset:0}}>
-                                    Abonnement
-                                </Col>
-                                <Col md={{span:1, offset:1}}>
-                                    Compagnie
-                                </Col>
-                                <Col md={{span:1, offset:1}}>
-                                    Prix
-                                </Col>
-                                <Col md={{span:1, offset:1}}>
-                                    Catégorie
-                                </Col>
-                                <Col md={{span:1, offset:1}}>
-                                    Engagement
-                                </Col>
-                                </Row>
-                            </Col><Col>
+                                <Col xs={12} className="EnteteAbo">
+                                    <Row>
+                                        <Col md={{span: 1, offset: 0}}>
+                                            Abonnement
+                                        </Col>
+                                        <Col md={{span: 1, offset: 1}}>
+                                            Compagnie
+                                        </Col>
+                                        <Col md={{span: 1, offset: 1}}>
+                                            Prix
+                                        </Col>
+                                        <Col md={{span: 1, offset: 1}}>
+                                            Catégorie
+                                        </Col>
+                                        <Col md={{span: 1, offset: 1}}>
+                                            Engagement
+                                        </Col>
+                                    </Row>
+                                </Col><Col>
                                 <ListGroup className="list">
                                     {listItems}
                                 </ListGroup>
+                                {this.state.isCompany === 'true' &&
+                                <Link to={"/Company/add"} className="linkButton"><Button className="buttonEnv" block>Créer
+                                    un abonnement</Button></Link>}
                             </Col>
                             </Row>
                             : <Col md={{span: 6, offset: 4}}>Oups! Votre liste d'abonnement semble être vide…</Col>}

@@ -61,7 +61,7 @@ export class Login extends React.Component {
                                             value={this.state.email}
                                             onChange={this.handleChange}
                                             placeholder="Email"
-                                            isInvalid={this.state.error == 'error'}
+                                            isInvalid={this.state.error === 'error'}
                                         />
                                         <Form.Control.Feedback type="invalid">Le nom d'utilisateur et le mot de passe
                                             que
@@ -74,7 +74,7 @@ export class Login extends React.Component {
                                             onChange={this.handleChange}
                                             type="password"
                                             placeholder="Mot de passe"
-                                            isInvalid={this.state.error == 'error'}
+                                            isInvalid={this.state.error === 'error'}
                                         />
                                     </Form.Group>
                                 </Col>

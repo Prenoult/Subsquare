@@ -32,7 +32,7 @@ export class companyAdd extends React.Component {
         if (this.state.category.length === 0 || this.state.category === "cat") {
             this.setState({
                 category: "cat"
-            })
+            });
             return;
         }
         if (this.state.descri.length === 0) {
@@ -41,7 +41,7 @@ export class companyAdd extends React.Component {
         if (this.state.mensu.length === 0 || this.state.mensu === "ren") {
             this.setState({
                 mensu: "ren"
-            })
+            });
             return;
         }
         if (this.state.engage.length === 0) {
@@ -190,7 +190,7 @@ export class companyAdd extends React.Component {
                                                 type="submit"
                                                 className="buttonEnv"
                                             >
-                                                CREER
+                                                CRÉER
                                             </Button>
                                         </Col>
                                     </Row>

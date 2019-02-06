@@ -14,7 +14,7 @@ export class Menu extends React.Component {
                 </Row>
                 <Row>
                     <Col className="colonne-centree">
-                        <Link to={"/dashboard"}>
+                        <Link to={"/dashboard"} className="linkButton">
                             <Button
                                 block
                                 size="lg"
@@ -31,7 +31,7 @@ export class Menu extends React.Component {
                 </Row>
                 <Row>
                     <Col className="colonne-centree">
-                        <Link to={"/subscriptions"}>
+                        <Link to={"/subscriptions"} className="linkButton">
                             <Button
                                 block
                                 size="lg"
@@ -48,7 +48,7 @@ export class Menu extends React.Component {
                 </Row>
                 <Row>
                     <Col className="colonne-centree">
-                        <Link to={"/explore"}>
+                        <Link to={"/explore"} className="linkButton">
                             <Button
                                 block
                                 size="lg"
@@ -65,7 +65,7 @@ export class Menu extends React.Component {
                 </Row>
                 <Row>
                     <Col className="colonne-centree">
-                        <Link to={"/finances"}>
+                        <Link to={"/finances"} className="linkButton">
                             <Button
                                 block
                                 size="lg"
