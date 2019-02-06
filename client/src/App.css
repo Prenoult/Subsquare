@@ -36,7 +36,7 @@
 }
 
 .container-fluid {
-    padding-left: 0px;
+    padding-left: 0;
 }
 
 .logoMenu {
@@ -62,11 +62,6 @@ a:hover {
         transform: rotate(360deg);
     }
 }
-
-/**.Form {
-    margin-left: 0px;
-    margin-right: 0px;
-}*/
 
 body {
     background-color: #f1f2f6;
@@ -200,7 +195,6 @@ a.buttonEnv {
 }
 
 .montagne {
-    /*background-image: url("img/Montagne.jpg");*/
     background-color: white;
     background-size: 'cover';
     background-attachment: fixed;

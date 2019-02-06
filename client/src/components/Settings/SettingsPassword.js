@@ -20,7 +20,7 @@ export class SettingsPassword extends React.Component {
         if (this.state.npassword.length === 0 || this.state.npassword !== this.state.cpassword || this.state.password.length === 0) {
             return;
         }
-        var _send = {
+        let _send = {
             email: localStorage.getItem("id"),
             npassword: this.state.npassword,
             password: this.state.password

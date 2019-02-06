@@ -7,7 +7,6 @@ import API from '../../utils/API';
 export class Signup extends React.Component {
     constructor(props) {
         super(props);
-        //this.login=window.location.origin;
         this.state = {
             email: "",
             password: "",
@@ -30,7 +29,7 @@ export class Signup extends React.Component {
             return;
         }
         let that = this;
-        var _send = {
+        let _send = {
             email: this.state.email,
             password: this.state.password
         };
@@ -124,8 +123,8 @@ export class Signup extends React.Component {
         return (
             <Container className="Form" fluid>
                 <EnteteLogo/>
-                    <Row className="Form">
-                        <Col xs={7} sm={6} md={4} lg={3} className="colonne-centree">
+                <Row className="Form">
+                    <Col xs={7} sm={6} md={4} lg={3} className="colonne-centree">
                         <Form onSubmit={this.send}>
                             <Row>
                                 <Col>
@@ -138,7 +137,8 @@ export class Signup extends React.Component {
                                             placeholder="Email"
                                             isInvalid={this.state.error === 'error'}
                                         />
-                                        <Form.Control.Feedback type="invalid">L'adresse mail que vous avez entrée correspond déjà à un
+                                        <Form.Control.Feedback type="invalid">L'adresse mail que vous avez entrée
+                                            correspond déjà à un
                                             compte. Veuillez
                                             vérifier et réessayer</Form.Control.Feedback>
                                         <Form.Control.Feedback/>
@@ -152,7 +152,8 @@ export class Signup extends React.Component {
                                             placeholder="Mot de passe"
                                             isInvalid={this.state.vsPassword === 'error'}
                                         />
-                                        <Form.Control.Feedback type="invalid">Votre mot de passe doit contenir au moins 8 caractères
+                                        <Form.Control.Feedback type="invalid">Votre mot de passe doit contenir au moins
+                                            8 caractères
                                             dont 1
                                             majuscule, 1
                                             minuscule, 1 chiffre et 1 caractère spécial</Form.Control.Feedback>
@@ -186,8 +187,8 @@ export class Signup extends React.Component {
                                 </Col>
                             </Row>
                         </Form>
-                        </Col>
-                    </Row>
+                    </Col>
+                </Row>
             </Container>
         )
     }

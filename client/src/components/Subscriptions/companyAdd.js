@@ -7,7 +7,6 @@ import {Header} from '../Header/Header.js';
 export class companyAdd extends React.Component {
     constructor(props) {
         super(props);
-        //this.login=window.location.origin;
         this.state = {
             name: "",
             price: "",
@@ -49,7 +48,7 @@ export class companyAdd extends React.Component {
         }
         let that = this;
 
-        var _send = {
+        let _send = {
             name: this.state.name,
             descri: this.state.descri,
             category: this.state.category,
@@ -59,14 +58,13 @@ export class companyAdd extends React.Component {
             user: localStorage.getItem("id")
         };
         API.createSub(_send).then(function (data) {
-            if (data.status == 200) {
+            if (data.status === 200) {
                 console.log("abonnement ajouté");
                 console.log(data);
                 console.log(data.data.id);
                 that.setState({
                     error: "send"
                 });
-                //window.location = "/subscriptions"
             } else {
                 console.log(data);
                 console.log("une erreur est survenue");
@@ -83,9 +81,6 @@ export class companyAdd extends React.Component {
             [event.target.id]: event.target.value
         });
     };
-
-
-    //https://reactjs.org/docs/conditional-rendering.html
 
     render() {
 

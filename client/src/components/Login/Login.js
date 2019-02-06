@@ -7,8 +7,6 @@ import API from '../../utils/API';
 export class Login extends React.Component {
     constructor(props) {
         super(props);
-        //console.log(window.location);
-        //this.signup = window.location.origin+"/signup";
         this.state = {
             email: "",
             password: "",

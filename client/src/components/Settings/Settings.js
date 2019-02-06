@@ -87,102 +87,107 @@ export class Settings extends React.Component {
                     <Col xs={2}>
                         <Menu/>
                     </Col>
-                        <Col xs={{ span: 6, offset: 1 }} sm={{ span: 7, offset: 1 }} md={{ span: 8, offset: 1 }} lg={{ span: 8, offset: 1 }}>                        <Header page="PROFIL"/>
+                    <Col xs={{span: 6, offset: 1}} sm={{span: 7, offset: 1}} md={{span: 8, offset: 1}}
+                         lg={{span: 8, offset: 1}}> <Header page="PROFIL"/>
                         <Row>
-                            <Col sm={9} md={8} lg={6} className= "colonne-centree">
-                            <br/>
-                            {this.state.isModifying === false
-                                ? <Card className="card"><Card.Body><b>Email :</b> {this.state.email}</Card.Body></Card>
-                                : <Form>
-                                    <Form.Group controlId="email">
-                                        <InputGroup>
-                                            <InputGroup.Prepend>
-                                                <InputGroup.Text>Email</InputGroup.Text>
-                                            </InputGroup.Prepend>
-                                            <Form.Control
-                                                type="text"
-                                                value={this.state.email}
-                                                onChange={this.handleChange}
-                                                placeholder="Adresse email"/>
-                                        </InputGroup>
-                                    </Form.Group>
-                                </Form>
-                            }
-                            {this.state.isModifying === false
-                                ? <Card className="card"><Card.Body><b>Nom :</b> {this.state.lastname}</Card.Body></Card>
-                                : <Form>
-                                    <Form.Group controlId="lastname">
-                                        <InputGroup>
-                                            <InputGroup.Prepend>
-                                                <InputGroup.Text>Nom</InputGroup.Text>
-                                            </InputGroup.Prepend>
-                                            <Form.Control
-                                                type="text"
-                                                value={this.state.lastname}
-                                                onChange={this.handleChange}
-                                                placeholder="Nom"/>
-                                        </InputGroup>
-                                    </Form.Group>
-                                </Form>
-                            }
-                            {this.state.isModifying === false
-                                ? <Card className="card"><Card.Body><b>Prénom :</b> {this.state.firstname}</Card.Body></Card>
-                                : <Form>
-                                    <Form.Group controlId="firstname">
-                                        <InputGroup>
-                                            <InputGroup.Prepend>
-                                                <InputGroup.Text>Prénom</InputGroup.Text>
-                                            </InputGroup.Prepend>
-                                            <Form.Control
-                                                type="text"
-                                                value={this.state.firstname}
-                                                onChange={this.handleChange}
-                                                placeholder="Prénom"/>
-                                        </InputGroup>
-                                    </Form.Group>
-                                </Form>
-                            }
-                            {/** <Well size="sm"><b>Date de naissance :</b></Well> */}
-                            {/** this.state.isModifying === false
-                             ? <Well size="sm"><b>Genre :</b></Well>
-                             : <Form.Group>
-                             <Control.Label>Genre :</Control.Label>{' '}
-                             <Radio name="radioGroup" value="Man" checked={this.state.gender === "Man"} inline>
-                             Homme
-                             </Radio>{' '}
-                             <Radio name="radioGroup" value="Woman" checked={this.state.gender === "Woman"} inline>
-                             Femme
-                             </Radio>{' '}
-                             <Radio name="radioGroup" value="Other" checked={this.state.gender === "Other"} inline>
-                             Autre
-                             </Radio>
-                             </Form.Group> */}
-                            {/** <Link to={"/settings/mail"}>Modifier votre adresse email </Link>*/}
+                            <Col sm={9} md={8} lg={6} className="colonne-centree">
+                                <br/>
+                                {this.state.isModifying === false
+                                    ? <Card className="card"><Card.Body><b>Email :</b> {this.state.email}
+                                    </Card.Body></Card>
+                                    : <Form>
+                                        <Form.Group controlId="email">
+                                            <InputGroup>
+                                                <InputGroup.Prepend>
+                                                    <InputGroup.Text>Email</InputGroup.Text>
+                                                </InputGroup.Prepend>
+                                                <Form.Control
+                                                    type="text"
+                                                    value={this.state.email}
+                                                    onChange={this.handleChange}
+                                                    placeholder="Adresse email"/>
+                                            </InputGroup>
+                                        </Form.Group>
+                                    </Form>
+                                }
+                                {this.state.isModifying === false
+                                    ? <Card className="card"><Card.Body><b>Nom :</b> {this.state.lastname}
+                                    </Card.Body></Card>
+                                    : <Form>
+                                        <Form.Group controlId="lastname">
+                                            <InputGroup>
+                                                <InputGroup.Prepend>
+                                                    <InputGroup.Text>Nom</InputGroup.Text>
+                                                </InputGroup.Prepend>
+                                                <Form.Control
+                                                    type="text"
+                                                    value={this.state.lastname}
+                                                    onChange={this.handleChange}
+                                                    placeholder="Nom"/>
+                                            </InputGroup>
+                                        </Form.Group>
+                                    </Form>
+                                }
+                                {this.state.isModifying === false
+                                    ?
+                                    <Card className="card"><Card.Body><b>Prénom :</b> {this.state.firstname}</Card.Body></Card>
+                                    : <Form>
+                                        <Form.Group controlId="firstname">
+                                            <InputGroup>
+                                                <InputGroup.Prepend>
+                                                    <InputGroup.Text>Prénom</InputGroup.Text>
+                                                </InputGroup.Prepend>
+                                                <Form.Control
+                                                    type="text"
+                                                    value={this.state.firstname}
+                                                    onChange={this.handleChange}
+                                                    placeholder="Prénom"/>
+                                            </InputGroup>
+                                        </Form.Group>
+                                    </Form>
+                                }
+                                {/** <Well size="sm"><b>Date de naissance :</b></Well> */}
+                                {/** this.state.isModifying === false
+                                 ? <Well size="sm"><b>Genre :</b></Well>
+                                 : <Form.Group>
+                                 <Control.Label>Genre :</Control.Label>{' '}
+                                 <Radio name="radioGroup" value="Man" checked={this.state.gender === "Man"} inline>
+                                 Homme
+                                 </Radio>{' '}
+                                 <Radio name="radioGroup" value="Woman" checked={this.state.gender === "Woman"} inline>
+                                 Femme
+                                 </Radio>{' '}
+                                 <Radio name="radioGroup" value="Other" checked={this.state.gender === "Other"} inline>
+                                 Autre
+                                 </Radio>
+                                 </Form.Group> */}
+                                {/** <Link to={"/settings/mail"}>Modifier votre adresse email </Link>*/}
                             </Col>
                         </Row>
                         <Row>
-                            <Col sm={6} md={5} lg={4} className= "colonne-centree" style={{marginTop: 15}}>
-                            {this.state.isModifying === false ?
-                                <Button onClick={this.modify.bind(this)} variant='light' block>MODIFIER VOS INFORMATIONS</Button>
-                                : <div><Button onClick={this.modify.bind(this)}
-                                               variant="light"
-                                               block>Annuler</Button>
-                                    <Button onClick={this.triggerModal.bind(this)}
-                                            variant="success"
-                                            block>Valider</Button>
-                                </div>
-                            }
-                            {this.state.isModifying === false &&
-                            <Link to={"/Settings/password"} className='linkButton'>
-                                <Button variant="danger" block style={{marginTop:10}}>
-                                    MODIFIER VOTRE MOT DE PASSE
-                                </Button>
-                            </Link>}
-                            <ButtonToolbar>
-                                <ModalSettings show={this.state.modalShow} onHide={this.triggerModal.bind(this)}
-                                               onSubmit={this.onSubmit.bind(this)} value={this.state.password}
-                                               onChange={this.handleChange}/>
-                            </ButtonToolbar>
+                            <Col sm={6} md={5} lg={4} className="colonne-centree" style={{marginTop: 15}}>
+                                {this.state.isModifying === false ?
+                                    <Button onClick={this.modify.bind(this)} variant='light' block>MODIFIER VOS
+                                        INFORMATIONS</Button>
+                                    : <div><Button onClick={this.modify.bind(this)}
+                                                   variant="light"
+                                                   block>Annuler</Button>
+                                        <Button onClick={this.triggerModal.bind(this)}
+                                                variant="success"
+                                                block>Valider</Button>
+                                    </div>
+                                }
+                                {this.state.isModifying === false &&
+                                <Link to={"/Settings/password"} className='linkButton'>
+                                    <Button variant="danger" block style={{marginTop: 10}}>
+                                        MODIFIER VOTRE MOT DE PASSE
+                                    </Button>
+                                </Link>}
+                                <ButtonToolbar>
+                                    <ModalSettings show={this.state.modalShow} onHide={this.triggerModal.bind(this)}
+                                                   onSubmit={this.onSubmit.bind(this)} value={this.state.password}
+                                                   onChange={this.handleChange}/>
+                                </ButtonToolbar>
                             </Col>
                         </Row>
                         <Row>

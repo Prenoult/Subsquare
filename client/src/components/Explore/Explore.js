@@ -1,7 +1,6 @@
 import React from 'react';
 import {Container, Row, Col, ListGroup, Button, Form} from "react-bootstrap";
 import API from '../../utils/API';
-import {Link} from 'react-router-dom';
 import {Menu} from '../Menu/Menu.js';
 import {Header} from '../Header/Header.js';
 

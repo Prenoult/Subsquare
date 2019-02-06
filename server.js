@@ -16,7 +16,7 @@ mongoose.connect('mongodb://localhost/subsquareDB').then(() => {
 const app = express();
 
 //Body Parser
-var urlencodedParser = bodyParser.urlencoded({
+let urlencodedParser = bodyParser.urlencoded({
     extended: true
 });
 app.use(urlencodedParser);
@@ -33,7 +33,7 @@ app.use(function (req, res, next) {
 });
 
 //Définition du routeur
-var router = express.Router();
+let router = express.Router();
 
 app.use('/subscriptions', router);
 require(__dirname + '/controllers/subscriptionController')(router);
@@ -41,5 +41,5 @@ app.use('/user', router);
 require(__dirname + '/controllers/userController')(router);
 
 //Définition et mise en place du port d'écoute
-var port = 8000;
+let port = 8000;
 app.listen(port, () => console.log(`Listening on port ${port}`));

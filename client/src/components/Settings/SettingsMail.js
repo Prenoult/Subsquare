@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Form, Control, Container, Row, Col, Image} from "react-bootstrap";
+import {Button, Form, Control, Container, Row, Col} from "react-bootstrap";
 import API from '../../utils/API';
 import {Menu} from '../Menu/Menu.js';
 import {Header} from '../Header/Header.js';
@@ -20,7 +20,7 @@ export class SettingsMail extends React.Component {
         if (this.state.nemail.length === 0) {
             return;
         }
-        var _send = {
+        let _send = {
             email: localStorage.getItem("id"),
             nemail: this.state.nemail,
             password: this.state.password
@@ -47,10 +47,10 @@ export class SettingsMail extends React.Component {
         return (
             <Container className="Form" fluid>
                 <Row>
-                    <Col md={{ span: 2, offset: 0 }}>
+                    <Col md={{span: 2, offset: 0}}>
                         <Menu/>
                     </Col>
-                    <Col md={{ span: 8, offset: 1 }}>
+                    <Col md={{span: 8, offset: 1}}>
                         <Header page="PROFIL"/>
                         <Col md={6}>
                             <Row>
@@ -61,20 +61,20 @@ export class SettingsMail extends React.Component {
                             <Row>
                                 <Form.Group controlId="nemail" size="lg">
                                     <Form.Control
-                                        autoFocus 
-                                        type="email" 
+                                        autoFocus
+                                        type="email"
                                         value={this.state.nemail}
                                         onChange={this.handleChange}
-                                        placeholder= "NOUVELLE ADRESSE MAIL"/>
+                                        placeholder="NOUVELLE ADRESSE MAIL"/>
                                 </Form.Group>
                                 <Form.Group controlId="password" bsSize="large">
-                                    <Form.Control 
-                                        value={this.state.password} 
-                                        onChange={this.handleChange} 
+                                    <Form.Control
+                                        value={this.state.password}
+                                        onChange={this.handleChange}
                                         type="password"
-                                        placeholder= "MOT DE PASSE"/>
+                                        placeholder="MOT DE PASSE"/>
                                 </Form.Group>
-                                <Col md={3} className= "colonne-centree">
+                                <Col md={3} className="colonne-centree">
                                     <Button
                                         onClick={this.send}
                                         block

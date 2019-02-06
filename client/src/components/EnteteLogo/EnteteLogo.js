@@ -14,7 +14,7 @@ export class EnteteLogo extends React.Component {
                     </Row>
                 </Col>
             </Row>
-                
+
         )
     }
 }

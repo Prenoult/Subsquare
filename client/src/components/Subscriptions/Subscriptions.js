@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container, Row, Col, ListGroup, Button, Image} from "react-bootstrap";
+import {Container, Row, Col, ListGroup, Button} from "react-bootstrap";
 import API from '../../utils/API';
 import {Link} from 'react-router-dom';
 import {Menu} from '../Menu/Menu.js';

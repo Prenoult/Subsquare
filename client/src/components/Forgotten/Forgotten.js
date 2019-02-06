@@ -20,7 +20,7 @@ export class Forgotten extends React.Component {
         if (this.state.email.length === 0) {
             return;
         }
-        var _send = {
+        let _send = {
             email: this.state.email
         };
         console.log(_send);
@@ -65,12 +65,14 @@ export class Forgotten extends React.Component {
                                             value={this.state.email}
                                             onChange={this.handleChange}
                                             placeholder="Veuillez saisir votre adresse email"
-                                            isInvalid={this.state.er=='error'}
-                                            isValid={this.state.er=='success'}
+                                            isInvalid={this.state.er === 'error'}
+                                            isValid={this.state.er === 'success'}
                                         />
-                                        <Form.Control.Feedback type="invalid">L'adresse email que vous avez entré n'est pas présente
+                                        <Form.Control.Feedback type="invalid">L'adresse email que vous avez entré n'est
+                                            pas présente
                                             dans nos fichiers. Veuillez vérifier et réessayer</Form.Control.Feedback>
-                                        <Form.Control.Feedback type= "valid">Votre mot de passe a été réinitialisé et il vous a été
+                                        <Form.Control.Feedback type="valid">Votre mot de passe a été réinitialisé et il
+                                            vous a été
                                             envoyé par mail</Form.Control.Feedback>
                                     </Form.Group>
                                 </Col>

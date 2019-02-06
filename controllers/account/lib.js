@@ -9,7 +9,7 @@ function signup(req, res) {
             "text": "Requête invalide"
         })
     } else {
-        var user = {
+        let user = {
             email: req.body.email,
             password: passwordHash.generate(req.body.password),
             account: "user",
@@ -17,7 +17,7 @@ function signup(req, res) {
             lastname: "",
             firstname: "",
         };
-        var findUser = new Promise(function (resolve, reject) {
+        let findUser = new Promise(function (resolve, reject) {
             User.findOne({
                 email: user.email
             }, function (err, result) {
@@ -34,14 +34,14 @@ function signup(req, res) {
         });
 
         findUser.then(function () {
-            var _u = new User(user);
+            let _u = new User(user);
             _u.save(function (err, user) {
                 if (err) {
                     res.status(500).json({
                         "text": "Erreur interne"
                     })
                 } else {
-                    if (user.account == "company") {
+                    if (user.account === "company") {
                         res.status(200).json({
                             "company": true,
                             "token": user.getToken(),
@@ -50,7 +50,7 @@ function signup(req, res) {
                             "text": "Authentification réussi",
                             "nomC": user.infoCompany[0]
                         })
-                    }else{
+                    } else {
                         res.status(200).json({
                             "company": false,
                             "token": user.getToken(),
@@ -103,7 +103,7 @@ function login(req, res) {
                 })
             } else {
                 if (user.authenticate(req.body.password)) {
-                    if (user.account == "company") {
+                    if (user.account === "company") {
                         res.status(200).json({
                             "company": true,
                             "token": user.getToken(),
@@ -112,7 +112,7 @@ function login(req, res) {
                             "text": "Authentification réussi",
                             "nomC": user.infoCompany[0]
                         })
-                    }else{
+                    } else {
                         res.status(200).json({
                             "company": false,
                             "token": user.getToken(),
@@ -176,7 +176,7 @@ function getProfileCompany(req, res) {
                 "numTel": user.infoCompany[2],
                 "adresse": user.infoCompany[3],
                 "codePostal": user.infoCompany[4],
-                "ville" : user.infoCompany[5]
+                "ville": user.infoCompany[5]
             })
         }
     })
@@ -328,7 +328,7 @@ function changeProfileCompany(req, res) {
                         // On effectue les modification de l'utilisateur
                         User.update({email: req.body.id}, {
                                 $set: {
-                                    infoCompany: [req.body.nom, req.body.numSiret, req.body.numTel, req.body.adresse, req.body.codePostal,req.body.ville]
+                                    infoCompany: [req.body.nom, req.body.numSiret, req.body.numTel, req.body.adresse, req.body.codePostal, req.body.ville]
                                 }
                             },
                             function (err, user) {
@@ -378,7 +378,7 @@ function changeProfileCompany(req, res) {
                                 User.update({email: req.body.id}, {
                                         $set: {
                                             email: req.body.email,
-                                            infoCompany: [req.body.nom, req.body.numSiret, req.body.numTel, req.body.adresse, req.body.codePostal,req.body.ville]
+                                            infoCompany: [req.body.nom, req.body.numSiret, req.body.numTel, req.body.adresse, req.body.codePostal, req.body.ville]
                                         }
                                     },
                                     function (err, user) {
@@ -439,7 +439,7 @@ function changePassword(req, res) {
                 })
             } else {
                 if (user.authenticate(req.body.password)) {
-                    var pwd = passwordHash.generate(req.body.npassword);
+                    let pwd = passwordHash.generate(req.body.npassword);
 
                     User.update({email: req.body.email}, {$set: {password: pwd}},
                         function (err, user) {
@@ -487,8 +487,8 @@ function resetPassword(req, res) {
             })
         } else {
             // Si l'utilisateur existe
-            var nodemailer = require("nodemailer");
-            var transporter = nodemailer.createTransport({
+            let nodemailer = require("nodemailer");
+            let transporter = nodemailer.createTransport({
                 host: "smtp.mailtrap.io",
                 port: 2525,
                 auth: {
@@ -497,13 +497,13 @@ function resetPassword(req, res) {
                 }
             });
 
-            var generator = require('generate-password');
+            let generator = require('generate-password');
 
-            var newpwd = generator.generate({
+            let newpwd = generator.generate({
                 length: 10,
                 numbers: true
             });
-            var msg = "Vous mot de passe a été changé. \nVoici votre nouveau mot de passe : \n" + newpwd;
+            let msg = "Vous mot de passe a été changé. \nVoici votre nouveau mot de passe : \n" + newpwd;
 
 
             const mailOptions = {
@@ -523,7 +523,7 @@ function resetPassword(req, res) {
                         "text": "erreur interne"
                     })
                 } else {
-                    var pwdhash = passwordHash.generate(newpwd);
+                    let pwdhash = passwordHash.generate(newpwd);
                     User.update({email: req.body.email}, {$set: {password: pwdhash}},
                         function (err, user) {
                             if (err) {
@@ -565,8 +565,8 @@ function applyCompany(req, res) {
             })
         } else {
             // Si l'utilisateur existe
-            var nodemailer = require("nodemailer");
-            var transporter = nodemailer.createTransport({
+            let nodemailer = require("nodemailer");
+            let transporter = nodemailer.createTransport({
                 host: "smtp.mailtrap.io",
                 port: 2525,
                 auth: {
@@ -575,21 +575,25 @@ function applyCompany(req, res) {
                 }
             });
 
-            var msg = "L'utilisateur " + req.body.email + " souhaite avoir un compte entreprise";
-            var info ={
+            let msg = "L'utilisateur " + req.body.email + " souhaite avoir un compte entreprise";
+            let info = {
                 nom: req.body.nom,
                 numSiret: req.body.numSiret,
                 numTel: req.body.numTel,
                 adresse: req.body.adresse,
                 codePostal: req.body.codePostal,
                 ville: req.body.ville
-            }
-            User.update({email: req.body.email},{$addToSet: {infoCompany:[req.body.nom,
-                    req.body.numSiret,
-                    req.body.numTel,
-                    req.body.adresse,
-                    req.body.codePostal,
-                    req.body.ville]}},
+            };
+            User.update({email: req.body.email}, {
+                    $addToSet: {
+                        infoCompany: [req.body.nom,
+                            req.body.numSiret,
+                            req.body.numTel,
+                            req.body.adresse,
+                            req.body.codePostal,
+                            req.body.ville]
+                    }
+                },
                 function (err, user) {
                     if (err) {
                         res.status(500).json({
@@ -605,7 +609,7 @@ function applyCompany(req, res) {
                             "text": "Demande ajouté"
                         })
                     }
-                })
+                });
 
 
             const mailOptions = {

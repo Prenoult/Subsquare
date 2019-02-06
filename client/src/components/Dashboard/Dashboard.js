@@ -15,11 +15,12 @@ export class Dashboard extends React.Component {
                     <Col xs={2}>
                         <Menu/>
                     </Col>
-                    <Col xs={{ span: 6, offset: 1 }} sm={{ span: 7, offset: 1 }} md={{ span: 8, offset: 1 }} lg={{ span: 8, offset: 1 }}>
+                    <Col xs={{span: 6, offset: 1}} sm={{span: 7, offset: 1}} md={{span: 8, offset: 1}}
+                         lg={{span: 8, offset: 1}}>
                         <Header page="ACCUEIL"/>
                         <Row>
                             <Image src={require('../../img/accueilPhoto.PNG')}
-                                     className="photoAccueil" />
+                                   className="photoAccueil"/>
                         </Row>
                     </Col>
                 </Row>

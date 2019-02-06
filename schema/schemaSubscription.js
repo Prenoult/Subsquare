@@ -1,9 +1,6 @@
 const mongoose = require('mongoose');
-const passwordHash = require('password-hash');
-const jwt = require('jwt-simple');
-const config = require('../config/config');
 
-var subscriptionSchema = mongoose.Schema({
+let subscriptionSchema = mongoose.Schema({
     name: {
         type: String,
         required: true
@@ -12,7 +9,7 @@ var subscriptionSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    category:{
+    category: {
         type: String,
         required: true
     },

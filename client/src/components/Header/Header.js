@@ -14,41 +14,47 @@ export class Header extends React.Component {
         API.logout();
     };
 
-	render() {
-		return (
-			<Row className="entete">
-				<Col xs={3} style={{fontSize:30}}>
-					{this.page}
-				</Col>
-				<Col xs={9} style={{fontSize:20, marginTop:10, color:'grey'}} className="headerRight">
-					<Nom/>
-						{localStorage.getItem("account") === "false" 
-						? <Link to={"/Settings"}>
-							<Image src={require('../../img/reglage.png')}  
-								style={{ width: 30,
-									height: 30,
-									marginLeft: 10,
-									marginBottom: 5}}/>
-						</Link>
-						: <Link to={"/Settings/Company"}>
-							<Image src={require('../../img/reglage.png')}  
-								style={{ width: 30,
-									height: 30,
-									marginLeft: 10,
-									marginBottom: 5}}/>
-						</Link>}
-						<Link to={"/Settings"}>
-						<Image src={require('../../img/shutdown.png')}  
-							style={{ width: 25,
-								height: 25,
-								marginLeft: 10,
-								marginBottom: 3}}
-							onClick={this.disconnect}/>
-						</Link>
-				</Col>
-			</Row>
-		)
-	}
+    render() {
+        return (
+            <Row className="entete">
+                <Col xs={3} style={{fontSize: 30}}>
+                    {this.page}
+                </Col>
+                <Col xs={9} style={{fontSize: 20, marginTop: 10, color: 'grey'}} className="headerRight">
+                    <Nom/>
+                    {localStorage.getItem("account") === "false"
+                        ? <Link to={"/Settings"}>
+                            <Image src={require('../../img/reglage.png')}
+                                   style={{
+                                       width: 30,
+                                       height: 30,
+                                       marginLeft: 10,
+                                       marginBottom: 5
+                                   }}/>
+                        </Link>
+                        : <Link to={"/Settings/Company"}>
+                            <Image src={require('../../img/reglage.png')}
+                                   style={{
+                                       width: 30,
+                                       height: 30,
+                                       marginLeft: 10,
+                                       marginBottom: 5
+                                   }}/>
+                        </Link>}
+                    <Link to={"/Settings"}>
+                        <Image src={require('../../img/shutdown.png')}
+                               style={{
+                                   width: 25,
+                                   height: 25,
+                                   marginLeft: 10,
+                                   marginBottom: 3
+                               }}
+                               onClick={this.disconnect}/>
+                    </Link>
+                </Col>
+            </Row>
+        )
+    }
 }
 
 function Nom(props) {
