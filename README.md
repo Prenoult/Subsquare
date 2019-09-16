@@ -56,7 +56,7 @@ Nous tenons à remercier **Axel Marciano** pour son
 que nous avons utilisé comme base pour notre app. 
  
 Dans le dossier du projet `/Subsquare`, vous devez exécuter `npm install`, pour installer les dépendances du côté 
-client de notre app.
+serveur de notre app.
 
 Dans le dossier client `/Subsquare/client`, vous devez également exécuter `npm install`, pour installer les 
 dépendances du côté client de notre app.
